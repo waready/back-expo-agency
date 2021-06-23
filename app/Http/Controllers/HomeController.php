@@ -21,7 +21,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         //$user = auth()->user()->can('hola');
         
@@ -29,6 +29,12 @@ class HomeController extends Controller
         //$user->hasPermissionTo('hola');
         // $user->hasPermissionTo(Permission::find(1)->id);
         //return $user;
-        return view('home');
+       $product = $request->session()->get('product');
+
+        return view('preguntas.create-step-one',compact('product'));
+    }
+    public function postCreateStepOne(Request $request)
+    {
+        return $request;
     }
 }

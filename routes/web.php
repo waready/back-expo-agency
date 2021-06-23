@@ -21,3 +21,6 @@ Route::get('/', function () {
 Auth::routes(["register" => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('products', 'ProductController@index')->name('products.index');
+Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->name('products.create.step.one.post');
