@@ -4,9 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            <example-component></example-component>
             <form action="{{ route('products.create.step.one.post') }}" method="POST">
                 @csrf
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">{{ __('A) Especialistas fortalecen capacidades a directivos y docentes para la ejecución del trabajo a distancia y educación virtual') }}</div>
                     <div class="card-body">
                         <div class="form-group">
@@ -877,7 +878,7 @@
                         <button type="submit" class="btn btn-primary">enviar</button>
                     </div>
                    
-                </div>
+                </div> --}}
             </form>
         </div>
     </div>
