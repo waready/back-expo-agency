@@ -2977,6 +2977,15 @@ __webpack_require__.r(__webpack_exports__);
         validateAsync: true
       }
     };
+  },
+  methods: {
+    onComplete: function onComplete() {
+      axios.post('/preguntas', this.preguntas).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -39380,7 +39389,8 @@ var render = function() {
                 subtitle: "",
                 nextButtonText: "siguiente",
                 backButtonText: "anterior"
-              }
+              },
+              on: { "on-complete": _vm.onComplete }
             },
             [
               _c("tab-content", { attrs: { title: "A" } }, [

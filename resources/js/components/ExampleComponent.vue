@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
             {{$data.preguntas}}
-                <form-wizard title="" subtitle="" nextButtonText="siguiente"  backButtonText="anterior">
+                <form-wizard title="" subtitle="" nextButtonText="siguiente"  backButtonText="anterior"  @on-complete="onComplete">
                     <tab-content title="A">
                         <div class="card">
                             <div class="card-header">A) Especialistas fortalecen capacidades a directivos y docentes para la ejecución del trabajo a distancia y educación virtual</div>
@@ -1043,6 +1043,17 @@ import 'vue-form-generator/dist/vfg.css'
                 }
 
             }
-        }
+        },
+        methods: {
+            onComplete: function(){
+                axios.post('/preguntas', this.preguntas)
+                .then(function (response) {
+                console.log(response);
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+            },
+        },  
     }
 </script>
