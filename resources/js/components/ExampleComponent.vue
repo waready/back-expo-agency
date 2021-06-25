@@ -928,7 +928,7 @@
 import {FormWizard, TabContent} from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import VueFormGenerator from "vue-form-generator"
-import 'vue-form-generator/dist/vfg.css'
+//import 'vue-form-generator/dist/vfg.css'
     export default {
         mounted() {
             console.log('Component mounted.')
