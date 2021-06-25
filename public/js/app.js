@@ -2817,6 +2817,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2833,67 +2858,67 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       radio: false,
-      mensaje: "",
+      mensaje: "pre1",
       preguntas: [{
-        pre1: ""
+        pre: ""
       }, {
-        pre2: ""
+        pre: ""
       }, {
-        pre3: ""
+        pre: ""
       }, {
-        pre4: ""
+        pre: ""
       }, {
-        pre5: ""
+        pre: ""
       }, {
-        pre6: ""
+        pre: ""
       }, {
-        pre7: ""
+        pre: ""
       }, {
-        pre8: ""
+        pre: ""
       }, {
-        pre9: ""
+        pre: ""
       }, {
-        pre10: ""
+        pre: ""
       }, {
-        pre11: ""
+        pre: ""
       }, {
-        pre12: ""
+        pre: ""
       }, {
-        pre13: ""
+        pre: ""
       }, {
-        pre14: ""
+        pre: ""
       }, {
-        pre15: ""
+        pre: ""
       }, {
-        pre16: ""
+        pre: ""
       }, {
-        pre17: ""
+        pre: ""
       }, {
-        pre18: ""
+        pre: ""
       }, {
-        pre19: ""
+        pre: ""
       }, {
-        pre20: ""
+        pre: ""
       }, {
-        pre21: ""
+        pre: ""
       }, {
-        pre22: ""
+        pre: ""
       }, {
-        pre23: ""
+        pre: ""
       }, {
-        pre24: ""
+        pre: ""
       }, {
-        pre25: ""
+        pre: ""
       }, {
-        pre26: ""
+        pre: ""
       }, {
-        pre27: ""
+        pre: ""
       }, {
-        pre28: ""
+        pre: ""
       }, {
-        pre29: ""
+        pre: ""
       }, {
-        pre30: ""
+        pre: ""
       }],
       model: {
         id: 1,
@@ -39382,11 +39407,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[0].pre1 === "1"
+                                  checked: _vm.preguntas[0].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[0].pre1 = $event.target.value
+                                    _vm.preguntas[0].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39410,11 +39435,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[0].pre1 === "0"
+                                  checked: _vm.preguntas[0].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[0].pre1 = $event.target.value
+                                    _vm.preguntas[0].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39471,11 +39496,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[1].pre2 === "1"
+                                  checked: _vm.preguntas[1].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[1].pre2 = $event.target.value
+                                    _vm.preguntas[1].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39499,11 +39524,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[1].pre2 === "0"
+                                  checked: _vm.preguntas[1].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[1].pre2 = $event.target.value
+                                    _vm.preguntas[1].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39560,11 +39585,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[2].pre3 === "1"
+                                  checked: _vm.preguntas[2].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[2].pre3 = $event.target.value
+                                    _vm.preguntas[2].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39588,11 +39613,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[2].pre3 === "0"
+                                  checked: _vm.preguntas[2].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[2].pre3 = $event.target.value
+                                    _vm.preguntas[2].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39649,11 +39674,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[3].pre4 === "1"
+                                  checked: _vm.preguntas[3].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[3].pre4 = $event.target.value
+                                    _vm.preguntas[3].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39677,11 +39702,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[3].pre4 === "0"
+                                  checked: _vm.preguntas[3].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[3].pre4 = $event.target.value
+                                    _vm.preguntas[3].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39750,11 +39775,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[4].pre5 === "1"
+                                  checked: _vm.preguntas[4].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[4].pre5 = $event.target.value
+                                    _vm.preguntas[4].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39778,11 +39803,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[4].pre5 === "0"
+                                  checked: _vm.preguntas[4].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[4].pre5 = $event.target.value
+                                    _vm.preguntas[4].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39839,11 +39864,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[5].pre6 === "1"
+                                  checked: _vm.preguntas[5].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[5].pre6 = $event.target.value
+                                    _vm.preguntas[5].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39867,11 +39892,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[5].pre6 === "0"
+                                  checked: _vm.preguntas[5].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[5].pre6 = $event.target.value
+                                    _vm.preguntas[5].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39928,11 +39953,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[6].pre7 === "1"
+                                  checked: _vm.preguntas[6].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[6].pre7 = $event.target.value
+                                    _vm.preguntas[6].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -39956,11 +39981,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[6].pre7 === "0"
+                                  checked: _vm.preguntas[6].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[6].pre7 = $event.target.value
+                                    _vm.preguntas[6].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40017,11 +40042,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[7].pre8 === "1"
+                                  checked: _vm.preguntas[7].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[7].pre8 = $event.target.value
+                                    _vm.preguntas[7].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40045,11 +40070,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[7].pre8 === "0"
+                                  checked: _vm.preguntas[7].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[7].pre8 = $event.target.value
+                                    _vm.preguntas[7].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40118,11 +40143,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[8].pre9 === "1"
+                                  checked: _vm.preguntas[8].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[8].pre9 = $event.target.value
+                                    _vm.preguntas[8].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40146,11 +40171,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[8].pre9 === "0"
+                                  checked: _vm.preguntas[8].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[8].pre9 = $event.target.value
+                                    _vm.preguntas[8].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40207,11 +40232,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[9].pre10 === "1"
+                                  checked: _vm.preguntas[9].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[9].pre10 = $event.target.value
+                                    _vm.preguntas[9].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40235,11 +40260,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[9].pre10 === "0"
+                                  checked: _vm.preguntas[9].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[9].pre10 = $event.target.value
+                                    _vm.preguntas[9].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40296,12 +40321,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[10].pre11 === "1"
+                                  checked: _vm.preguntas[10].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[10].pre11 =
-                                      $event.target.value
+                                    _vm.preguntas[10].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40325,12 +40349,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[10].pre11 === "0"
+                                  checked: _vm.preguntas[10].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[10].pre11 =
-                                      $event.target.value
+                                    _vm.preguntas[10].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40387,12 +40410,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[11].pre12 === "1"
+                                  checked: _vm.preguntas[11].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[11].pre12 =
-                                      $event.target.value
+                                    _vm.preguntas[11].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40416,12 +40438,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[11].pre12 === "0"
+                                  checked: _vm.preguntas[11].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[11].pre12 =
-                                      $event.target.value
+                                    _vm.preguntas[11].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40490,12 +40511,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[12].pre13 === "1"
+                                  checked: _vm.preguntas[12].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[12].pre13 =
-                                      $event.target.value
+                                    _vm.preguntas[12].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40519,12 +40539,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[12].pre13 === "0"
+                                  checked: _vm.preguntas[12].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[12].pre13 =
-                                      $event.target.value
+                                    _vm.preguntas[12].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40581,12 +40600,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[13].pre14 === "1"
+                                  checked: _vm.preguntas[13].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[13].pre14 =
-                                      $event.target.value
+                                    _vm.preguntas[13].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40610,12 +40628,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[13].pre14 === "0"
+                                  checked: _vm.preguntas[13].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[13].pre14 =
-                                      $event.target.value
+                                    _vm.preguntas[13].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40672,12 +40689,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[14].pre15 === "1"
+                                  checked: _vm.preguntas[14].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[14].pre15 =
-                                      $event.target.value
+                                    _vm.preguntas[14].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40701,12 +40717,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[14].pre15 === "0"
+                                  checked: _vm.preguntas[14].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[14].pre15 =
-                                      $event.target.value
+                                    _vm.preguntas[14].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40775,12 +40790,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[15].pre16 === "1"
+                                  checked: _vm.preguntas[15].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[15].pre16 =
-                                      $event.target.value
+                                    _vm.preguntas[15].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40804,12 +40818,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[15].pre16 === "0"
+                                  checked: _vm.preguntas[15].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[15].pre16 =
-                                      $event.target.value
+                                    _vm.preguntas[15].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40866,12 +40879,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[16].pre17 === "1"
+                                  checked: _vm.preguntas[16].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[16].pre17 =
-                                      $event.target.value
+                                    _vm.preguntas[16].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40895,12 +40907,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[16].pre17 === "0"
+                                  checked: _vm.preguntas[16].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[16].pre17 =
-                                      $event.target.value
+                                    _vm.preguntas[16].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40957,12 +40968,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[17].pre18 === "1"
+                                  checked: _vm.preguntas[17].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[17].pre18 =
-                                      $event.target.value
+                                    _vm.preguntas[17].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -40986,12 +40996,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[17].pre18 === "0"
+                                  checked: _vm.preguntas[17].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[17].pre18 =
-                                      $event.target.value
+                                    _vm.preguntas[17].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41048,12 +41057,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[18].pre19 === "1"
+                                  checked: _vm.preguntas[18].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[18].pre19 =
-                                      $event.target.value
+                                    _vm.preguntas[18].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41077,12 +41085,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[18].pre19 === "0"
+                                  checked: _vm.preguntas[18].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[18].pre19 =
-                                      $event.target.value
+                                    _vm.preguntas[18].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41139,12 +41146,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[19].pre20 === "1"
+                                  checked: _vm.preguntas[19].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[19].pre20 =
-                                      $event.target.value
+                                    _vm.preguntas[19].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41168,12 +41174,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[19].pre20 === "0"
+                                  checked: _vm.preguntas[19].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[19].pre20 =
-                                      $event.target.value
+                                    _vm.preguntas[19].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41230,12 +41235,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[20].pre21 === "1"
+                                  checked: _vm.preguntas[20].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[20].pre21 =
-                                      $event.target.value
+                                    _vm.preguntas[20].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41259,12 +41263,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[20].pre21 === "0"
+                                  checked: _vm.preguntas[20].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[20].pre21 =
-                                      $event.target.value
+                                    _vm.preguntas[20].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41321,12 +41324,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[21].pre22 === "1"
+                                  checked: _vm.preguntas[21].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[21].pre22 =
-                                      $event.target.value
+                                    _vm.preguntas[21].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41350,12 +41352,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[21].pre22 === "0"
+                                  checked: _vm.preguntas[21].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[21].pre22 =
-                                      $event.target.value
+                                    _vm.preguntas[21].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41412,12 +41413,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[22].pre23 === "1"
+                                  checked: _vm.preguntas[22].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[22].pre23 =
-                                      $event.target.value
+                                    _vm.preguntas[22].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41441,12 +41441,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[22].pre23 === "0"
+                                  checked: _vm.preguntas[22].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[22].pre23 =
-                                      $event.target.value
+                                    _vm.preguntas[22].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41503,12 +41502,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[23].pre24 === "1"
+                                  checked: _vm.preguntas[23].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[23].pre24 =
-                                      $event.target.value
+                                    _vm.preguntas[23].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41532,12 +41530,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[23].pre24 === "0"
+                                  checked: _vm.preguntas[23].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[23].pre24 =
-                                      $event.target.value
+                                    _vm.preguntas[23].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41594,12 +41591,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[24].pre25 === "1"
+                                  checked: _vm.preguntas[24].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[24].pre25 =
-                                      $event.target.value
+                                    _vm.preguntas[24].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41623,12 +41619,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[24].pre25 === "0"
+                                  checked: _vm.preguntas[24].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[24].pre25 =
-                                      $event.target.value
+                                    _vm.preguntas[24].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41685,12 +41680,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[25].pre26 === "1"
+                                  checked: _vm.preguntas[25].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[25].pre26 =
-                                      $event.target.value
+                                    _vm.preguntas[25].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41714,12 +41708,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[25].pre26 === "0"
+                                  checked: _vm.preguntas[25].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[25].pre26 =
-                                      $event.target.value
+                                    _vm.preguntas[25].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41776,12 +41769,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[26].pre27 === "1"
+                                  checked: _vm.preguntas[26].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[26].pre27 =
-                                      $event.target.value
+                                    _vm.preguntas[26].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41805,12 +41797,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[26].pre27 === "0"
+                                  checked: _vm.preguntas[26].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[26].pre27 =
-                                      $event.target.value
+                                    _vm.preguntas[26].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41879,12 +41870,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[27].pre28 === "1"
+                                  checked: _vm.preguntas[27].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[27].pre28 =
-                                      $event.target.value
+                                    _vm.preguntas[27].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41908,12 +41898,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[27].pre28 === "0"
+                                  checked: _vm.preguntas[27].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[27].pre28 =
-                                      $event.target.value
+                                    _vm.preguntas[27].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41970,12 +41959,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[28].pre29 === "1"
+                                  checked: _vm.preguntas[28].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[28].pre29 =
-                                      $event.target.value
+                                    _vm.preguntas[28].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -41999,12 +41987,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[28].pre29 === "0"
+                                  checked: _vm.preguntas[28].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[28].pre29 =
-                                      $event.target.value
+                                    _vm.preguntas[28].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -42061,12 +42048,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "1" },
                                 domProps: {
-                                  checked: _vm.preguntas[29].pre30 === "1"
+                                  checked: _vm.preguntas[29].pre === "1"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[29].pre30 =
-                                      $event.target.value
+                                    _vm.preguntas[29].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -42090,12 +42076,11 @@ var render = function() {
                                 staticClass: "form-check-input",
                                 attrs: { type: "radio", value: "0" },
                                 domProps: {
-                                  checked: _vm.preguntas[29].pre30 === "0"
+                                  checked: _vm.preguntas[29].pre === "0"
                                 },
                                 on: {
                                   change: function($event) {
-                                    _vm.preguntas[29].pre30 =
-                                      $event.target.value
+                                    _vm.preguntas[29].pre = $event.target.value
                                   }
                                 }
                               }),
@@ -42136,25 +42121,58 @@ var render = function() {
                         ])
                       ])
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-footer text-right" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" }
-                      },
-                      [_vm._v("enviar")]
-                    )
                   ])
                 ])
               ]),
               _vm._v(" "),
               _c("tab-content", { attrs: { title: "Resultado" } }, [
-                _vm._v(
-                  "\n                    Yuhuuu! This seems pretty damn simple\n                "
-                )
+                _c("table", { staticClass: "table" }, [
+                  _c("thead", [
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+                      _vm._v(" "),
+                      _c("th", { attrs: { scope: "col" } }, [
+                        _vm._v("Respuesta")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.preguntas, function(item, index) {
+                      return _c("tr", { key: index }, [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            item.pre === "1"
+                              ? [
+                                  _vm._v(
+                                    "\n                                    si\n                                "
+                                  )
+                                ]
+                              : item.pre === "0"
+                              ? [
+                                  _vm._v(
+                                    "\n                                    no\n                                "
+                                  )
+                                ]
+                              : [
+                                  _vm._v(
+                                    "\n                                    --\n                                "
+                                  )
+                                ]
+                          ],
+                          2
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ])
               ])
             ],
             1

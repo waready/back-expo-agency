@@ -14,13 +14,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[0].pre1 === '1'" @change="preguntas[0].pre1 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[0].pre === '1'" @change="preguntas[0].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[0].pre1 === '0'" @change="preguntas[0].pre1 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[0].pre === '0'" @change="preguntas[0].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -42,13 +42,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[1].pre2 === '1'" @change="preguntas[1].pre2 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[1].pre === '1'" @change="preguntas[1].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[1].pre2 === '0'" @change="preguntas[1].pre2 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[1].pre === '0'" @change="preguntas[1].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -70,13 +70,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[2].pre3 === '1'" @change="preguntas[2].pre3 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[2].pre === '1'" @change="preguntas[2].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[2].pre3 === '0'" @change="preguntas[2].pre3 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[2].pre === '0'" @change="preguntas[2].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -98,13 +98,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[3].pre4 === '1'" @change="preguntas[3].pre4 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[3].pre === '1'" @change="preguntas[3].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[3].pre4 === '0'" @change="preguntas[3].pre4 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[3].pre === '0'" @change="preguntas[3].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -134,13 +134,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[4].pre5 === '1'" @change="preguntas[4].pre5 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[4].pre === '1'" @change="preguntas[4].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[4].pre5 === '0'" @change="preguntas[4].pre5 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[4].pre === '0'" @change="preguntas[4].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -162,13 +162,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[5].pre6 === '1'" @change="preguntas[5].pre6 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[5].pre === '1'" @change="preguntas[5].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[5].pre6 === '0'" @change="preguntas[5].pre6 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[5].pre === '0'" @change="preguntas[5].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -190,13 +190,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[6].pre7 === '1'" @change="preguntas[6].pre7 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[6].pre === '1'" @change="preguntas[6].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[6].pre7 === '0'" @change="preguntas[6].pre7 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[6].pre === '0'" @change="preguntas[6].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -218,13 +218,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[7].pre8 === '1'" @change="preguntas[7].pre8 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[7].pre === '1'" @change="preguntas[7].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[7].pre8 === '0'" @change="preguntas[7].pre8 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[7].pre === '0'" @change="preguntas[7].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -255,13 +255,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[8].pre9 === '1'" @change="preguntas[8].pre9 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[8].pre === '1'" @change="preguntas[8].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[8].pre9 === '0'" @change="preguntas[8].pre9 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[8].pre === '0'" @change="preguntas[8].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -283,13 +283,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[9].pre10 === '1'" @change="preguntas[9].pre10 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[9].pre === '1'" @change="preguntas[9].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[9].pre10 === '0'" @change="preguntas[9].pre10 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[9].pre === '0'" @change="preguntas[9].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -311,13 +311,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[10].pre11 === '1'" @change="preguntas[10].pre11 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[10].pre === '1'" @change="preguntas[10].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[10].pre11 === '0'" @change="preguntas[10].pre11 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[10].pre === '0'" @change="preguntas[10].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -339,13 +339,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[11].pre12 === '1'" @change="preguntas[11].pre12 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[11].pre === '1'" @change="preguntas[11].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[11].pre12 === '0'" @change="preguntas[11].pre12 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[11].pre === '0'" @change="preguntas[11].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -375,13 +375,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[12].pre13 === '1'" @change="preguntas[12].pre13 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[12].pre === '1'" @change="preguntas[12].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[12].pre13 === '0'" @change="preguntas[12].pre13 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[12].pre === '0'" @change="preguntas[12].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -403,13 +403,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[13].pre14 === '1'" @change="preguntas[13].pre14 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[13].pre === '1'" @change="preguntas[13].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[13].pre14 === '0'" @change="preguntas[13].pre14 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[13].pre === '0'" @change="preguntas[13].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -431,13 +431,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[14].pre15 === '1'" @change="preguntas[14].pre15 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[14].pre === '1'" @change="preguntas[14].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[14].pre15 === '0'" @change="preguntas[14].pre15 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[14].pre === '0'" @change="preguntas[14].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -467,13 +467,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[15].pre16 === '1'" @change="preguntas[15].pre16 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[15].pre === '1'" @change="preguntas[15].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[15].pre16 === '0'" @change="preguntas[15].pre16 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[15].pre === '0'" @change="preguntas[15].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -495,13 +495,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[16].pre17 === '1'" @change="preguntas[16].pre17 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[16].pre === '1'" @change="preguntas[16].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[16].pre17 === '0'" @change="preguntas[16].pre17 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[16].pre === '0'" @change="preguntas[16].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -523,13 +523,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[17].pre18 === '1'" @change="preguntas[17].pre18 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[17].pre === '1'" @change="preguntas[17].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[17].pre18 === '0'" @change="preguntas[17].pre18 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[17].pre === '0'" @change="preguntas[17].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -551,13 +551,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[18].pre19 === '1'" @change="preguntas[18].pre19 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[18].pre === '1'" @change="preguntas[18].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[18].pre19 === '0'" @change="preguntas[18].pre19 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[18].pre === '0'" @change="preguntas[18].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -579,13 +579,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[19].pre20 === '1'" @change="preguntas[19].pre20 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[19].pre === '1'" @change="preguntas[19].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[19].pre20 === '0'" @change="preguntas[19].pre20 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[19].pre === '0'" @change="preguntas[19].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -607,13 +607,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[20].pre21 === '1'" @change="preguntas[20].pre21 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[20].pre === '1'" @change="preguntas[20].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[20].pre21 === '0'" @change="preguntas[20].pre21 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[20].pre === '0'" @change="preguntas[20].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -634,13 +634,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[21].pre22 === '1'" @change="preguntas[21].pre22 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[21].pre === '1'" @change="preguntas[21].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[21].pre22 === '0'" @change="preguntas[21].pre22 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[21].pre === '0'" @change="preguntas[21].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -661,13 +661,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[22].pre23 === '1'" @change="preguntas[22].pre23 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[22].pre === '1'" @change="preguntas[22].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[22].pre23 === '0'" @change="preguntas[22].pre23 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[22].pre === '0'" @change="preguntas[22].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -688,13 +688,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[23].pre24 === '1'" @change="preguntas[23].pre24 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[23].pre === '1'" @change="preguntas[23].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[23].pre24 === '0'" @change="preguntas[23].pre24 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[23].pre === '0'" @change="preguntas[23].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -715,13 +715,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[24].pre25 === '1'" @change="preguntas[24].pre25 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[24].pre === '1'" @change="preguntas[24].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[24].pre25 === '0'" @change="preguntas[24].pre25 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[24].pre === '0'" @change="preguntas[24].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -742,13 +742,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[25].pre26 === '1'" @change="preguntas[25].pre26 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[25].pre === '1'" @change="preguntas[25].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[25].pre26 === '0'" @change="preguntas[25].pre26 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[25].pre === '0'" @change="preguntas[25].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -769,13 +769,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[26].pre27 === '1'" @change="preguntas[26].pre27 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[26].pre === '1'" @change="preguntas[26].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[26].pre27 === '0'" @change="preguntas[26].pre27 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[26].pre === '0'" @change="preguntas[26].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -804,13 +804,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[27].pre28 === '1'" @change="preguntas[27].pre28 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[27].pre === '1'" @change="preguntas[27].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[27].pre28 === '0'" @change="preguntas[27].pre28 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[27].pre === '0'" @change="preguntas[27].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -832,13 +832,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[28].pre29 === '1'" @change="preguntas[28].pre29 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[28].pre === '1'" @change="preguntas[28].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[28].pre29 === '0'" @change="preguntas[28].pre29 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[28].pre === '0'" @change="preguntas[28].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -860,13 +860,13 @@
                                         <div class="col-md-6">
                                             <div class="col-sm-10">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[29].pre30 === '1'" @change="preguntas[29].pre30 = $event.target.value" value="1"  >
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[29].pre === '1'" @change="preguntas[29].pre = $event.target.value" value="1"  >
                                                     <label class="form-check-label" for="gridRadios1">
                                                         si
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" :checked="preguntas[29].pre30 === '0'" @change="preguntas[29].pre30 = $event.target.value" value="0">
+                                                    <input class="form-check-input" type="radio" :checked="preguntas[29].pre === '0'" @change="preguntas[29].pre = $event.target.value" value="0">
                                                     <label class="form-check-label" for="gridRadios1">
                                                         no
                                                     </label>
@@ -883,14 +883,39 @@
                                 </div>
             
                             </div>
-                            <div class="card-footer text-right">
-                                <button type="submit" class="btn btn-primary">enviar</button>
-                            </div>
+                           
                         </div>
                     </tab-content>
                     
                     <tab-content title="Resultado">
-                        Yuhuuu! This seems pretty damn simple
+                        <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Respuesta</th>
+                            <!-- <th scope="col">Last</th>
+                            <th scope="col">Handle</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in preguntas" :key="index">
+                                <th scope="row">{{index+1}}</th>
+                                <td>
+                                    <template v-if="item.pre === '1' ">
+                                        si
+                                    </template>
+                                    <template v-else-if="item.pre === '0'">
+                                        no
+                                    </template>
+                                    <template v-else>
+                                        --
+                                    </template>
+                                </td>
+                                <!-- <td>Otto</td>
+                                <td>@mdo</td> -->
+                            </tr>
+                        </tbody>
+                        </table>
                     </tab-content>
                 </form-wizard>
 
@@ -916,38 +941,38 @@ import 'vue-form-generator/dist/vfg.css'
         data(){
             return {
                 radio:false,
-                mensaje:"",
+                mensaje:"pre1",
                 preguntas:[
-                    {pre1:""},
-                    {pre2:""},
-                    {pre3:""},
-                    {pre4:""},
-                    {pre5:""},
-                    {pre6:""},
-                    {pre7:""},
-                    {pre8:""},
-                    {pre9:""},
-                    {pre10:""},
-                    {pre11:""},
-                    {pre12:""},
-                    {pre13:""},
-                    {pre14:""},
-                    {pre15:""},
-                    {pre16:""},
-                    {pre17:""},
-                    {pre18:""},
-                    {pre19:""},
-                    {pre20:""},
-                    {pre21:""},
-                    {pre22:""},
-                    {pre23:""},
-                    {pre24:""},
-                    {pre25:""},
-                    {pre26:""},
-                    {pre27:""},
-                    {pre28:""},
-                    {pre29:""},
-                    {pre30:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
+                    {pre:""},
 
 
                 ],
