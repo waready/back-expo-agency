@@ -44,7 +44,7 @@ class CategoriaSeeder extends Seeder
             'id_tipo' => 2
         ]);
         categoria::create([
-            'nombre'  => 'Especialistas desarrollan soporte socioemocional a directivos y docentes',
+            'nombre'  => 'B) Especialistas desarrollan soporte socioemocional a directivos y docentes',
             'id_tipo' => 2
         ]);
         categoria::create([
