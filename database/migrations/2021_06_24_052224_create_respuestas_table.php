@@ -22,7 +22,7 @@ class CreateRespuestasTable extends Migration
             $table->unsignedBigInteger('id_pregunta');
             $table->foreign('id_pregunta')->references('id')->on('preguntas');
 
-            $table->float('calificacion', 8, 2);
+            $table->decimal('calificacion', 8, 2);
             
             $table->timestamps();
         });

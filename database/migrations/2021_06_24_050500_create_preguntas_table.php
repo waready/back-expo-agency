@@ -17,7 +17,7 @@ class CreatePreguntasTable extends Migration
             $table->id();
             $table->integer('numero');
             $table->string('enunciado');
-            $table->float('puntaje', 8, 2);
+            $table->decimal('calificacion', 8, 2);
             $table->unsignedInteger('clave');
 
             $table->unsignedBigInteger('id_categoria');
