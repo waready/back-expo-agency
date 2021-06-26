@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
             {{$data.preguntas}}
-                <form-wizard title="" subtitle="" nextButtonText="siguiente"  backButtonText="anterior"  @on-complete="onComplete">
+                <form-wizard title="" subtitle="" nextButtonText="siguiente"   backButtonText="anterior" finishButtonText="Enviar"  @on-complete="onComplete">
                     <tab-content title="A">
                         <div class="card">
                             <div class="card-header">A) Especialistas fortalecen capacidades a directivos y docentes para la ejecución del trabajo a distancia y educación virtual</div>
@@ -928,6 +928,8 @@
 import {FormWizard, TabContent} from 'vue-form-wizard'
 import 'vue-form-wizard/dist/vue-form-wizard.min.css'
 import VueFormGenerator from "vue-form-generator"
+
+
 //import 'vue-form-generator/dist/vfg.css'
     export default {
         mounted() {
@@ -936,7 +938,8 @@ import VueFormGenerator from "vue-form-generator"
         components: {
             "vue-form-generator": VueFormGenerator.component,
             FormWizard,
-            TabContent
+            TabContent,
+        
         },
         data(){
             return {
@@ -1046,6 +1049,9 @@ import VueFormGenerator from "vue-form-generator"
         },
         methods: {
             onComplete: function(){
+
+                
+
                 axios.post('/preguntas', this.preguntas)
                 .then(function (response) {
                 console.log(response);

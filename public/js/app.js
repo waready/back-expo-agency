@@ -39337,7 +39337,8 @@ var render = function() {
                 title: "",
                 subtitle: "",
                 nextButtonText: "siguiente",
-                backButtonText: "anterior"
+                backButtonText: "anterior",
+                finishButtonText: "Enviar"
               },
               on: { "on-complete": _vm.onComplete }
             },
