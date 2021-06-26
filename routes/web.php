@@ -1,5 +1,10 @@
 <?php
 
+use App\categoria;
+use App\pregunta;
+use App\respuesta;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 //Auth::routes();
@@ -22,9 +27,50 @@ Auth::routes(["register" => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('products', 'ProductController@index')->name('products.index');
+// Route::get('products', 'ProductController@index')->name('products.index');
 Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->name('products.create.step.one.post');
 
 /**Calificar**/
 
-Route::post('preguntas','CalificarController@calificar');
+Route::post('preguntas', 'CalificarController@calificar');
+
+Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
+  Route::get('preguntas-lista', function () {
+    // return pregunta::all();
+    return DB::table('preguntas AS A')
+      ->select(
+        'A.id',
+        'A.numero',
+        'A.enunciado',
+        'A.id_categoria'
+      )
+      ->addSelect('B.respuesta')
+      ->addSelect('B.observacion')
+      ->leftJoin('respuestas AS B', function ($q) {
+        $q->on('A.id', 'B.id_pregunta')->where('B.id_user', auth()->id());
+      })->get();
+  });
+
+  Route::get('categorias-lista', function () {
+    return categoria::all();
+  });
+
+  Route::post('responder', function (Request $request) {
+    // logger(print_r([
+    //   'user' => $request->user()->id
+    // ], true));
+    $respuesta = respuesta::where('id_user', auth()->id())
+      ->where('id_pregunta', $request->input('id_pregunta'))
+      ->first();
+    if (!isset($respuesta)) {
+      $respuesta = new respuesta();
+      $respuesta->id_user = auth()->id();
+      $respuesta->id_pregunta = $request->input('id_pregunta');
+    }
+    $respuesta->respuesta = $request->input('respuesta');
+    $respuesta->observacion = $request->input('observacion');
+    $respuesta->save();
+
+    return response()->json($respuesta);
+  });
+});
