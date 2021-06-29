@@ -6,38 +6,43 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                    <div
+                    <!-- <div
                         class="card mb-2"
                         v-for="categoria in categorias"
                         :key="categoria.id"
-                    >
-                        <div class="card-header">
-                            {{ categoria.nombre }}
+                    > -->
+                    <form-wizard   title="" subtitle="" nextButtonText="siguiente"   backButtonText="anterior" finishButtonText="Enviar"  @on-complete="onComplete">
+                        <tab-content title="A" v-for="categoria in categorias" :key="categoria.id">
+                        <div class="card">
+                            <div class="card-header">
+                                {{ categoria.nombre }}
+                            </div>
+                            <div class="card-body">
+                                <pregunta
+                                    v-for="pregunta in preguntas.filter((x) => x.id_categoria == categoria.id)"
+                                    :key="`pregunta_${pregunta.id}`"
+                                    :pregunta="pregunta"
+                                ></pregunta>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <pregunta
-                                v-for="pregunta in preguntas.filter((x) => x.id_categoria == categoria.id)"
-                                :key="`pregunta_${pregunta.id}`"
-                                :pregunta="pregunta"
-                            ></pregunta>
-                        </div>
-                    </div>
+                        </tab-content>
+                    </form-wizard>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-// import { FormWizard, TabContent } from "vue-form-wizard";
-// import "vue-form-wizard/dist/vue-form-wizard.min.css";
+import { FormWizard, TabContent } from "vue-form-wizard";
+ import "vue-form-wizard/dist/vue-form-wizard.min.css";
 // import VueFormGenerator from "vue-form-generator";
 import axios from "axios";
 import _ from "lodash";
 export default {
     components: {
         // "vue-form-generator": VueFormGenerator.component,
-        // FormWizard,
-        // TabContent,
+        FormWizard,
+        TabContent,
     },
 
     // directives

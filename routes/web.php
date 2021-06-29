@@ -22,10 +22,23 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-//Auth::routes();
-Auth::routes(["register" => false]);
+Auth::routes();
+//Auth::routes(["register" => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/**Data-Tables**/
+  //tipo-examen
+Route::get('/tipo', 'TipoController@index')->name('tipo');
+Route::get('/getTipo', 'TipoController@getTipo')->name('gettipo');
+
+  //categorias
+Route::get('/categoria', 'CategoriaController@index')->name('categoria');
+Route::get('/getCategoria', 'CategoriaController@getTipo')->name('getCategoria');
+
+  //Preguntas
+Route::get('/pregunta', 'PreguntaController@index')->name('preguntas');
+Route::get('/getPreguntas', 'PreguntaController@getTipo')->name('getPreguntas');
 
 // Route::get('products', 'ProductController@index')->name('products.index');
 Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->name('products.create.step.one.post');

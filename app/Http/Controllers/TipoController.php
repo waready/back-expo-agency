@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\tipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TipoController extends Controller
 {
@@ -14,7 +15,16 @@ class TipoController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.tipo');
+    }
+
+    public function getTipo()
+    {
+      $tipo = DB::table('tipos as tp')
+      ->select('tp.id', 'tp.nombre', DB::raw('"" as Opciones'))
+      ->get();
+      
+      return \DataTables::of($tipo)->make('true');
     }
 
     /**

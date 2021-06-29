@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -14,7 +15,17 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categoria');
+    }
+
+    public function getTipo()
+    {
+      $categoria = DB::table('categorias as cg')
+      ->select('cg.id', 'cg.nombre', 'tp.nombre as tipo' ,DB::raw('"" as Opciones'))
+      ->join('tipos as tp', 'tp.id', '=', 'cg.id_tipo')
+      ->get();
+      
+      return \DataTables::of($categoria)->make('true');
     }
 
     /**

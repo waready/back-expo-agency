@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\pregunta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PreguntaController extends Controller
 {
@@ -14,7 +15,17 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.preguntas');
+    }
+
+    public function getTipo()
+    {
+      $categoria = DB::table('preguntas as pre')
+      ->select('pre.id', 'pre.numero','pre.enunciado','pre.calificacion','pre.clave', 'ct.nombre as categoria' ,DB::raw('"" as Opciones'))
+      ->join('categorias as ct', 'ct.id', '=', 'pre.id_categoria')
+      ->get();
+      
+      return \DataTables::of($categoria)->make('true');
     }
 
     /**
