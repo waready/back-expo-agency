@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Tipo de Examen
+                <div class="card-header">Tipo de Categoria
                     <button type="button" id="agregar-responsable-carrera" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-agregar-usuario">
                         <i class="fa fa-plus"></i> Agregar
                     </button>
@@ -103,13 +103,18 @@
                         <div class="item form-group">
                             <label class="col-form-label col-md-4 col-sm-3 label-align">Nombre</label>
                             <div class="col-md-12 col-sm-12 ">
-                                <input type="text" class="form-control" name="nombres" id="nombre" required placeholder="">
+                                <textarea type="text" class="form-control" name="nombres" id="nombres" required placeholder=""> </textarea>
                             </div>
                         </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-4 col-sm-3 label-align">Descripcion</label>
                             <div class="col-md-12 col-sm-12 ">
-                                <textarea type="text" class="form-control" name="descripcion" id="descripcion"  placeholder=""> </textarea>
+                                <select style="width: 100%" class="form-control carrera seleccion2" name="tipo" id="tipo" required>
+                                    <option ></option>
+                                    @foreach($tipos as $tipo)
+                                        <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         {{-- <div class="item form-group">
@@ -275,7 +280,7 @@
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    url:'alltipo',
+                    url:'allcategoria',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -290,16 +295,9 @@
                             dt.ajax.reload();
                             toastr.success(data.message, '¡Operación Exitosa!', {timeOut: 5000})
                             $('#nombres').val('');
-                            $('#descripcion').val('');
-                            // $('#materno').val('');
-                            // $('#abreviatura').val('');
-                            // $('#documento').val('');
-                            // $('#email').val('');
-                            // $('#contraseña').val('');
-                            // var estado = $('.estado');
-                            // estado.filter('[value="1"]').iCheck('check');
-                            // $('.file-firma').val(null);
-                            // $('.file1').html('Seleccione su archivo...');
+                            $('#tipo').val(null).trigger('change');
+                            $('#tipo').val('');
+                            
                         }
                         else
                         {
@@ -313,7 +311,12 @@
                     }
                 });
             });
-          
+            $('#modal-agregar-usuario').on('hidden.bs.modal', function () {
+                $('#nombres').val('');
+                // $("#fichero").html("Subir Constancia de Habilitación");
+                $('#tipo').val(null).trigger('change');
+                $('#tipo').val('');
+            })
         })
     </script>
 @endpush

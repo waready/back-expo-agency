@@ -42,6 +42,8 @@ Route::resource('/allcategoria', 'CategoriaController');
   //Preguntas
 Route::get('/pregunta', 'PreguntaController@index')->name('preguntas');
 Route::get('/getPreguntas', 'PreguntaController@getTipo')->name('getPreguntas');
+Route::resource('/allpregunta', 'PreguntaController');
+
 
 // Route::get('products', 'ProductController@index')->name('products.index');
 Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->name('products.create.step.one.post');

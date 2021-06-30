@@ -369,7 +369,11 @@
                     }
                 });
             });
-
+            $('#modal-agregar-usuario').on('hidden.bs.modal', function () {
+                $('#nombre').val('');
+                $('#descripcion').val('');
+               
+            })
         })
     </script>
 @endpush

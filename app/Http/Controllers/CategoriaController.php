@@ -51,18 +51,18 @@ class CategoriaController extends Controller
         DB::beginTransaction();
         try {
 
-            $tipo = new tipo;
-            $tipo->nombre= $request->nombres;
-            $tipo->descripcion = $request->descripcion;
+            $categoria = new categoria;
+            $categoria->nombre= $request->nombres;
+            $categoria->id_tipo = $request->tipo;
           
-            $tipo->save(); 
+            $categoria->save(); 
 
         DB::commit();
-            $message = "Tipo Examen creado correctamente.";
+            $message = "Categoria creado correctamente.";
             $status = true;
         } catch (\Exception $e) {
             DB::rollback();
-            $message = "Error al crear nuevo Tipo Examen, intentelo de nuevo si el problema persiste comuniquese con el administrador.";
+            $message = "Error al crear nueva Categoria, intentelo de nuevo si el problema persiste comuniquese con el administrador.";
             $status = false;
             $error =$e;
         }
