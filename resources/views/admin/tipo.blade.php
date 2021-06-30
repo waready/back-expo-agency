@@ -9,8 +9,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Tipo de Examen</div>
+                <div class="card-header">Tipo de Examen :
 
+                    <button type="button" id="agregar-responsable-carrera" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-agregar-usuario">
+                        <i class="fa fa-plus"></i> Agregar
+                    </button>
+                </div>
+                
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -47,7 +52,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-secondary text-white">
-                <h5 class="modal-title">Editar Usuario</h5>
+                <h5 class="modal-title">Editar Nombre Tipo Examen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -139,6 +144,55 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modal-agregar-usuario" tabindex="-1" role="dialog" aria-labelledby="agregarNuevo" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-secondary text-white">
+                <h5 class="modal-title">Agregar Nuevo Tipo Examen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="form-agregar-usuario" class="form-horizontal form-label-left" autocomplete="off">
+                @csrf
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Nombre</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="nombres" id="nombre" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Descripcion</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <textarea type="text" class="form-control" name="descripcion" id="descripcion"  placeholder=""> </textarea>
+                            </div>
+                        </div>
+                        {{-- <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Apellido Materno</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" class="form-control" name="materno" id="materno" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Abreviatura</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="text" class="form-control" name="abreviatura" id="abreviatura" required placeholder="">
+                            </div>
+                        </div> --}}
+                       
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection
 @push('scripts')
 {{-- <br><script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script> --}}
@@ -150,20 +204,20 @@
         let dt;
         console.log('tag', 'asd')
       //   let modal = jQuery("#appModal");
-        $('#students-table thead tr').clone(true).appendTo( '#students-table thead' );
-        $('#students-table thead tr:eq(1) th').each( function (i) {
-            var title = $(this).text();
-            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-            $( 'input', this ).on( 'keyup change', function () {
-                if ( dt.column(i).search() !== this.value ) {
-                    dt
-                        .column(i)
-                        .search( this.value )
-                        .draw();
-                }
-            } );
-        } );
-         jQuery(document).ready(function() {
+        // $('#students-table thead tr').clone(true).appendTo( '#students-table thead' );
+        // $('#students-table thead tr:eq(1) th').each( function (i) {
+        //     var title = $(this).text();
+        //     $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        //     $( 'input', this ).on( 'keyup change', function () {
+        //         if ( dt.column(i).search() !== this.value ) {
+        //             dt
+        //                 .column(i)
+        //                 .search( this.value )
+        //                 .draw();
+        //         }
+        //     } );
+        // } );
+        jQuery(document).ready(function() {
             dt = jQuery("#students-table").DataTable({
                 pageLength: 10,
                 lengthMenu: [ 5, 10, 25, 50, 75, 100 ],
@@ -263,6 +317,55 @@
                         //spinner.hide();
                         toastr.error(error, '¡Error!', {timeOut: 5000})
 
+                    }
+                });
+            });
+            $('#form-agregar-usuario').submit(function(e){
+                e.preventDefault();
+                //spinner.show();
+                // let data = $(this).serialize();
+                var formDerivar = document.getElementById("form-agregar-usuario");
+                let data = new FormData(formDerivar);
+
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url:'alltipo',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        $('#modal-agregar-usuario').modal('hide');
+                       // spinner.hide();
+                        if(data.status)
+                        {
+                            dt.ajax.reload();
+                            toastr.success(data.message, '¡Operación Exitosa!', {timeOut: 5000})
+                            $('#nombres').val('');
+                            $('#descripcion').val('');
+                            // $('#materno').val('');
+                            // $('#abreviatura').val('');
+                            // $('#documento').val('');
+                            // $('#email').val('');
+                            // $('#contraseña').val('');
+                            // var estado = $('.estado');
+                            // estado.filter('[value="1"]').iCheck('check');
+                            // $('.file-firma').val(null);
+                            // $('.file1').html('Seleccione su archivo...');
+                        }
+                        else
+                        {
+                            toastr.error(data.message, '¡Error!', {timeOut: 5000})
+                        }
+                    },
+                    error: function(error) {
+                        $('#modal-agregar-usuario').modal('hide');
+                       // spinner.hide();
+                        toastr.error(error, '¡Error!', {timeOut: 5000})
                     }
                 });
             });

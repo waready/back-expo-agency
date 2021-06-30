@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\tipo;
 use App\categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return view('admin.categoria');
+        $tipos = tipo::all();
+        return view('admin.categoria',compact('tipos'));
     }
 
     public function getTipo()
@@ -46,7 +48,31 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+
+            $tipo = new tipo;
+            $tipo->nombre= $request->nombres;
+            $tipo->descripcion = $request->descripcion;
+          
+            $tipo->save(); 
+
+        DB::commit();
+            $message = "Tipo Examen creado correctamente.";
+            $status = true;
+        } catch (\Exception $e) {
+            DB::rollback();
+            $message = "Error al crear nuevo Tipo Examen, intentelo de nuevo si el problema persiste comuniquese con el administrador.";
+            $status = false;
+            $error =$e;
+        }
+        $response = array(
+            "message"=>$message,
+            "status"=>$status,
+            "error"=>isset($error) ? $error:''
+        );
+
+        return response()->json($response);
     }
 
     /**
@@ -66,9 +92,15 @@ class CategoriaController extends Controller
      * @param  \App\categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(categoria $categoria)
+    public function edit($id)
     {
-        //
+        $categoria = DB::table('categorias as cg')
+        ->select('cg.*', 'tp.nombre as tipo' )
+        ->join('tipos as tp', 'tp.id', '=', 'cg.id_tipo')
+        ->where('cg.id',$id)
+        ->first();
+
+        return response()->json($categoria);
     }
 
     /**
@@ -78,9 +110,32 @@ class CategoriaController extends Controller
      * @param  \App\categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categoria $categoria)
+    public function update(Request $request, $id)
     {
-        //
+        //return $request;
+        DB::beginTransaction();
+        try {
+
+            $categoria = categoria::find($id);
+            $categoria->nombre = $request->editar_nombres;
+            $categoria->id_tipo = $request->editar_tipo;
+            $categoria->save();
+
+        DB::commit();
+            $message = 'Tipo Examen actualizado correctamente';
+            $status = true;
+        } catch (\Exception $e) {
+            DB::rollback();
+            $message = 'Error al actualizar Tipo Examen, intentelo de nuevo si el problema persiste comuniquese con el administrador.';
+            $status = false;
+            $error = $e;
+        }
+        $response = array(
+            "message"=>$message,
+            "status"=>$status,
+            "error"=>isset($error) ? $error:''
+        );
+        return response()->json($response);
     }
 
     /**

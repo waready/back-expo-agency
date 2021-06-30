@@ -37,6 +37,7 @@ Route::resource('/alltipo', 'TipoController');
   //categorias
 Route::get('/categoria', 'CategoriaController@index')->name('categoria');
 Route::get('/getCategoria', 'CategoriaController@getTipo')->name('getCategoria');
+Route::resource('/allcategoria', 'CategoriaController');
 
   //Preguntas
 Route::get('/pregunta', 'PreguntaController@index')->name('preguntas');

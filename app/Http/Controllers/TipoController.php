@@ -45,7 +45,34 @@ class TipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //return $request;
+        DB::beginTransaction();
+        try {
+
+            $tipo = new tipo;
+            $tipo->nombre= $request->nombres;
+            $tipo->descripcion = $request->descripcion;
+          
+            $tipo->save(); 
+
+        DB::commit();
+            $message = "Tipo Examen creado correctamente.";
+            $status = true;
+        } catch (\Exception $e) {
+            DB::rollback();
+            $message = "Error al crear nuevo Tipo Examen, intentelo de nuevo si el problema persiste comuniquese con el administrador.";
+            $status = false;
+            $error =$e;
+        }
+        $response = array(
+            "message"=>$message,
+            "status"=>$status,
+            "error"=>isset($error) ? $error:''
+        );
+
+        return response()->json($response);
+    
     }
 
     /**
