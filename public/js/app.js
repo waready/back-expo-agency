@@ -1950,6 +1950,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  // import VueFormGenerator from "vue-form-generator";
 
@@ -1963,10 +1977,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   // directives
   // filters
-  props: {// preguntas: {
+  props: {
+    // preguntas: {
     //     required: true,
     //     default: () => [],
     // },
+    tipo: {
+      required: true
+    }
   },
   data: function data() {
     return {
@@ -1981,10 +1999,18 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     var url = window.current_location;
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(url, "remote/preguntas-lista")).then(function (result) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(url, "remote/preguntas-lista"), {
+      params: {
+        tipo: this.tipo
+      }
+    }).then(function (result) {
       _this.preguntas = lodash__WEBPACK_IMPORTED_MODULE_3___default.a.orderBy(result.data, ["categoria_id", "asc"]);
     });
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(url + "remote/categorias-lista").then(function (result) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get(url + "remote/categorias-lista", {
+      params: {
+        tipo: this.tipo
+      }
+    }).then(function (result) {
       _this.categorias = result.data;
     });
   },
@@ -38455,9 +38481,9 @@ var render = function() {
                     _c("div", { staticClass: "card" }, [
                       _c("div", { staticClass: "card-header" }, [
                         _vm._v(
-                          "\n                            " +
+                          "\n                                " +
                             _vm._s(categoria.nombre) +
-                            "\n                        "
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -51089,8 +51115,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\back-expo-agency\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\back-expo-agency\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/wilson/dev/external/japura_works/UGEL/back-expo-agency/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/wilson/dev/external/japura_works/UGEL/back-expo-agency/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

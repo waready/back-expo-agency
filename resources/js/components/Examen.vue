@@ -11,20 +11,34 @@
                         v-for="categoria in categorias"
                         :key="categoria.id"
                     > -->
-                    <form-wizard   title="" subtitle="" nextButtonText="siguiente"   backButtonText="anterior" finishButtonText="Enviar"  @on-complete="onComplete">
-                        <tab-content title="A" v-for="categoria in categorias" :key="categoria.id">
-                        <div class="card">
-                            <div class="card-header">
-                                {{ categoria.nombre }}
+                    <form-wizard
+                        title=""
+                        subtitle=""
+                        nextButtonText="siguiente"
+                        backButtonText="anterior"
+                        finishButtonText="Enviar"
+                        @on-complete="onComplete"
+                    >
+                        <tab-content
+                            title="A"
+                            v-for="categoria in categorias"
+                            :key="categoria.id"
+                        >
+                            <div class="card">
+                                <div class="card-header">
+                                    {{ categoria.nombre }}
+                                </div>
+                                <div class="card-body">
+                                    <pregunta
+                                        v-for="pregunta in preguntas.filter(
+                                            (x) =>
+                                                x.id_categoria == categoria.id
+                                        )"
+                                        :key="`pregunta_${pregunta.id}`"
+                                        :pregunta="pregunta"
+                                    ></pregunta>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <pregunta
-                                    v-for="pregunta in preguntas.filter((x) => x.id_categoria == categoria.id)"
-                                    :key="`pregunta_${pregunta.id}`"
-                                    :pregunta="pregunta"
-                                ></pregunta>
-                            </div>
-                        </div>
                         </tab-content>
                     </form-wizard>
                 </div>
@@ -34,7 +48,7 @@
 </template>
 <script>
 import { FormWizard, TabContent } from "vue-form-wizard";
- import "vue-form-wizard/dist/vue-form-wizard.min.css";
+import "vue-form-wizard/dist/vue-form-wizard.min.css";
 // import VueFormGenerator from "vue-form-generator";
 import axios from "axios";
 import _ from "lodash";
@@ -53,6 +67,9 @@ export default {
         //     required: true,
         //     default: () => [],
         // },
+        tipo: {
+            required: true,
+        },
     },
 
     data: () => ({
@@ -68,13 +85,24 @@ export default {
 
     mounted() {
         const url = window.current_location;
-        axios.get(`${url}remote/preguntas-lista`).then((result) => {
-            this.preguntas = _.orderBy(result.data, ["categoria_id", "asc"]);
-        });
+        axios
+            .get(`${url}remote/preguntas-lista`, {
+                params: { tipo: this.tipo },
+            })
+            .then((result) => {
+                this.preguntas = _.orderBy(result.data, [
+                    "categoria_id",
+                    "asc",
+                ]);
+            });
 
-        axios.get(url + "remote/categorias-lista").then((result) => {
-            this.categorias = result.data;
-        });
+        axios
+            .get(url + "remote/categorias-lista", {
+                params: { tipo: this.tipo },
+            })
+            .then((result) => {
+                this.categorias = result.data;
+            });
     },
 
     methods: {

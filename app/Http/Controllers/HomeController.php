@@ -37,4 +37,8 @@ class HomeController extends Controller
     {
         return $request;
     }
+
+    public function ejecutarExamen(string $id) {
+      return view('preguntas.examen', ['tipo' => $id]);
+    }
 }

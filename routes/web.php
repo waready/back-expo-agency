@@ -26,20 +26,22 @@ Auth::routes();
 //Auth::routes(["register" => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ejecutar-examen/{id}', 'HomeController@ejecutarExamen');
+Route::get('/home', 'HomeController@index')->name('home');
 
 /**Data-Tables**/
-  //tipo-examen
+//tipo-examen
 Route::get('/tipo', 'TipoController@index')->name('tipo');
 Route::get('/getTipo', 'TipoController@getTipo')->name('gettipo');
 Route::resource('/alltipo', 'TipoController');
 
 
-  //categorias
+//categorias
 Route::get('/categoria', 'CategoriaController@index')->name('categoria');
 Route::get('/getCategoria', 'CategoriaController@getTipo')->name('getCategoria');
 Route::resource('/allcategoria', 'CategoriaController');
 
-  //Preguntas
+//Preguntas
 Route::get('/pregunta', 'PreguntaController@index')->name('preguntas');
 Route::get('/getPreguntas', 'PreguntaController@getTipo')->name('getPreguntas');
 Route::resource('/allpregunta', 'PreguntaController');
@@ -53,9 +55,9 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
 Route::post('preguntas', 'CalificarController@calificar');
 
 Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
-  Route::get('preguntas-lista', function () {
+  Route::get('preguntas-lista', function (Request $request) {
     // return pregunta::all();
-    return DB::table('preguntas AS A')
+    $query = DB::table('preguntas AS A')
       ->select(
         'A.id',
         'A.numero',
@@ -66,11 +68,23 @@ Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
       ->addSelect('B.observacion')
       ->leftJoin('respuestas AS B', function ($q) {
         $q->on('A.id', 'B.id_pregunta')->where('B.id_user', auth()->id());
-      })->get();
+      })
+      ->join('categorias AS C', 'A.id_categoria', 'C.id');
+    // ->join('tipos AS D', 'C.id_tipo', 'D.id');
+
+    if ($request->filled('tipo')) {
+      $query->where('C.id_tipo', $request->input('tipo'));
+    }
+
+    return $query->get();
   });
 
-  Route::get('categorias-lista', function () {
-    return categoria::all();
+  Route::get('categorias-lista', function (Request $request) {
+    $query =  DB::table('categorias AS A');
+    if ($request->filled('tipo')) {
+      $query->where('id_tipo', $request->input('tipo'));
+    }
+    return $query->get();
   });
 
   Route::post('responder', function (Request $request) {
