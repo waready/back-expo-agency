@@ -65,9 +65,12 @@ class TipoController extends Controller
      * @param  \App\tipo  $tipo
      * @return \Illuminate\Http\Response
      */
-    public function edit(tipo $tipo)
+    public function edit($id)
     {
-        //
+        $tipo = tipo::where("id",$id)->first();
+
+         return response()->json($tipo);
+        
     }
 
     /**
@@ -77,9 +80,31 @@ class TipoController extends Controller
      * @param  \App\tipo  $tipo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tipo $tipo)
+    public function update(Request $request, $id)
     {
-        //
+        //return $request;
+        DB::beginTransaction();
+        try {
+
+            $tipo = tipo::find($id);
+            $tipo->nombre = $request->editar_nombres;
+            $tipo->save();
+
+        DB::commit();
+            $message = 'Tipo Examen actualizado correctamente';
+            $status = true;
+        } catch (\Exception $e) {
+            DB::rollback();
+            $message = 'Error al actualizar Tipo Examen, intentelo de nuevo si el problema persiste comuniquese con el administrador.';
+            $status = false;
+            $error = $e;
+        }
+        $response = array(
+            "message"=>$message,
+            "status"=>$status,
+            "error"=>isset($error) ? $error:''
+        );
+        return response()->json($response);
     }
 
     /**

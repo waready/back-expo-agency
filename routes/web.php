@@ -31,6 +31,8 @@ Route::get('/home', 'HomeController@index')->name('home');
   //tipo-examen
 Route::get('/tipo', 'TipoController@index')->name('tipo');
 Route::get('/getTipo', 'TipoController@getTipo')->name('gettipo');
+Route::resource('/alltipo', 'TipoController');
+
 
   //categorias
 Route::get('/categoria', 'CategoriaController@index')->name('categoria');
