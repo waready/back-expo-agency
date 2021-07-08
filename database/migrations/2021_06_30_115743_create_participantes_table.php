@@ -20,11 +20,15 @@ class CreateParticipantesTable extends Migration
       $table->string('paterno', 50);
       $table->string('materno', 50);
       $table->string('dni', 11);
+      $table->string('celular', 11)->nullable();
+      $table->string('institucion');
       $table->string('email')->nullable();
+      $table->string('condicion')->nullable();
       $table->boolean('sexo');
       /** ['estatal', 'no_estatal'] */
       $table->unsignedTinyInteger('gestion');
       /** ['urbano', 'rural'] */
+      
       $table->unsignedTinyInteger('area');
       $table->unsignedTinyInteger('nivel')->default(0);
       /**
@@ -35,6 +39,9 @@ class CreateParticipantesTable extends Migration
 
       $table->unsignedBigInteger('id_user');
       $table->foreign('id_user')->references('id')->on('users');
+
+      $table->unsignedBigInteger('id_tipo');
+      $table->foreign('id_tipo')->references('id')->on('tipos');
     });
   }
 
