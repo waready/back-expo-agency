@@ -91,13 +91,20 @@ Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
     // logger(print_r([
     //   'user' => $request->user()->id
     // ], true));
+    $cont = 0;
     $respuesta = respuesta::where('id_user', auth()->id())
       ->where('id_pregunta', $request->input('id_pregunta'))
       ->first();
+
     if (!isset($respuesta)) {
       $respuesta = new respuesta();
       $respuesta->id_user = auth()->id();
       $respuesta->id_pregunta = $request->input('id_pregunta');
+      
+    }
+    $valor = pregunta::find($request->input('id_pregunta'));
+    if($valor->clave == $request->input('respuesta')) {
+      $respuesta->calificacion = $valor->calificacion;
     }
     $respuesta->respuesta = $request->input('respuesta');
     $respuesta->observacion = $request->input('observacion');
