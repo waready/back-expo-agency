@@ -32,6 +32,7 @@ class HomeController extends Controller
        $product = $request->session()->get('product');
 
         return view('preguntas.create-step-one',compact('product'));
+        //return view('dashboard',compact('product'));
     }
     public function postCreateStepOne(Request $request)
     {
