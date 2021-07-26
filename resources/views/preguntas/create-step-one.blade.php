@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <examen></examen>
+            {{-- <grafica-component></grafica-component> --}}
         </div>
     </div>
 </div>

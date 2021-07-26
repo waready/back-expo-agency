@@ -230,6 +230,7 @@ return [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
+            
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -258,15 +259,41 @@ return [
             'text' => 'Tipo Examen',
             'url'  => '/tipo',
             'icon' => 'fas fa-fw fa-book',
+            'can'  => 'admin.home'
         ],
         [
             'text' => 'Categorias',
             'url'  => '/categoria',
             'icon' => 'fas fa-fw fa-book-open',
+            'can'  => 'admin.home'
         ],
         [
             'text' => 'Preguntas',
             'url'  => '/pregunta',
+            'icon' => 'fas fa-fw fa-question',
+            'can'  => 'admin.home'
+        ],
+        [
+            'text' => 'Especialista Drep',
+            'url'  => '/especilistaDrep',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'admin.drep.index'
+        ],
+        [
+            'text' => 'Especialista Ugel',
+            'url'  => '/especilistaUgel',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'admin.ugel.index'
+        ],
+        [
+            'text' => 'Director',
+            'url'  => '/director',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'admin.director.index'
+        ],
+        [
+            'text' => 'permisos',
+            'url'  => '/permisos',
             'icon' => 'fas fa-fw fa-question',
         ],
         // [
@@ -308,6 +335,7 @@ return [
         //     ],
         // ],
         ['header' => 'labels'],
+      
         [
             'text'       => 'Reportes',
             'icon_color' => 'red',
@@ -316,7 +344,7 @@ return [
         [
             'text'       => 'Charts',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url'        => '/variacion',
         ],
         [
             'text'       => 'Configuacion',
@@ -373,6 +401,7 @@ return [
                     'asset' => false,
                     'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
                 ],
+                
                 [
                     'type' => 'css',
                     'asset' => false,
@@ -396,11 +425,11 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
                 ],
             ],
