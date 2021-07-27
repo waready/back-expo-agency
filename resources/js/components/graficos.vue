@@ -1,6 +1,7 @@
 <template>
   <div class="small">
-    <h4>Reportes del Venta Junio</h4>
+    <h4>Reportes del Venta Junio {{menssages.nombre}}|</h4>
+    <h3></h3>
     <line-chart :chart-data="datacollection" :height="100"></line-chart>
   </div>
 </template>
@@ -9,29 +10,46 @@
 
 import LineChart from './LineChart.js'
 
+import axios from 'axios';
 export default {
+  mounted () {
+    
+    axios.get(`/especialistaGrafico`).then((response) =>{
+      //console.log(response.data);
+      this.menssages = response.data;
+      
+      this.fillData()
+    });
+
+  },
   components: {
     LineChart
   },
   data(){
     return {
-      datacollection: null
+      datacollection: null,
+      menssages:[]
     }
   },
-  mounted () {
-    this.fillData()
-  },
+ 
   methods: {
 
     fillData ()
     {
+    var labels = [];
+    var valores = [];
+    for(var i=0; i<this.menssages.length;i++){
+        labels.push(this.menssages[i].nombre) 
+        valores.push(this.menssages[i].num) 
+    }  
+   // console.log(labels, "labels");
       this.datacollection = {
-        labels: ['Lunes','Martes','Miercoles','Jueves','Viernes', 'Sabado' , 'Domingo'],
+        labels: labels,
         datasets: [
           {
-            label: 'Ventas',
+            label: 'Ugels',
             backgroundColor: '#FF0066',
-            data: [ 20, 40, 50, 20, 50, 40]
+            data: valores,
           },
         ]
       }

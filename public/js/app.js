@@ -2147,6 +2147,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LineChart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LineChart.js */ "./resources/js/components/LineChart.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -2155,26 +2158,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/especialistaGrafico").then(function (response) {
+      //console.log(response.data);
+      _this.menssages = response.data;
+
+      _this.fillData();
+    });
+  },
   components: {
     LineChart: _LineChart_js__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      datacollection: null
+      datacollection: null,
+      menssages: []
     };
-  },
-  mounted: function mounted() {
-    this.fillData();
   },
   methods: {
     fillData: function fillData() {
+      var labels = [];
+      var valores = [];
+
+      for (var i = 0; i < this.menssages.length; i++) {
+        labels.push(this.menssages[i].nombre);
+        valores.push(this.menssages[i].num);
+      } // console.log(labels, "labels");
+
+
       this.datacollection = {
-        labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
+        labels: labels,
         datasets: [{
-          label: 'Ventas',
+          label: 'Ugels',
           backgroundColor: '#FF0066',
-          data: [20, 40, 50, 20, 50, 40]
+          data: valores
         }]
       };
     }
@@ -76815,7 +76836,11 @@ var render = function() {
     "div",
     { staticClass: "small" },
     [
-      _c("h4", [_vm._v("Reportes del Venta Junio")]),
+      _c("h4", [
+        _vm._v("Reportes del Venta Junio " + _vm._s(_vm.menssages.nombre) + "|")
+      ]),
+      _vm._v(" "),
+      _c("h3"),
       _vm._v(" "),
       _c("line-chart", {
         attrs: { "chart-data": _vm.datacollection, height: 100 }

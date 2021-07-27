@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/getEspecialistaUgel', 'EspecialistaUgel@getTipo')->name('getEspecilistaUgel');
   Route::resource('/allespecialistaugel', 'EspecialistaUgel');
 
+
   //Director
   Route::get('/director', 'Director@index')->name('director');
   Route::get('/getDirector', 'Director@getTipo')->name('getDirector');
@@ -78,7 +79,7 @@ Route::get('/nivelDirector', 'Director@nivelDirector');
 Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->name('products.create.step.one.post');
 
 /**Calificar**/
-
+Route::get('/especialistaGrafico', 'EspecialistaUgel@graficos');
 Route::post('preguntas', 'CalificarController@calificar');
 
 Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
