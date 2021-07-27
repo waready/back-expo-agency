@@ -12,7 +12,9 @@ class TipoSeeder extends Seeder
      */
     public function run()
     {
-        tipo::create(['nombre'  => 'FICHA DE MONITOREO A DIRECTORES']);
+        //ugel
         tipo::create(['nombre'  => 'FICHA DE MONITOREO A ESPECIALISTA']);
+        //director
+        tipo::create(['nombre'  => 'FICHA DE MONITOREO A DIRECTORES']);
     }
 }
