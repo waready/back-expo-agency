@@ -135,6 +135,13 @@ class EspecialistaUgel extends Controller
             $user->apellidos = $request->editar_apellidos;
             $user->dni = $request->editar_dni;
             $user->email = $request->editar_email;
+
+            $user->celular = $request->editar_celular;
+            $user->condicion = $request->editar_condicion;
+            $user->cargo = $request->editar_cargo;
+            $user->gestion = $request->editar_gestion;
+            $user->area = $request->editar_area;
+
             $user->id_ugel = intval($request->editar_ugel);
             //$user->password = bcrypt($request->dni);  
 

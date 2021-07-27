@@ -56,6 +56,13 @@ class EspecialistaDrep extends Controller
             $user->apellidos = $request->apellidos;
             $user->dni = $request->dni;
             $user->email = $request->email;
+
+            $user->celular = $request->celular;
+            $user->condicion = $request->condicion;
+            $user->cargo = $request->cargo;
+            $user->gestion = $request->gestion;
+            $user->area = $request->area;
+
             $user->id_ugel = intval($request->ugel);
             $user->password = bcrypt($request->dni);  
             $user->id_tipo_participante= 2;         
@@ -122,6 +129,13 @@ class EspecialistaDrep extends Controller
             $user->apellidos = $request->editar_apellidos;
             $user->dni = $request->editar_dni;
             $user->email = $request->editar_email;
+
+            $user->celular = $request->editar_celular;
+            $user->condicion = $request->editar_condicion;
+            $user->cargo = $request->editar_cargo;
+            $user->gestion = $request->editar_gestion;
+            $user->area = $request->editar_area;
+
             $user->id_ugel = intval($request->editar_ugel);
 
 

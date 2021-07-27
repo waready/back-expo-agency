@@ -40,6 +40,8 @@
                                     <th>{{ __("Apellidos") }}</th>
                                     <th>{{ __("DNI") }}</th>
                                     <th>{{ __("Email") }}</th>
+                                    <th>{{ __("Cargo") }}</th>
+                                    <th>{{ __("Condición") }}</th>
                                     <th>{{ __("Ugel") }}</th>
                                     <th>{{ __("Opciones") }}</th>
                                 </tr>
@@ -95,7 +97,46 @@
                                 </select>
                             </div>
                         </div>
-                     
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CELULAR</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="editar_celular" id="editar_celular" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CONDICIÓN</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="editar_condicion" id="editar_condicion" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CARGO</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="editar_cargo" id="editar_cargo" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">GESTIÓN</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <select style="width: 100%" class="form-control carrera seleccion2" name="editar_gestion" id="editar_gestion" required>
+                                        <option ></option>
+                                        <option value="0">Ninguno</option>
+                                        <option value="1">Estatal</option>
+                                        <option value="2">No Estatal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">AREA</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <select style="width: 100%" class="form-control carrera seleccion2" name="editar_area" id="editar_area" required>
+                                        <option ></option>
+                                        <option value="0">Ninguno</option>
+                                        <option value="1">Urbano</option>
+                                        <option value="2">Rural</option>
+                                </select>
+                            </div>
+                        </div>  
                         <div class="item form-group">
                             <label class="col-form-label col-md-4 col-sm-3 label-align">CORREO ELECTRÓNICO</label>
                             <div class="col-md-12 col-sm-12 ">
@@ -162,7 +203,46 @@
                                 </select>
                             </div>
                         </div>
-                     
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CELULAR</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="celular" id="celular" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CONDICIÓN</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="condicion" id="condicion" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CARGO</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="cargo" id="cargo" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">GESTIÓN</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <select style="width: 100%" class="form-control carrera seleccion2" name="gestion" id="gestion" required>
+                                        <option ></option>
+                                        <option value="0">Ninguno</option>
+                                        <option value="1">Estatal</option>
+                                        <option value="2">No Estatal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">AREA</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <select style="width: 100%" class="form-control carrera seleccion2" name="area" id="area" required>
+                                        <option ></option>
+                                        <option value="0">Ninguno</option>
+                                        <option value="1">Urbano</option>
+                                        <option value="2">Rural</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-4 col-sm-3 label-align">CORREO ELECTRÓNICO</label>
                             <div class="col-md-12 col-sm-12 ">
@@ -222,6 +302,8 @@
                     {data: 'apellidos'},
                     {data: 'dni'},
                     {data: 'email'},
+                    {data: 'cargo'},
+                    {data: 'condicion'},
                     {data: 'nombre'},
                     {data: 'Opciones'}
                 ],
@@ -233,7 +315,7 @@
                     // $('td:eq(3)',row).html('no')
 
 
-                    $('td:eq(6)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#"> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(8)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#"> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
                 }
                 
             });
@@ -259,6 +341,11 @@
                         $('#editar_ugel option[value="'+data.id_ugel+'"]').attr("selected", true);
                         $('#editar_email').val(data.email);
                         
+                        $('#editar_celular').val(data.celular);
+                        $('#editar_condicion').val(data.condicion);
+                        $('#editar_cargo').val(data.cargo);
+                        $('#editar_gestion option[value="'+data.gestion+'"]').attr("selected", true);
+                        $('#editar_area option[value="'+data.area+'"]').attr("selected", true);
                         //$('#contraseña').val('');
                         // var estado = $('.editar_estado');
                         // estado.filter('[value='+data.estado+']').iCheck('check');

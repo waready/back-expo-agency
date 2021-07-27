@@ -47,7 +47,7 @@ class Director extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //return $request;
         DB::beginTransaction();
         try {
 
@@ -64,7 +64,14 @@ class Director extends Controller
             $user->gestion = $request->gestion;
             $user->area = $request->area;
 
-            $user->nivel = $request->nivel;
+            if(!empty($request->nivel1))
+            $user->nivel = $request->nivel1;
+
+            if(!empty($request->nivel2))
+            $user->nivel = $request->nivel2;
+
+            if(!empty($request->nivel3))
+            $user->nivel = $request->nivel3;
 
             $user->id_ugel = intval($request->ugel);
             $user->password = bcrypt($request->dni);
@@ -137,7 +144,7 @@ class Director extends Controller
         //     'title' => 'required|unique:posts|max:255',
         //     'body' => 'required',
         // ]);
-
+        //return $request;
         DB::beginTransaction();
         try {
 
@@ -146,6 +153,22 @@ class Director extends Controller
             $user->apellidos = $request->editar_apellidos;
             $user->dni = $request->editar_dni;
             $user->email = $request->editar_email;
+
+            $user->celular = $request->editar_celular;
+            $user->condicion = $request->editar_condicion;
+            $user->cargo = $request->editar_cargo;
+            $user->gestion = $request->editar_gestion;
+            $user->area = $request->editar_area;
+
+            if(!empty($request->editar_nivel1))
+            $user->nivel = $request->editar_nivel1;
+
+            if(!empty($request->editar_nivel2))
+            $user->nivel = $request->editar_nivel2;
+
+            if(!empty($request->editar_nivel3))
+            $user->nivel = $request->editar_nivel3;
+
             $user->id_ugel = intval($request->editar_ugel);
 
 

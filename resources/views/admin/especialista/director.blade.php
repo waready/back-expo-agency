@@ -40,6 +40,11 @@
                                     <th>{{ __("Apellidos") }}</th>
                                     <th>{{ __("DNI") }}</th>
                                     <th>{{ __("Email") }}</th>
+                                    <th>{{ __("Cargo") }}</th>
+                                    <th>{{ __("Condición") }}</th>
+                                    <th>{{ __("Gestión") }}</th>
+                                    <th>{{ __("Área") }}</th>
+                                    <th>{{ __("Nivel") }}</th>
                                     <th>{{ __("Ugel") }}</th>
                                     <th>{{ __("Opciones") }}</th>
                                 </tr>
@@ -95,7 +100,94 @@
                                 </select>
                             </div>
                         </div>
-                     
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CELULAR</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="editar_celular" id="editar_celular" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CONDICIÓN</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="editar_condicion" id="editar_condicion" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">CARGO</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <input type="text" class="form-control" name="editar_cargo" id="editar_cargo" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">GESTIÓN</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <select style="width: 100%" class="form-control carrera seleccion2" name="editar_gestion" id="editar_gestion" required>
+                                        <option ></option>
+                                        <option value="0">Ninguno</option>
+                                        <option value="1">Estatal</option>
+                                        <option value="2">No Estatal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">AREA</label>
+                            <div class="col-md-12 col-sm-12 ">
+                                <select style="width: 100%" class="form-control carrera seleccion2" name="editar_area" id="editar_area" required>
+                                        <option ></option>
+                                        <option value="0">Ninguno</option>
+                                        <option value="1">Urbano</option>
+                                        <option value="2">Rural</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">NIVEL:</label>
+                            <div class="row container">
+                                <div class="form-check col">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="editar_gridRadios1" value="1" >
+                                    <label class="form-check-label" for="gridRadios1">
+                                        inicial
+                                    </label>
+                                    <div id="editar_subnivel1">
+                                        <select style="width: 100%" class="form-control carrera seleccion2" name="editar_nivel1" id="editar_nivel1" >
+                                            <option ></option>
+                                            <option value="1">ESCOLARIZADO</option>
+                                            <option value="2">NO ESCOLARIZADO</option>
+                                          
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-check col">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="editar_gridRadios2" value="2">
+                                    <label class="form-check-label" for="gridRadios2">
+                                        primaria
+                                    </label>
+                                    <div id="editar_subnivel2">
+                                        <select style="width: 100%" class="form-control carrera seleccion2" name="editar_nivel2" id="editar_nivel2" >
+                                            <option ></option>
+                                            <option value="3">Unidocente(EIB)</option>
+                                            <option value="4">Multigrado/EIB</option>
+                                            <option value="5">Polidocente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-check col">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="editar_gridRadios3" value="3">
+                                    <label class="form-check-label" for="gridRadios3">
+                                        secundaria
+                                    </label>
+                                    <div id="editar_subnivel3">
+                                        <select style="width: 100%" class="form-control carrera seleccion2" name="editar_nivel3" id="editar_nivel3" >
+                                            <option ></option>
+                                            <option value="6">JER</option>
+                                            <option value="7">JEC</option>
+                                            <option value="8">CRFA</option>
+                                            <option value="9">COAR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="item form-group">
                             <label class="col-form-label col-md-4 col-sm-3 label-align">CORREO ELECTRÓNICO</label>
                             <div class="col-md-12 col-sm-12 ">
@@ -211,9 +303,11 @@
                                         inicial
                                     </label>
                                     <div id="subnivel1">
-                                        <select style="width: 100%" class="form-control carrera seleccion2" name="nivel" id="nivel1" >
+                                        <select style="width: 100%" class="form-control carrera seleccion2" name="nivel1" id="nivel1" >
                                             <option ></option>
-                                            
+                                            <option value="1">ESCOLARIZADO</option>
+                                            <option value="2">NO ESCOLARIZADO</option>
+                                          
                                         </select>
                                     </div>
                                 </div>
@@ -223,22 +317,29 @@
                                         primaria
                                     </label>
                                     <div id="subnivel2">
-                                        <select style="width: 100%" class="form-control carrera seleccion2" name="nivel" id="nivel2" >
+                                        <select style="width: 100%" class="form-control carrera seleccion2" name="nivel2" id="nivel2" >
                                             <option ></option>
+                                            <option value="3">Unidocente(EIB)</option>
+                                            <option value="4">Multigrado/EIB</option>
+                                            <option value="5">Polidocente</option>
                                         </select>
                                     </div>
                                 </div>
-                                {{-- <div class="form-check col">
+                                <div class="form-check col">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
                                     <label class="form-check-label" for="gridRadios3">
                                         secundaria
                                     </label>
                                     <div id="subnivel3">
-                                        <select style="width: 100%" class="form-control carrera seleccion2" name="nivel" id="nivel3" >
+                                        <select style="width: 100%" class="form-control carrera seleccion2" name="nivel3" id="nivel3" >
                                             <option ></option>
+                                            <option value="6">JER</option>
+                                            <option value="7">JEC</option>
+                                            <option value="8">CRFA</option>
+                                            <option value="9">COAR</option>
                                         </select>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
 
@@ -292,110 +393,79 @@
             var valor = $('#gridRadios1').val();
              
             $('#gridRadios1').click(function() {
+     
+                $('#subnivel1').show();
+                $('#subnivel2').hide();
+                $('#subnivel3').hide();
 
-                var data = {
-                    nivel : "1"
-                }
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url:'nivelDirector',
-                    data: data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data) {
-                     
-                        $('#subnivel1').show();
-                        $('#subnivel2').hide();
-                        $('#subnivel3').hide(); 
-                        for(var i=0; i < data.length ; i++){
-                            $("#nivel1").append(new Option( data[i].nombre, data[i].id )); 
-                        }                     
-                        
-                        //$('#contraseña').val('');
-
-                        // var estado = $('.editar_estado');
-                        // estado.filter('[value='+data.estado+']').iCheck('check');
-                        console.log(data);
-                        
-
-                        //$('#modal-editar-usuario').modal('show');
-                    },
-                    error: function(error) {
-                        console.log(error);
-                        toastr.error(error, '¡Error!', {timeOut: 5000})
-                    }
-                });
-           
+                $('#nivel2').val(null).trigger('change');
+                $('#nivel2').val('');
+                $('#nivel3').val(null).trigger('change');
+                $('#nivel3').val('');  
              })
-             $('#gridRadios2').click(function() {
-                var data = {
-                    nivel : "2"
-                }
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url:'nivelDirector',
-                    data: data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data) {
-                        $('#subnivel2').show();
-                        $('#subnivel1').hide();
-                        $('#subnivel3').hide(); 
-                        for(var i=0; i < data.length ; i++){
-                            $("#nivel2").append(new Option( data[i].nombre, data[i].id )); 
-                        }    
-                        //$('#contraseña').val('');
-                        // var estado = $('.editar_estado');
-                        // estado.filter('[value='+data.estado+']').iCheck('check');
-                        console.log(data);
-                        
+            $('#gridRadios2').click(function() {
+            
+                $('#subnivel2').show();
+                $('#subnivel1').hide();
+                $('#subnivel3').hide();
 
-                      //  $('#modal-editar-usuario').modal('show');
-                    },
-                    error: function(error) {
-                        console.log(error);
-                        toastr.error(error, '¡Error!', {timeOut: 5000})
-                    }
-                });
+                $('#nivel1').val(null).trigger('change');
+                $('#nivel1').val('');
+                $('#nivel3').val(null).trigger('change');
+                $('#nivel3').val('');  
+                     
             })
              $('#gridRadios3').click(function() {
-                var data = {
-                    nivel : "3"
-                }
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url:'nivelDirector',
-                    data: data,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data) {
-                        $('#subnivel3').show();
-                        $('#subnivel2').hide();
-                        $('#subnivel1').hide();
-                        for(var i=0; i < data.length ; i++){
-                            $("#nivel3").append(new Option( data[i].nombre, data[i].id )); 
-                        }     
-                        //$('#contraseña').val('');
-                        // var estado = $('.editar_estado');
-                        // estado.filter('[value='+data.estado+']').iCheck('check');
-                        console.log(data);
-                        
+         
+                $('#subnivel3').show();
+                $('#subnivel2').hide();
+                $('#subnivel1').hide();
 
-                      //  $('#modal-editar-usuario').modal('show');
-                    },
-                    error: function(error) {
-                        console.log(error);
-                        toastr.error(error, '¡Error!', {timeOut: 5000})
-                    }
-                });
+                $('#nivel2').val(null).trigger('change');
+                $('#nivel2').val('');
+                $('#nivel1').val(null).trigger('change');
+                $('#nivel1').val('');
             })
 
+            // $('#editar_subnivel1').hide();
+            // $('#editar_subnivel2').hide();
+            // $('#editar_subnivel3').hide();
+            // var valor = $('#editar_gridRadios1').val();
+             
+            $('#editar_gridRadios1').click(function() {
+     
+                $('#editar_subnivel1').show();
+                $('#editar_subnivel2').hide();
+                $('#editar_subnivel3').hide();
+
+                $('#editar_nivel2').val(null).trigger('change');
+                $('#editar_nivel2').val('');
+                $('#editar_nivel3').val(null).trigger('change');
+                $('#editar_nivel3').val('');  
+             })
+            $('#editar_gridRadios2').click(function() {
+            
+                $('#editar_subnivel2').show();
+                $('#editar_subnivel1').hide();
+                $('#editar_subnivel3').hide();
+
+                $('#editar_nivel1').val(null).trigger('change');
+                $('#editar_nivel1').val('');
+                $('#editar_nivel3').val(null).trigger('change');
+                $('#editar_nivel3').val('');  
+                     
+            })
+             $('#editar_gridRadios3').click(function() {
+         
+                $('#editar_subnivel3').show();
+                $('#editar_subnivel2').hide();
+                $('#editar_subnivel1').hide();
+
+                $('#editar_nivel2').val(null).trigger('change');
+                $('#editar_nivel2').val('');
+                $('#editar_nivel1').val(null).trigger('change');
+                $('#editar_nivel1').val('');
+            })
 
             dt = jQuery("#students-table").DataTable({
                 pageLength: 15,
@@ -413,18 +483,50 @@
                     {data: 'apellidos'},
                     {data: 'dni'},
                     {data: 'email'},
+                    {data: 'cargo'},
+                    {data: 'condicion'},
+                    {data: 'gestion'},
+                    {data: 'area'},
+                    {data: 'nivel'},
                     {data: 'nombre'},
                     {data: 'Opciones'}
                 ],
                 rowCallback:function(row, data,index){
                    // 
-                    // if(data.clave == 1)
-                    // $('td:eq(3)',row).html('si')
-                    // else
-                    // $('td:eq(3)',row).html('no')
+                    if(data.gestion == 0)
+                    $('td:eq(7)',row).html('Ninguno')
+                    if(data.gestion == 1)
+                    $('td:eq(7)',row).html('Estatal')
+                    if(data.gestion == 2)
+                    $('td:eq(7)',row).html('No Estatal')
+                    
+                    if(data.area == 0)
+                    $('td:eq(8)',row).html('Ninguno')
+                    if(data.area == 1)
+                    $('td:eq(8)',row).html('Urbano')
+                    if(data.area == 2)
+                    $('td:eq(8)',row).html('Rural')
+                    
+                    if(data.nivel == 1)
+                    $('td:eq(9)',row).html('ESCOLARIZADO')
+                    if(data.nivel == 2)
+                    $('td:eq(9)',row).html('NO ESCOLARIZADO')
+                    if(data.nivel == 3)
+                    $('td:eq(9)',row).html('Unidocente(EIB)')
+                    if(data.nivel == 4)
+                    $('td:eq(9)',row).html('Multigrado/EIB')
+                    if(data.nivel == 5)
+                    $('td:eq(9)',row).html('Polidocente')
+                    if(data.nivel == 6)
+                    $('td:eq(9)',row).html('JER')
+                    if(data.nivel == 7)
+                    $('td:eq(9)',row).html('JEC')
+                    if(data.nivel == 8)
+                    $('td:eq(9)',row).html('CRFA')
+                    if(data.nivel == 9)
+                    $('td:eq(9)',row).html('COAR')
 
-
-                    $('td:eq(6)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#"> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(11)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#"> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
                 }
                 
             });
@@ -450,6 +552,133 @@
                         $('#editar_ugel option[value="'+data.id_ugel+'"]').attr("selected", true);
                         $('#editar_email').val(data.email);
                         
+                        $('#editar_celular').val(data.celular);
+                        $('#editar_condicion').val(data.condicion);
+                        $('#editar_cargo').val(data.cargo);
+                        $('#editar_gestion option[value="'+data.gestion+'"]').attr("selected", true);
+                        $('#editar_area option[value="'+data.area+'"]').attr("selected", true);
+
+                        switch(data.nivel) {
+                            case 1:
+                                $('#editar_subnivel1').show();
+                                $('#editar_subnivel2').hide();
+                                $('#editar_subnivel3').hide();
+                                $('#editar_nivel2').val(null).trigger('change');
+                                $('#editar_nivel2').val('');
+                                $('#editar_nivel3').val(null).trigger('change');
+                                $('#editar_nivel3').val(''); 
+                                jQuery("#editar_gridRadios1").attr('checked', true);
+
+                                $('#editar_nivel1 option[value="'+data.nivel+'"]').attr("selected", true);
+
+                                break;
+                            case 2: 
+                                $('#editar_subnivel1').show();
+                                $('#editar_subnivel2').hide();
+                                $('#editar_subnivel3').hide();
+                                $('#editar_nivel2').val(null).trigger('change');
+                                $('#editar_nivel2').val('');
+                                $('#editar_nivel3').val(null).trigger('change');
+                                $('#editar_nivel3').val(''); 
+                                jQuery("#editar_gridRadios1").attr('checked', true);
+                                
+                                $('#editar_nivel1 option[value="'+data.nivel+'"]').attr("selected", true);
+                                break;
+                            case 3:
+                                $('#editar_subnivel2').show();
+                                $('#editar_subnivel1').hide();
+                                $('#editar_subnivel3').hide();
+
+                                $('#editar_nivel1').val(null).trigger('change');
+                                $('#editar_nivel1').val('');
+                                $('#editar_nivel3').val(null).trigger('change');
+                                $('#editar_nivel3').val('');  
+                                jQuery("#editar_gridRadios2").attr('checked', true);
+                                
+                                $('#editar_nivel2 option[value="'+data.nivel+'"]').attr("selected", true);
+                                break;
+                            case 4:
+                                $('#editar_subnivel2').show();
+                                $('#editar_subnivel1').hide();
+                                $('#editar_subnivel3').hide();
+
+                                $('#editar_nivel1').val(null).trigger('change');
+                                $('#editar_nivel1').val('');
+                                $('#editar_nivel3').val(null).trigger('change');
+                                $('#editar_nivel3').val('');  
+                                jQuery("#editar_gridRadios2").attr('checked', true);
+                                
+                                $('#editar_nivel2 option[value="'+data.nivel+'"]').attr("selected", true);
+                                break;
+                            case 5:
+                                $('#editar_subnivel2').show();
+                                $('#editar_subnivel1').hide();
+                                $('#editar_subnivel3').hide();
+
+                                $('#editar_nivel1').val(null).trigger('change');
+                                $('#editar_nivel1').val('');
+                                $('#editar_nivel3').val(null).trigger('change');
+                                $('#editar_nivel3').val('');  
+                                jQuery("#editar_gridRadios2").attr('checked', true);
+                                
+                                $('#editar_nivel2 option[value="'+data.nivel+'"]').attr("selected", true);
+                                break;
+                            case 6:
+                                $('#editar_subnivel3').show();
+                                $('#editar_subnivel2').hide();
+                                $('#editar_subnivel1').hide();
+
+                                $('#editar_nivel2').val(null).trigger('change');
+                                $('#editar_nivel2').val('');
+                                $('#editar_nivel1').val(null).trigger('change');
+                                $('#editar_nivel1').val('');
+                                jQuery("#editar_gridRadios3").attr('checked', true);
+                                
+                                $('#editar_nivel3 option[value="'+data.nivel+'"]').attr("selected", true);
+
+                                break;
+                            case 7:
+                                $('#editar_subnivel3').show();
+                                $('#editar_subnivel2').hide();
+                                $('#editar_subnivel1').hide();
+
+                                $('#editar_nivel2').val(null).trigger('change');
+                                $('#editar_nivel2').val('');
+                                $('#editar_nivel1').val(null).trigger('change');
+                                $('#editar_nivel1').val('');
+                                jQuery("#editar_gridRadios3").attr('checked', true);
+                                
+                                $('#editar_nivel3 option[value="'+data.nivel+'"]').attr("selected", true);
+                                break;
+                            case 8:
+                                $('#editar_subnivel3').show();
+                                $('#editar_subnivel2').hide();
+                                $('#editar_subnivel1').hide();
+
+                                $('#editar_nivel2').val(null).trigger('change');
+                                $('#editar_nivel2').val('');
+                                $('#editar_nivel1').val(null).trigger('change');
+                                $('#editar_nivel1').val('');
+                                jQuery("#editar_gridRadios3").attr('checked', true);
+                                
+                                $('#editar_nivel3 option[value="'+data.nivel+'"]').attr("selected", true);
+                                break;
+                            case 9:
+                                $('#editar_subnivel3').show();
+                                $('#editar_subnivel2').hide();
+                                $('#editar_subnivel1').hide();
+
+                                $('#editar_nivel2').val(null).trigger('change');
+                                $('#editar_nivel2').val('');
+                                $('#editar_nivel1').val(null).trigger('change');
+                                $('#editar_nivel1').val('');
+                                jQuery("#editar_gridRadios3").attr('checked', true);
+                                
+                                $('#editar_nivel3 option[value="'+data.nivel+'"]').attr("selected", true);
+                                break;
+                            default:
+                            // code block
+                        }
                         //$('#contraseña').val('');
                         // var estado = $('.editar_estado');
                         // estado.filter('[value='+data.estado+']').iCheck('check');
