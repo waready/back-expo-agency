@@ -17,7 +17,6 @@
                         nextButtonText="siguiente"
                         backButtonText="anterior"
                         finishButtonText="Enviar"
-                        @on-complete="onComplete"
                     >
                         <tab-content
                             title="A"
@@ -36,6 +35,7 @@
                                         )"
                                         :key="`pregunta_${pregunta.id}`"
                                         :pregunta="pregunta"
+                                        :id-examen-ejecutado="id"
                                     ></pregunta>
                                 </div>
                             </div>
@@ -67,6 +67,7 @@ export default {
         //     required: true,
         //     default: () => [],
         // },
+        id: { required: true },
         tipo: {
             required: true,
         },
@@ -87,7 +88,7 @@ export default {
         const url = window.current_location;
         axios
             .get(`${url}remote/preguntas-lista`, {
-                params: { tipo: this.tipo },
+                params: { tipo: this.tipo, id_examen_ejecutado: this.id },
             })
             .then((result) => {
                 this.preguntas = _.orderBy(result.data, [

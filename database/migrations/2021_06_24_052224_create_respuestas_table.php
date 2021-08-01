@@ -16,6 +16,8 @@ class CreateRespuestasTable extends Migration
     Schema::create('respuestas', function (Blueprint $table) {
       $table->id();
       $table->timestamps();
+      $table->unsignedBigInteger('id_examen_ejecutado');
+      $table->foreign('id_examen_ejecutado')->references('id')->on('examenes_ejecutados');
       $table->unsignedBigInteger('id_user');
       $table->foreign('id_user')->references('id')->on('users');
       $table->unsignedBigInteger('id_pregunta');
@@ -25,7 +27,7 @@ class CreateRespuestasTable extends Migration
       $table->string('observacion')->nullable()->comment('Observacion adjunta, Evidencia');
       $table->timestamp('calificado')->nullable()->comment('Fecha en la cual fue calificado, en caso la calificacion no sea automatica');
 
-      $table->unique(['id_user', 'id_pregunta']);
+      $table->unique(['id_user', 'id_pregunta', 'id_examen_ejecutado']);
     });
   }
 

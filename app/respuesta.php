@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class respuesta extends Model
 {
-  protected $primaryKey = ['id_user', 'id_pregunta'];
-  public $incrementing = false;
+  // protected $primaryKey = ['id_user', 'id_pregunta'];
+  // public $incrementing = false;
 
   // /**
   //  * Set the keys for a save update query.

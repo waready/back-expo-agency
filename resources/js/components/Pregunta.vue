@@ -73,6 +73,9 @@ export default {
             default: () => {},
             required: true,
         },
+        idExamenEjecutado: {
+            required: true,
+        },
     },
 
     data: () => ({
@@ -106,6 +109,7 @@ export default {
                 id_pregunta: this.pregunta.id,
                 respuesta: this.picked,
                 observacion: this.observacion,
+                id_examen_ejecutado: this.idExamenEjecutado,
             });
         },
     },

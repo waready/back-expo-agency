@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaSeeder::class);
         $this->call(PreguntaSeeder::class);
         $this->call(DirectorNivelSeeder::class);
-        
 
+        if(config('app.env') == 'local') {
+          $this->call(FakeDirectoresSeeder::class);
+        }
     }
 }

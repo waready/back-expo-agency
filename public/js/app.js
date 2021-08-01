@@ -1982,6 +1982,9 @@ __webpack_require__.r(__webpack_exports__);
     //     required: true,
     //     default: () => [],
     // },
+    id: {
+      required: true
+    },
     tipo: {
       required: true
     }
@@ -2001,7 +2004,8 @@ __webpack_require__.r(__webpack_exports__);
     var url = window.current_location;
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(url, "remote/preguntas-lista"), {
       params: {
-        tipo: this.tipo
+        tipo: this.tipo,
+        id_examen_ejecutado: this.id
       }
     }).then(function (result) {
       _this.preguntas = lodash__WEBPACK_IMPORTED_MODULE_3___default.a.orderBy(result.data, ["categoria_id", "asc"]);
@@ -2099,6 +2103,9 @@ __webpack_require__.r(__webpack_exports__);
     pregunta: {
       "default": function _default() {},
       required: true
+    },
+    idExamenEjecutado: {
+      required: true
     }
   },
   data: function data() {
@@ -2129,7 +2136,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(window.current_location + "remote/responder", {
         id_pregunta: this.pregunta.id,
         respuesta: this.picked,
-        observacion: this.observacion
+        observacion: this.observacion,
+        id_examen_ejecutado: this.idExamenEjecutado
       });
     }
   }
@@ -76618,8 +76626,7 @@ var render = function() {
                   nextButtonText: "siguiente",
                   backButtonText: "anterior",
                   finishButtonText: "Enviar"
-                },
-                on: { "on-complete": _vm.onComplete }
+                }
               },
               _vm._l(_vm.categorias, function(categoria) {
                 return _c(
@@ -76645,7 +76652,10 @@ var render = function() {
                           function(pregunta) {
                             return _c("pregunta", {
                               key: "pregunta_" + pregunta.id,
-                              attrs: { pregunta: pregunta }
+                              attrs: {
+                                pregunta: pregunta,
+                                "id-examen-ejecutado": _vm.id
+                              }
                             })
                           }
                         ),
@@ -89488,8 +89498,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\back-expo-agency\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\back-expo-agency\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/wilson/dev/external/japura_works/UGEL/back-expo-agency/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/wilson/dev/external/japura_works/UGEL/back-expo-agency/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
