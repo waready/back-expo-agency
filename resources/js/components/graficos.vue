@@ -1,14 +1,28 @@
 <template>
   <div class="small">
-    <h4>Reportes del Venta Junio {{menssages.nombre}}|</h4>
-    <h3></h3>
-    <line-chart :chart-data="datacollection" :height="100"></line-chart>
+    <h2>Reportes del Ugel - Especialistas</h2>
+    <h3> LINEAS</h3>
+    <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart>
+
+    <h3> BARRAS</h3>
+    <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>
+
+    <h3> PIE</h3>
+    <pie-chart :chart-data="datacollection" :options="chartOptions"></pie-chart>
+
+    <h3> AREA</h3>
+    <area-chart :chart-data="datacollection" :options="chartOptions"></area-chart>
+    <!-- <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
   </div>
 </template>
 
 <script>
 
-import LineChart from './LineChart.js'
+import  LineChart from  './LineChart.js'
+import  BarChart from   './BarChart.js'
+import  PieChart from   './PieChart.js'
+import  AreaChart from  './PolarChart.js'
+
 
 import axios from 'axios';
 export default {
@@ -19,16 +33,35 @@ export default {
       this.menssages = response.data;
       
       this.fillData()
+      //this.renderChart(this.chartdata, this.options)
     });
 
   },
   components: {
-    LineChart
+    LineChart,
+    BarChart,
+    PieChart,
+    AreaChart
   },
   data(){
     return {
       datacollection: null,
-      menssages:[]
+      menssages:[],
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0,
+            
+            }
+          }]
+        }
+      }
     }
   },
  
@@ -38,9 +71,19 @@ export default {
     {
     var labels = [];
     var valores = [];
+    var coloR = [];
+    var dynamicColors = function() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    };
+
+
     for(var i=0; i<this.menssages.length;i++){
         labels.push(this.menssages[i].nombre) 
         valores.push(this.menssages[i].num) 
+        coloR.push(dynamicColors());
     }  
    // console.log(labels, "labels");
       this.datacollection = {
@@ -48,7 +91,7 @@ export default {
         datasets: [
           {
             label: 'Ugels',
-            backgroundColor: '#FF0066',
+            backgroundColor: coloR,
             data: valores,
           },
         ]
@@ -59,9 +102,5 @@ export default {
 </script>
 
 <style lang="css">
-.small {
-  max-width: 800px;
-  /* max-height: 500px; */
-  margin:  50px auto;
-}
+
 </style>

@@ -5,10 +5,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Charts</h1>
-    <div>
+    <h1>Vue - Charts</h1>
+    {{-- <div>
         <canvas id="myChart"></canvas>
-    </div>
+    </div> --}}
 @stop
 
 @section('content')
@@ -42,8 +42,8 @@
                  
                     for(var i=0; i<data.length;i++){
 
-                        labels.push(data[i].nombre) 
-                        valores.push(data[i].num) 
+                      //  labels.push(data[i].nombre) 
+                        //valores.push(data[i].num) 
                     }   
                 },
                 error: function(error) {

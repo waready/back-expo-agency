@@ -79,7 +79,13 @@ Route::get('/nivelDirector', 'Director@nivelDirector');
 Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->name('products.create.step.one.post');
 
 /**Calificar**/
-Route::get('/especialistaGrafico', 'EspecialistaUgel@graficos');
+
+    /****REPORTE*****/
+    Route::get('/especialistaGrafico', 'EspecialistaUgel@graficos');
+    Route::get('/variacion', function () {
+      return view('graficos.variacion');
+    });
+
 Route::post('preguntas', 'CalificarController@calificar');
 
 Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {

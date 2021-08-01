@@ -487,6 +487,404 @@ class UserSeeder extends Seeder
             'password' =>bcrypt('01318002'),
 
         ])->assignRole('Especialista_ugel');
+
+
+        ////////////////////////////////////////////////////////////DIRECTOR////////////////
+        /*1*/
+        User::create([
+            'nombres'  => 'JHONE MARLENI',
+            'apellidos'  => 'BORDA PILCO',
+            'dni'  => '01489874',
+            'email' => 'marandromeda1@gmail.com',
+            'id_ugel' => 3,
+            'id_tipo_participante' => 4,
+            'celular' => '951463251',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('01489874'),
+
+        ])->assignRole('Director');
+        /*2*/
+        User::create([
+            'nombres'  => 'EFRAIN',
+            'apellidos'  => 'CONDORI VENEGAS',
+            'dni'  => '01321010',
+            'email' => 'efraincv_123@hotmail.com',
+            'id_ugel' => 3,
+            'id_tipo_participante' => 4,
+            'celular' => '948516520',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('01321010'),
+
+        ])->assignRole('Director');
+        /*3*/
+        User::create([
+            'nombres'  => 'ANDRES',
+            'apellidos'  => 'CONDORI VENEGAS',
+            'dni'  => '01324545',
+            'email' => 'condorivenegasandres@gmail.com',
+            'id_ugel' => 12,
+            'id_tipo_participante' => 4,
+            'celular' => '950803748',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('01324545'),
+
+        ])->assignRole('Director');
+        /*4*/
+        User::create([
+            'nombres'  => 'GIL SANTIAGO',
+            'apellidos'  => 'INCARROCA CHURATA',
+            'dni'  => '24891952',
+            'email' => 'santiagoincarroca@gmail.com',
+            'id_ugel' => 12,
+            'id_tipo_participante' => 4,
+            'celular' => '965607055',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('24891952'),
+
+        ])->assignRole('Director');
+        /*5*/
+        User::create([
+            'nombres'  => 'JOSE GABRIEL',
+            'apellidos'  => 'VIZCARRA FAJARDO',
+            'dni'  => '01803827',
+            'email' => 'josehumos@gmail.com',
+            'id_ugel' => 5,
+            'id_tipo_participante' => 4,
+            'celular' => '998005182',
+            'cargo' => 'DIRECTOR',
+            'condicion' => 'DESIGNADO',
+            'password' =>bcrypt('01803827'),
+
+        ])->assignRole('Director');
+        /*6*/
+        User::create([
+            'nombres'  => 'MARTIN RICARDO',
+            'apellidos'  => 'PAREDES RAMOS',
+            'dni'  => '01311270',
+            'email' => 'rycky196@gmail.com',
+            'id_ugel' => 5,
+            'id_tipo_participante' => 4,
+            'celular' => '930117662',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => 'ENCARGADO',
+            'password' =>bcrypt('01311270'),
+
+        ])->assignRole('Director');
+        /*7*/
+        User::create([
+            'nombres'  => 'WILLIAM PORFIRIO',
+            'apellidos'  => 'CUTIPA CHAMBE',
+            'dni'  => '40613514',
+            'email' => 'pwilliamcch@gmail.com',
+            'id_ugel' => 4,
+            'id_tipo_participante' => 4,
+            'celular' => '952849290',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('40613514'),
+
+        ])->assignRole('Director');
+        /*8*/
+        User::create([
+            'nombres'  => 'NESTOR',
+            'apellidos'  => 'ASTETE BARRIENTOS',
+            'dni'  => '01262808',
+            'email' => 'n_astete67@hotmail.com',
+            'id_ugel' => 4,
+            'id_tipo_participante' => 4,
+            'celular' => '951685060',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('01262808'),
+
+        ])->assignRole('Director');
+        /*9*/
+        User::create([
+            'nombres'  => 'NELLY',
+            'apellidos'  => 'ZABALA BANEGAS',
+            'dni'  => '01311202',
+            'email' => 'zabala1212@hotmail.com',
+            'id_ugel' => 9,
+            'id_tipo_participante' => 4,
+            'celular' => '950073418',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('01311202'),
+
+        ])->assignRole('Director');
+        /*10*/
+         User::create([
+            'nombres'  => 'EDWIN MARTIN',
+            'apellidos'  => 'BOHORQUEZ BARRIGA',
+            'dni'  => '01322032',
+            'email' => 'edwinbb2011@gmail.com',
+            'id_ugel' => 9,
+            'id_tipo_participante' => 4,
+            'celular' => '951345049',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('01322032'),
+
+        ])->assignRole('Director');
+        /*11*/
+        User::create([
+            'nombres'  => 'VIDAL MOISES',
+            'apellidos'  => 'CHOQUE ALEJO',
+            'dni'  => '1258944',
+            'email' => 'vidamcho@gmail.com',
+            'id_ugel' => 7,
+            'id_tipo_participante' => 4,
+            'celular' => '998849000',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('1258944'),
+
+        ])->assignRole('Director');
+        /*12*/
+        User::create([
+            'nombres'  => 'REINA',
+            'apellidos'  => 'PORTO LOPEZ',
+            'dni'  => '2437629',
+            'email' => 'reipol2874pomaoca@gmail.com',
+            'id_ugel' => 7,
+            'id_tipo_participante' => 4,
+            'celular' => '950909062',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('2437629'),
+
+        ])->assignRole('Director');
+        /*13*/
+        User::create([
+            'nombres'  => 'EDWIN',
+            'apellidos'  => 'CHAIÑA GONZALES',
+            'dni'  => '01211704',
+            'email' => 'edwinchgonzales@hotmail.com',
+            'id_ugel' => 11,
+            'id_tipo_participante' => 4,
+            'celular' => '951607694',
+            'cargo' => 'DIRECTOR',
+            'condicion' => 'ENCARGADO',
+            'password' =>bcrypt('01211704'),
+
+        ])->assignRole('Director');
+
+
+        /*14 -------------------------------------------ugel--------*/ 
+        /*User::create([
+            'nombres'  => 'EDWIN LEONET',
+            'apellidos'  => 'FIGUEROA QUISPE',
+            'dni'  => '01296539',
+            'email' => 'edfi91@gmail.com',
+            'id_ugel' => 11,
+            'id_tipo_participante' => 4,
+            'celular' => '951527881',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('01296539'),
+
+        ])->assignRole('Director');  */  
+        /*15*/
+        User::create([
+            'nombres'  => 'PEDRO ROBERTO',
+            'apellidos'  => 'ENRIQUEZ YANA',
+            'dni'  => '02299840',
+            'email' => 'reydeayaviri@hotmail.com',
+            'id_ugel' => 10,
+            'id_tipo_participante' => 4,
+            'celular' => '951618729',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('02299840'),
+
+        ])->assignRole('Director');    
+        /*16*/
+        User::create([
+            'nombres'  => 'ALEX SILVIO',
+            'apellidos'  => 'GUTIERREZ PACARA',
+            'dni'  => '40139511',
+            'email' => 'galepas@hotmail.com',
+            'id_ugel' => 10,
+            'id_tipo_participante' => 4,
+            'celular' => '951965418',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('40139511'),
+
+        ])->assignRole('Director');    
+        /*17*/ 
+        User::create([
+            'nombres'  => 'JAVIER',
+            'apellidos'  => 'MACHICAO CALDERON',
+            'dni'  => '00000000',
+            'email' => 'javimachic@gmail.com',
+            'id_ugel' => 13,
+            'id_tipo_participante' => 4,
+            'celular' => '990709066',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('00000000'),
+
+        ])->assignRole('Director');    
+        /*18*/
+        User::create([
+            'nombres'  => 'JHONY PERCY ',
+            'apellidos'  => 'GRANDE MAMANI',
+            'dni'  => '01556092',
+            'email' => 'jhopergrama@gmail.com',
+            'id_ugel' => 13,
+            'id_tipo_participante' => 4,
+            'celular' => '950309342',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('01556092'),
+
+        ])->assignRole('Director');    
+        /*19*/
+        User::create([
+            'nombres'  => 'DAVID GREGORIO',
+            'apellidos'  => 'CORNEJO MAMANI',
+            'dni'  => '00000000',
+            'email' => 'gredavicom7@hotmail.com',
+            'id_ugel' => 1,
+            'id_tipo_participante' => 4,
+            'celular' => '951607694',
+            'cargo' => 'DIRECTOR',
+            'condicion' => 'ENCARGADO',
+            'password' =>bcrypt('00000000'),
+
+        ])->assignRole('Director');    
+        /*20*/
+        User::create([
+            'nombres'  => 'RENE',
+            'apellidos'  => 'CHOQUE COPARI',
+            'dni'  => '01306070',
+            'email' => 'rene.choque.co@gmail.com',
+            'id_ugel' => 1,
+            'id_tipo_participante' => 4,
+            'celular' => '982931982',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('01306070'),
+
+        ])->assignRole('Director');     
+        
+        /*21*/
+        User::create([
+            'nombres'  => 'WILFREDO',
+            'apellidos'  => 'CHURA ALEJO',
+            'dni'  => '01305806',
+            'email' => 'yewilch@hotmail.com',
+            'id_ugel' => 14,
+            'id_tipo_participante' => 4,
+            'celular' => '978889838',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('01305806'),
+
+        ])->assignRole('Director');     
+        /*22*/
+        User::create([
+            'nombres'  => 'EDWIN',
+            'apellidos'  => 'QUISPE CHOQUE',
+            'dni'  => '00000000',
+            'email' => 'equispech@ugelputina.edu.pe',
+            'id_ugel' => 14,
+            'id_tipo_participante' => 4,
+            'celular' => '974328907',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('00000000'),
+
+        ])->assignRole('Director');     
+        /*23*/
+        User::create([
+            'nombres'  => 'FRANSISCA',
+            'apellidos'  => 'YANQUI TRAVERSO',
+            'dni'  => '02428444',
+            'email' => 'franciscaya2@yahoo.es',
+            'id_ugel' => 6,
+            'id_tipo_participante' => 4,
+            'celular' => '950945857',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('02428444'),
+
+        ])->assignRole('Director');     
+        /*24*/
+        User::create([
+            'nombres'  => 'LEON SEVERO',
+            'apellidos'  => 'SUCAPUCA CHINOAPAZA',
+            'dni'  => '01216459',
+            'email' => 'lsucapuca45@hotmail.com',
+            'id_ugel' => 6,
+            'id_tipo_participante' => 4,
+            'celular' => '988988536',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => '',
+            'password' =>bcrypt('01216459'),
+
+        ])->assignRole('Director');     
+        /*25*/
+        User::create([
+            'nombres'  => 'FREDY HERNAN',
+            'apellidos'  => 'OLAZABAL SALLUCA',
+            'dni'  => '02046123',
+            'email' => 'fhosfredy@hotmail.com',
+            'id_ugel' => 2,
+            'id_tipo_participante' => 4,
+            'celular' => '951608190',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('02046123'),
+
+        ])->assignRole('Director');     
+        /*26*/
+        User::create([
+            'nombres'  => 'RUBEN JOSE',
+            'apellidos'  => 'CONDORI MACHACA',
+            'dni'  => '02035121',
+            'email' => 'ecomarjo20@gmail.com',
+            'id_ugel' => 2,
+            'id_tipo_participante' => 4,
+            'celular' => '973628154',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => 'DESIGNADO',
+            'password' =>bcrypt('02035121'),
+
+        ])->assignRole('Director');  
+        /*27*/
+        User::create([
+            'nombres'  => 'EFRAIN',
+            'apellidos'  => 'CONDORI RIVERA',
+            'dni'  => '01296825',
+            'email' => 'efri_ta@hotmail.com',
+            'id_ugel' => 8,
+            'id_tipo_participante' => 4,
+            'celular' => '948926800',
+            'cargo' => 'DIRECTOR',
+            'condicion' => '',
+            'password' =>bcrypt('01296825'),
+
+        ])->assignRole('Director');  
+        /*28*/
+        User::create([
+            'nombres'  => 'CARLOS ALBERTO',
+            'apellidos'  => 'ARANIBAR AYLLON',
+            'dni'  => '01319959',
+            'email' => 'ugelyunguyoagp@gmail.com',
+            'id_ugel' => 8,
+            'id_tipo_participante' => 4,
+            'celular' => '951106491',
+            'cargo' => 'JEFE DE GESTION PEDAGOGICA',
+            'condicion' => 'DESIGNADO',
+            'password' =>bcrypt('01319959'),
+
+        ])->assignRole('Director');     
         
     }
 }

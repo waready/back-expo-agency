@@ -344,7 +344,23 @@ return [
         [
             'text'       => 'Charts',
             'icon_color' => 'yellow',
-            'url'        => '/variacion',
+            'submenu' => [
+                [
+                    'text' => 'Especialista',   
+                    // 'url'  => '/variacion',
+                    'submenu' => [
+                        [
+                            'text' => 'Ugels',
+                            'url'  => '/variacion',
+                        ],
+                        [
+                            'text' => 'level_three',
+                            'url'  => '#',
+                        ],
+                    ],
+                ],
+            ],
+            
         ],
         [
             'text'       => 'Configuacion',
