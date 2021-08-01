@@ -75,6 +75,9 @@ class ExamenesEjecutadosController extends Controller
   public function edit($id)
   {
     $examen = ExamenEjecutado::find($id);
+    if(!isset($examen)) {
+      abort(404, "Ese examen no existe");
+    }
     return view('examenes.edit', compact('examen', 'id'));
   }
 
