@@ -25,7 +25,7 @@
     <script> console.log('Hi!'); </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <script text="javascript">
+    {{-- <script text="javascript">
         var valores = [];
         var labels = [];
         jQuery(document).ready(function() {
@@ -104,5 +104,5 @@
             // ];
            // console.log(valores);
            
-    </script>
+    </script> --}}
 @stop
