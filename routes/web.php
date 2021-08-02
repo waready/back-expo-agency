@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/', function () {
   return view('welcome');
 });
@@ -80,6 +80,10 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
     Route::get('/variacion', function () {
       return view('graficos.variacion');
     });
+    Route::get('/DirectorGrafico', 'Director@graficos');
+    Route::get('/variacion-director', function () {
+      return view('graficos.variacion-director');
+    });
 
 Route::post('preguntas', 'CalificarController@calificar');
 
@@ -99,3 +103,4 @@ Route::get('pre-ejecucion-examen/{examType}/{supervisorId}/{supervisedId}', func
 });
 
 Route::resource('examenes', 'ExamenesEjecutadosController');
+Route::get('/getMisExamenes', 'ExamenesEjecutadosController@getMisExamenes')->name('getMisExamenes');

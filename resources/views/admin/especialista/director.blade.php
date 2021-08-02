@@ -722,12 +722,25 @@
                             dt.ajax.reload();
                             toastr.success(data.message, '¡Operación Exitosa!', {timeOut: 5000})
                             $('#editar_nombres').val('');
-                            // $('#editar_paterno').val('');
-                            // $('#editar_materno').val('');
-                            // $('#editar_abreviatura').val('');
-                            // $('#editar_documento').val('');
+                            // $('#editar_dni').val('');
+                            // $('#editar_nombres').val('');
+                            // $('#editar_apellidos').val('');
+                
+                          
+                            // $('#editar_ugel').val(null).trigger('change');
+                            // $('#editar_ugel').val('');
+
                             // $('#editar_email').val('');
-                            // $('#editar_contraseña').val('');
+                            
+                            // $('#editar_celular').val('');
+                            // $('#editar_condicion').val('');
+                            // $('#editar_cargo').val('');
+                           
+                            // $('#editar_gestion').val(null).trigger('change');
+                            // $('#editar_gestion').val('');
+                        
+                            // $('#editar_area').val(null).trigger('change');
+                            // $('#editar_area').val('');
                           
                         }
                         else
@@ -769,8 +782,25 @@
                             dt.ajax.reload();
                             toastr.success(data.message, '¡Operación Exitosa!', {timeOut: 5000})
                             $('#nombres').val('');
-                            $('#tipo').val(null).trigger('change');
-                            $('#tipo').val('');
+                            $('#dni').val('');
+                            $('#nombres').val('');
+                            $('#apellidos').val('');
+                
+                          
+                            $('#ugel').val(null).trigger('change');
+                            $('#ugel').val('');
+
+                            $('#email').val('');
+                            
+                            $('#celular').val('');
+                            $('#condicion').val('');
+                            $('#cargo').val('');
+                           
+                            $('#gestion').val(null).trigger('change');
+                            $('#gestion').val('');
+                        
+                            $('#area').val(null).trigger('change');
+                            $('#area').val('');
                             
                         }
                         else
@@ -786,14 +816,37 @@
                 });
             });
             $('#modal-agregar-usuario').on('hidden.bs.modal', function () {
+                             
+                $('#nombres').val('');
+                $('#dni').val('');
+                $('#nombres').val('');
+                $('#apellidos').val('');
                
-                $('#enunciado').val('');
-                $('#categoria').val(null).trigger('change');
-                $('#categoria').val('');
-                $('#numero').val('');
-                $('#calificacion').val('');
-                $('#clave').val(null).trigger('change');
-                $('#clave').val('');
+                $('#ugel').val(null).trigger('change');
+                $('#ugel').val('');
+
+                $('#email').val('');
+                
+                $('#celular').val('');
+                $('#condicion').val('');
+                $('#cargo').val('');
+                
+                $('#gestion').val(null).trigger('change');
+                $('#gestion').val('');
+            
+                $('#area').val(null).trigger('change');
+                $('#area').val('');
+
+                jQuery("#gridRadios1").attr('checked', false);
+                jQuery("#gridRadios2").attr('checked', false);
+                jQuery("#gridRadios3").attr('checked', false);
+
+                $('#nivel1').val(null).trigger('change');
+                $('#nivel1').val('');
+                $('#nivel2').val(null).trigger('change');
+                $('#nivel2').val('');
+                $('#nivel3').val(null).trigger('change');
+                $('#nivel3').val(''); 
             })
         })
     </script>

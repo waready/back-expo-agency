@@ -437,8 +437,26 @@
                             dt.ajax.reload();
                             toastr.success(data.message, '¡Operación Exitosa!', {timeOut: 5000})
                             $('#nombres').val('');
-                            $('#tipo').val(null).trigger('change');
-                            $('#tipo').val('');
+                            $('#nombres').val('');
+                            $('#dni').val('');
+                            $('#nombres').val('');
+                            $('#apellidos').val('');
+                
+                          
+                            $('#ugel').val(null).trigger('change');
+                            $('#ugel').val('');
+
+                            $('#email').val('');
+                            
+                            $('#celular').val('');
+                            $('#condicion').val('');
+                            $('#cargo').val('');
+                           
+                            $('#gestion').val(null).trigger('change');
+                            $('#gestion').val('');
+                        
+                            $('#area').val(null).trigger('change');
+                            $('#area').val('');
                             
                         }
                         else
@@ -462,6 +480,27 @@
                 $('#calificacion').val('');
                 $('#clave').val(null).trigger('change');
                 $('#clave').val('');
+
+                $('#nombres').val('');
+                $('#dni').val('');
+                $('#nombres').val('');
+                $('#apellidos').val('');
+    
+                
+                $('#ugel').val(null).trigger('change');
+                $('#ugel').val('');
+
+                $('#email').val('');
+                
+                $('#celular').val('');
+                $('#condicion').val('');
+                $('#cargo').val('');
+                
+                $('#gestion').val(null).trigger('change');
+                $('#gestion').val('');
+            
+                $('#area').val(null).trigger('change');
+                $('#area').val('');
             })
         })
     </script>

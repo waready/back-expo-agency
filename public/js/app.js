@@ -2145,6 +2145,116 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/director.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/director.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LineChart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LineChart.js */ "./resources/js/components/LineChart.js");
+/* harmony import */ var _BarChart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BarChart.js */ "./resources/js/components/BarChart.js");
+/* harmony import */ var _PieChart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PieChart.js */ "./resources/js/components/PieChart.js");
+/* harmony import */ var _PolarChart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PolarChart.js */ "./resources/js/components/PolarChart.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/DirectorGrafico").then(function (response) {
+      //console.log(response.data);
+      _this.menssages = response.data;
+
+      _this.fillData(); //this.renderChart(this.chartdata, this.options)
+
+    });
+  },
+  components: {
+    LineChart: _LineChart_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+    BarChart: _BarChart_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PieChart: _PieChart_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+    AreaChart: _PolarChart_js__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  data: function data() {
+    return {
+      datacollection: null,
+      menssages: [],
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0
+            }
+          }]
+        }
+      }
+    };
+  },
+  methods: {
+    fillData: function fillData() {
+      var labels = [];
+      var valores = [];
+      var coloR = [];
+
+      var dynamicColors = function dynamicColors() {
+        var r = Math.floor(Math.random() * 255);
+        var g = Math.floor(Math.random() * 255);
+        var b = Math.floor(Math.random() * 255);
+        return "rgb(" + r + "," + g + "," + b + ")";
+      };
+
+      for (var i = 0; i < this.menssages.length; i++) {
+        labels.push(this.menssages[i].nombre);
+        valores.push(this.menssages[i].num);
+        coloR.push(dynamicColors());
+      } // console.log(labels, "labels");
+
+
+      this.datacollection = {
+        labels: labels,
+        datasets: [{
+          label: 'Ugels',
+          backgroundColor: coloR,
+          data: valores
+        }]
+      };
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/graficos.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/graficos.vue?vue&type=script&lang=js& ***!
@@ -76821,6 +76931,61 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/director.vue?vue&type=template&id=53896ed7&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/director.vue?vue&type=template&id=53896ed7& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "small" },
+    [
+      _c("h2", [_vm._v("Reportes del Ugel - Director")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v(" LINEAS")]),
+      _vm._v(" "),
+      _c("line-chart", {
+        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+      }),
+      _vm._v(" "),
+      _c("h3", [_vm._v(" BARRAS")]),
+      _vm._v(" "),
+      _c("bar-chart", {
+        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+      }),
+      _vm._v(" "),
+      _c("h3", [_vm._v(" PIE")]),
+      _vm._v(" "),
+      _c("pie-chart", {
+        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+      }),
+      _vm._v(" "),
+      _c("h3", [_vm._v(" AREA")]),
+      _vm._v(" "),
+      _c("area-chart", {
+        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/graficos.vue?vue&type=template&id=23d06dce&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/graficos.vue?vue&type=template&id=23d06dce& ***!
@@ -89116,6 +89281,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('examen', __webpack_require__(/*! ./components/Examen.vue */ "./resources/js/components/Examen.vue")["default"]);
 Vue.component('pregunta', __webpack_require__(/*! ./components/Pregunta.vue */ "./resources/js/components/Pregunta.vue")["default"]);
 Vue.component('grafica-component', __webpack_require__(/*! ./components/graficos.vue */ "./resources/js/components/graficos.vue")["default"]);
+Vue.component('graficadirector-component', __webpack_require__(/*! ./components/director.vue */ "./resources/js/components/director.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -89411,6 +89577,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/director.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/director.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _director_vue_vue_type_template_id_53896ed7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./director.vue?vue&type=template&id=53896ed7& */ "./resources/js/components/director.vue?vue&type=template&id=53896ed7&");
+/* harmony import */ var _director_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./director.vue?vue&type=script&lang=js& */ "./resources/js/components/director.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _director_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _director_vue_vue_type_template_id_53896ed7___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _director_vue_vue_type_template_id_53896ed7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/director.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/director.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/director.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_director_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./director.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/director.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_director_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/director.vue?vue&type=template&id=53896ed7&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/director.vue?vue&type=template&id=53896ed7& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_director_vue_vue_type_template_id_53896ed7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./director.vue?vue&type=template&id=53896ed7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/director.vue?vue&type=template&id=53896ed7&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_director_vue_vue_type_template_id_53896ed7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_director_vue_vue_type_template_id_53896ed7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/graficos.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/graficos.vue ***!
@@ -89498,8 +89733,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/wilson/dev/external/japura_works/UGEL/back-expo-agency/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/wilson/dev/external/japura_works/UGEL/back-expo-agency/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\back-expo-agency\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\back-expo-agency\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PreguntaSeeder::class);
         $this->call(DirectorNivelSeeder::class);
 
-        if(config('app.env') == 'local') {
-          $this->call(FakeDirectoresSeeder::class);
-        }
+        // if(config('app.env') == 'local') {
+        //   $this->call(FakeDirectoresSeeder::class);
+        // }
     }
 }

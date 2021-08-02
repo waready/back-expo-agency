@@ -203,4 +203,18 @@ class Director extends Controller
     {
         //
     }
+    public function graficos()
+    {
+        $users = DB::table('users as us')
+                ->select('ug.nombre',DB::raw('COUNT(ug.id) as num'))
+                ->join('ugels as ug', 'ug.id', '=', 'us.id_ugel')
+                ->where('id_tipo_participante',4)
+                ->GROUPBY ('ug.nombre')
+                ->get();
+
+        return $users;
+
+    }
+
+
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ExamenEjecutado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ExamenesEjecutadosController extends Controller
 {
@@ -14,7 +16,14 @@ class ExamenesEjecutadosController extends Controller
    */
   public function index()
   {
-    //
+    $examenes = ExamenEjecutado::where('id_user_supervisor', Auth::user()->id)
+    
+    ->get();
+
+   
+
+    //return $examenes;
+    return view('admin.misExamenes', compact('examenes'));
   }
 
   /**
@@ -22,6 +31,21 @@ class ExamenesEjecutadosController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
+
+  public function getMisExamenes()
+  {
+    $examenes = DB::table('examenes_ejecutados as ug')
+    ->select('ug.*',DB::raw('"" as Opciones'),'tp.nombre as tipo',  DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),
+    DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'))
+    ->join('users as us', 'us.id', '=' ,'ug.id_user_supervisor') 
+    ->join('users as as', 'as.id', '=' ,'ug.id_user_supervisado')
+    ->join('tipos as tp','tp.id','=','ug.id_tipo' )
+    
+    ->where('id_user_supervisor', Auth::user()->id)
+    ->get();
+    
+    return \DataTables::of($examenes)->make('true');
+  }
   public function create()
   {
     //

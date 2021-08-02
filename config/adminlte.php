@@ -194,7 +194,7 @@ return [
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => false,
+    'profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -229,11 +229,18 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
+            'search'       => true,
             'topnav_right' => true,
-            
+           
         ],
         [
             'type'         => 'fullscreen-widget',
+            'topnav_right' => true,
+        ],
+        [
+            'text' => 'Salir',
+            'url'  => '/logout',
+            'icon' => 'fas fa-fw fa-sign-out',
             'topnav_right' => true,
         ],
 
@@ -292,7 +299,13 @@ return [
             'can' => 'admin.director.index'
         ],
         [
-            'text' => 'permisos',
+            'text' => 'Mis Examanes Ejecutados',
+            'url'  => '/examenes',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'admin.director.index'
+        ],
+        [
+            'text' => 'Docentes',
             'url'  => '/permisos',
             'icon' => 'fas fa-fw fa-question',
         ],
@@ -352,6 +365,20 @@ return [
                         [
                             'text' => 'Ugels',
                             'url'  => '/variacion',
+                        ],
+                        [
+                            'text' => 'level_three',
+                            'url'  => '#',
+                        ],
+                    ],
+                ],
+                [
+                    'text' => 'Director',   
+                    // 'url'  => '/variacion',
+                    'submenu' => [
+                        [
+                            'text' => 'Ugels',
+                            'url'  => '/variacion-director',
                         ],
                         [
                             'text' => 'level_three',
