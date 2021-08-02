@@ -89449,9 +89449,10 @@ var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactivePr
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Line"],
   mixins: [reactiveProp],
   props: ['options', 'chartData'],
-  mounted: function mounted() {// this.chartData is created in the mixin.
+  mounted: function mounted() {
+    // this.chartData is created in the mixin.
     // If you want to pass options please create a local options object
-    //this.renderChart(this.chartData, this.options)
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -89473,9 +89474,10 @@ var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactivePr
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Doughnut"],
   mixins: [reactiveProp],
   props: ['options', 'chartData'],
-  mounted: function mounted() {// this.chartData is created in the mixin.
+  mounted: function mounted() {
+    // this.chartData is created in the mixin.
     // If you want to pass options please create a local options object
-    //this.renderChart(this.chartData, this.options)
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -89497,9 +89499,10 @@ var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactivePr
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["PolarArea"],
   mixins: [reactiveProp],
   props: ['options', 'chartData'],
-  mounted: function mounted() {// this.chartData is created in the mixin.
+  mounted: function mounted() {
+    // this.chartData is created in the mixin.
     // If you want to pass options please create a local options object
-    //this.renderChart(this.chartData, this.options)
+    this.renderChart(this.chartData, this.options);
   }
 });
 
