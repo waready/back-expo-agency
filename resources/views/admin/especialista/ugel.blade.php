@@ -43,6 +43,7 @@
                                     <th>{{ __("Cargo") }}</th>
                                     <th>{{ __("Condición") }}</th>
                                     <th>{{ __("Ugel") }}</th>
+                                    <th>{{ __("Whatsapp") }}</th>
                                     <th>{{ __("Opciones") }}</th>
                                 </tr>
                             </thead>
@@ -305,6 +306,7 @@
                     {data: 'cargo'},
                     {data: 'condicion'},    
                     {data: 'nombre'},
+                    {data: 'whatsapp'},
                     {data: 'Opciones'}
                 ],
                 rowCallback:function(row, data,index){
@@ -314,8 +316,10 @@
                     // else
                     // $('td:eq(3)',row).html('no')
 
-
                     $('td:eq(8)',row).html(
+                      '<a href="https://wa.me/51'+data.celular+'"> <i class="fas fa-phone big-icon text-primary" aria-hidden="true"></i></a>'
+                    )
+                    $('td:eq(9)',row).html(
                       '<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>' +
                       '<a href="<?= url('/pre-ejecucion-examen/1/') . '/' . auth()->id() . '/' ?>'+data.id+'"> <i class="fas fa-file-alt big-icon text-info" aria-hidden="true"></i></a>' +
                       '<a class="eliminar-usuario" href="#"> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>'

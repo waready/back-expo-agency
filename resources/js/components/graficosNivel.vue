@@ -1,6 +1,6 @@
 <template>
   <div class="small">
-    <h2>Reportes del Ugel - Director</h2>
+    <h2>Reportes del Gestion - Especialistas</h2>
     <!-- <h3> LINEAS</h3>
     <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> -->
 
@@ -8,10 +8,10 @@
     <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>
 
     <h3> PIE</h3>
-    <pie-chart :chart-data="datacollection" :options="chartOptions"></pie-chart>
+    <pie-chart :chart-data="datacollection" ></pie-chart>
 
     <h3> AREA</h3>
-    <area-chart :chart-data="datacollection" :options="chartOptions"></area-chart>
+    <area-chart :chart-data="datacollection" ></area-chart>
     <!-- <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
   </div>
 </template>
@@ -28,7 +28,7 @@ import axios from 'axios';
 export default {
   mounted () {
     
-    axios.get(`/DirectorGrafico`).then((response) =>{
+    axios.get(`/DirectorGraficoNivel`).then((response) =>{
       //console.log(response.data);
       this.menssages = response.data;
       
@@ -90,7 +90,7 @@ export default {
         labels: labels,
         datasets: [
           {
-            label: 'Ugels',
+            label: 'Nivel',
             backgroundColor: coloR,
             data: valores,
           },

@@ -18,6 +18,7 @@ class CreateTiposTable extends Migration
       $table->id();
       $table->string('nombre');
       $table->string('descripcion')->nullable();
+      $table->string('doc')->nullable();
       $table->timestamps();
     });
   }

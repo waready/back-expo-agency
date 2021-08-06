@@ -29,6 +29,7 @@ class HomeController extends Controller
         //$user->hasPermissionTo('hola');
         // $user->hasPermissionTo(Permission::find(1)->id);
         //return $user;
+        return view('dashboard');
        $product = $request->session()->get('product');
 
         return view('preguntas.create-step-one',compact('product'));

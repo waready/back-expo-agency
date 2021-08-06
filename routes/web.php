@@ -81,8 +81,21 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
       return view('graficos.variacion');
     });
     Route::get('/DirectorGrafico', 'Director@graficos');
+    Route::get('/DirectorGraficoNivel', 'Director@graficosNivel');
+    Route::get('/DirectorGraficoGestion', 'Director@graficosGestion');
+    Route::get('/DirectorGraficoArea', 'Director@graficosArea');
+
     Route::get('/variacion-director', function () {
       return view('graficos.variacion-director');
+    });
+    Route::get('/area-director', function () {
+      return view('graficos.area-director');
+    });
+    Route::get('/gestion-director', function () {
+      return view('graficos.gestion-director');
+    });
+    Route::get('/nivel-director', function () {
+      return view('graficos.nivel-director');
     });
 
 Route::post('preguntas', 'CalificarController@calificar');

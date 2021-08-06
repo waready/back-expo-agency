@@ -13,9 +13,8 @@
 
 @section('content')
     <div id="app">
-        <graficadirector-component></graficadirector-component>
-        <graficaarea-component></graficaarea-component>
-        <graficagestion-component></graficagestion-component>
+        
+        <graficanivel-component></graficanivel-component>
     </div>
 @stop
 

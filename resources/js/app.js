@@ -24,6 +24,9 @@ Vue.component('examen', require('./components/Examen.vue').default);
 Vue.component('pregunta', require('./components/Pregunta.vue').default);
 Vue.component('grafica-component', require('./components/graficos.vue').default);
 Vue.component('graficadirector-component', require('./components/director.vue').default);
+Vue.component('graficaarea-component', require('./components/graficosArea.vue').default);
+Vue.component('graficagestion-component', require('./components/graficosGestion.vue').default);
+Vue.component('graficanivel-component', require('./components/graficosNivel.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

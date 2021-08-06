@@ -381,8 +381,16 @@ return [
                             'url'  => '/variacion-director',
                         ],
                         [
-                            'text' => 'level_three',
-                            'url'  => '#',
+                            'text' => 'Nivel',
+                            'url'  => '/nivel-director',
+                        ],
+                        [
+                            'text' => 'Area',
+                            'url'  => '/area-director',
+                        ],
+                        [
+                            'text' => 'Gestion',
+                            'url'  => '/gestion-director',
                         ],
                     ],
                 ],

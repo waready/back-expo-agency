@@ -21,7 +21,7 @@ class Director extends Controller
     public function getTipo()
     {
       $users = DB::table('users as us')
-        ->select('us.*','ug.nombre',DB::raw('"" as Opciones'))
+        ->select('us.*','ug.nombre',DB::raw('"" as Opciones'),DB::raw('"" as whatsapp'))
         ->join('ugels as ug', 'ug.id', '=', 'us.id_ugel')
         ->where('id_tipo_participante',4)
         ->get();
@@ -215,6 +215,43 @@ class Director extends Controller
         return $users;
 
     }
+    public function graficosNivel()
+    {
+        $users = DB::table('users as us')
+                ->select('dn.nombre','dn.id_nivel',DB::raw('COUNT(dn.id) as num'))
+                ->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+                // ->join('ugels as ug', 'ug.id', '=', 'us.id_ugel')
+                ->where('id_tipo_participante',4)
+                ->GROUPBY('dn.nombre','dn.id_nivel')
+                ->get();
+
+        return $users;
+
+    }
+    public function graficosGestion()
+    {
+        $users = DB::table('users as us')
+            ->select('us.gestion',DB::raw('COUNT(us.id) as num'))
+            //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+            ->where([['id_tipo_participante',4],['us.gestion','<>','0']])
+            ->GROUPBY('us.gestion')
+            ->get();
+        return $users;
+    }
+    public function graficosArea()
+    {
+        $users = DB::table('users as us')
+            ->select('us.area',DB::raw('COUNT(us.id) as num'))
+            //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+            ->where([
+                ['id_tipo_participante',4],
+                ['us.area','<>','0']
+            ])
+            ->GROUPBY('us.area')
+            ->get();
+        return $users;
+    }
+    
 
 
 }

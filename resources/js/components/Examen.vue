@@ -17,6 +17,7 @@
                         nextButtonText="siguiente"
                         backButtonText="anterior"
                         finishButtonText="Enviar"
+                        @on-complete="onComplete"
                     >
                         <tab-content
                             title="A"
@@ -107,7 +108,18 @@ export default {
     },
 
     methods: {
-        //
+        /**alerta, bloquear, redireccionar**/
+        /**reporte -si-no  | nivel(llenar)**/
+        onComplete(){
+            var doc;
+            var result = confirm("Desea Finalizar y Enviar sus respuestas.");
+            if (result == true) {
+              
+                location.href="/examenes";
+            } else {
+                
+            }            
+        }
     },
 };
 </script>

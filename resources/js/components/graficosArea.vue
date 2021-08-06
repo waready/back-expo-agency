@@ -1,6 +1,6 @@
 <template>
   <div class="small">
-    <h2>Reportes del Ugel - Director</h2>
+    <h2>Reportes de Area - Director</h2>
     <!-- <h3> LINEAS</h3>
     <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> -->
 
@@ -28,8 +28,8 @@ import axios from 'axios';
 export default {
   mounted () {
     
-    axios.get(`/DirectorGrafico`).then((response) =>{
-      //console.log(response.data);
+    axios.get(`/DirectorGraficoArea`).then((response) =>{
+      console.log(response.data);
       this.menssages = response.data;
       
       this.fillData()
@@ -81,7 +81,13 @@ export default {
 
 
     for(var i=0; i<this.menssages.length;i++){
-        labels.push(this.menssages[i].nombre) 
+       
+        if(this.menssages[i].area == 1){
+            labels.push("Urbano")
+        } 
+        else if(this.menssages[i].area == 2){
+            labels.push("Rural")
+        } 
         valores.push(this.menssages[i].num) 
         coloR.push(dynamicColors());
     }  
@@ -90,7 +96,7 @@ export default {
         labels: labels,
         datasets: [
           {
-            label: 'Ugels',
+            label: 'Area',
             backgroundColor: coloR,
             data: valores,
           },

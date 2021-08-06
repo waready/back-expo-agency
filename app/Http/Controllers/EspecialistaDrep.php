@@ -20,7 +20,7 @@ class EspecialistaDrep extends Controller
     public function getTipo()
     {
       $users = DB::table('users as us')
-        ->select('us.*','ug.nombre',DB::raw('"" as Opciones'))
+        ->select('us.*','ug.nombre',DB::raw('"" as Opciones'),DB::raw('"" as whatsapp'))
         ->join('ugels as ug', 'ug.id', '=', 'us.id_ugel')
         ->where('id_tipo_participante',2)
         ->get();
