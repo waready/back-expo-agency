@@ -24,6 +24,7 @@ class CreateRespuestasTable extends Migration
       $table->foreign('id_pregunta')->references('id')->on('preguntas');
       $table->unsignedInteger('respuesta')->comment('Repuesta enviada');
       $table->decimal('calificacion', 8, 2)->nullable()->comment('Calificacion por respuesta');
+      $table->unsignedTinyInteger('aciertos')->default(0);
       $table->string('observacion')->nullable()->comment('Observacion adjunta, Evidencia');
       $table->timestamp('calificado')->nullable()->comment('Fecha en la cual fue calificado, en caso la calificacion no sea automatica');
 

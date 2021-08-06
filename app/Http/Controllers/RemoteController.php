@@ -70,6 +70,7 @@ class RemoteController extends Controller
     $valor = pregunta::find($request->input('id_pregunta'));
     if ($valor->clave == $request->input('respuesta')) {
       $respuesta->calificacion = $valor->calificacion;
+      $respuesta->aciertos = 1;
     }
     $respuesta->respuesta = $request->input('respuesta');
     $respuesta->observacion = $request->input('observacion');

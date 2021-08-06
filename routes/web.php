@@ -1,5 +1,6 @@
 <?php
 
+use App\ExamenEjecutado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +77,51 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
 /**Calificar**/
 
     /****REPORTE*****/
+    Route::get('/tablaExamen/{id_res}', function ($id_res) {
+      $users = DB::table('respuestas as rp')
+      ->select('rp.*',
+      DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
+      DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
+      ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
+      ->join('users as us','us.id','ej.id_user_supervisado')
+      ->join('users as as','as.id','ej.id_user_supervisor')
+      ->where('ej.id_user_supervisado',$id_res)
+      
+      ->get();
+      // $users = DB::table('examenes_ejecutados as ej')
+      // ->select('ej.*')
+      // ->join('respuestas as rp','rp.id_examen_ejecutado','ej.id')
+      // ->where('ej.id_user_supervisado',162)
+      // ->get();
+      return \DataTables::of($users)->make('true');
+    })->name('getRespuestasUno');
+    Route::get('reporteExamen/{id}',function($id){
+    
+      $evaluado["tabla"] = ExamenEjecutado::where('id',$id)->first();
+    
+      //return $evaluado;
+
+      $evaluado['porcentaje'] = DB::table('respuestas as rp')
+      ->select('rp.id_user',DB::raw('COUNT(rp.id_user) as num'))
+
+      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+      ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id]
+      ])
+      ->GROUPBY('rp.id_user')
+      ->first();
+      
+      $evaluado['aciertos'] = DB::table('respuestas as rp')
+      ->select('rp.aciertos',DB::raw('COUNT(rp.aciertos) as val'))
+
+      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+      //->where('id_examen_ejecutado',$evaluado["tabla"]->id)
+      ->GROUPBY('rp.aciertos')
+      ->get();
+
+
+      return $evaluado;
+    });  
     Route::get('/especialistaGrafico', 'EspecialistaUgel@graficos');
     Route::get('/variacion', function () {
       return view('graficos.variacion');

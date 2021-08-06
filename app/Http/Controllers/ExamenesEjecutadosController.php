@@ -35,7 +35,7 @@ class ExamenesEjecutadosController extends Controller
   public function getMisExamenes()
   {
     $examenes = DB::table('examenes_ejecutados as ug')
-    ->select('ug.*',DB::raw('"" as Opciones'),'tp.nombre as tipo',  DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),
+    ->select('ug.*',DB::raw('"" as Opciones'),DB::raw('"" as respuestas'),'tp.nombre as tipo',  DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),
     DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'))
     ->join('users as us', 'us.id', '=' ,'ug.id_user_supervisor') 
     ->join('users as as', 'as.id', '=' ,'ug.id_user_supervisado')

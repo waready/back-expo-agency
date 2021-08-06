@@ -36,6 +36,7 @@
                                     <th>{{ __("Supervisado") }}</th>
                                     <th>{{ __("Tipo Examen") }}</th>
                                     <th>{{ __("Fecha") }}</th>
+                                    <th>{{ __("Respuestas") }}</th>
                                     <th>{{ __("Opciones") }}</th>
                                 </tr>
                             </thead>
@@ -48,16 +49,47 @@
     </div>
 
 </div>
-<div class="modal fade" id="modal-editar-usuario" tabindex="-1" role="dialog" aria-labelledby="editarNuevo" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade bd-example-modal-lg" id="modal-editar-usuario" tabindex="-1" role="dialog" aria-labelledby="editarNuevo" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-secondary text-white">
-                <h5 class="modal-title">Editar Nombre Tipo Examen</h5>
+                <h5 class="modal-title">Avance de Examen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="form-editar-usuario" class="form-horizontal form-label-left" >
+            <div class="modal-body">
+                <div class="card-body">
+                    <h4>Procentaje</h4>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" id="barra" ></div>
+                    </div>
+                    <hr>
+                    <h4>Aciertos</h4>
+                    <div id="aciertos"></div>
+                    <hr>
+                    <h4>Respuestas</h4>
+                    <table width="100%"
+                        class="table table-responsive table-bordered nowrap"
+                        cellspacing="0"
+                        id="students-table1"
+                    >
+                        <thead>
+                            <tr>
+                                <th>{{ __("ID") }}</th>
+                                {{-- <th>{{ __("Codigo") }}</th> --}}
+                                <th>{{ __("N° Pregunta") }}</th>
+                                <th>{{ __("Respuesta") }}</th>
+                                <th>{{ __("Observacion") }}</th>
+                                <th>{{ __("Aciertos") }}</th>
+                                <th>{{ __("Calificacion") }}</th>
+                                {{-- <th>{{ __("Opciones") }}</th> --}}
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            {{-- <form id="form-editar-usuario" class="form-horizontal form-label-left" >
                 @csrf
                 <input type="hidden" name="_method" value="PUT">
                 <div class="modal-body">
@@ -83,7 +115,8 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
-            </form>
+            </form> --}}
+
         </div>
     </div>
 </div>
@@ -181,49 +214,94 @@
                     {data: 'Supervisado'},
                     {data: 'tipo'},
                     {data: 'created_at'},
+                    {data: 'respuestas'},
                     {data: 'Opciones'}
                 ],
                 rowCallback:function(row, data,index){
-                    $('td:eq(5)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(5)',row).html('<a class="tabla-usuario" href="'+data.id+'"> <i class="fas fa-file-alt big-icon text-info" aria-hidden="true"></i></a>')
+                    $('td:eq(6)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
                 }
                 
             });
 
-            // $(document).on('click', '.editar-usuario', function(e) {
-            //     // $('.file-firma').val(null);
-            //     // $('.file1').html('Seleccione su archivo...');
-            //     e.preventDefault();
+            $(document).on('click', '.tabla-usuario', function(e) {
+                // $('.file-firma').val(null);
+                // $('.file1').html('Seleccione su archivo...');
+                e.preventDefault();
                 
-            //     idUpdate = $(this).attr('href');
-            //    // alert(idUpdate);
-            //     $.ajax({
-            //         type: "GET",
-            //         dataType: "json",
-            //         url:'allcategoria/'+idUpdate+'/edit',
-            //         headers: {
-            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //         },
-            //         success: function(data) {
-            //             $('#editar_nombres').val(data.nombre);
-             
-            //             $('#editar_tipo option[value="'+data.id_tipo+'"]').attr("selected", true);
-            //             // $('#editar_abreviatura').val(data.abreviatura);
-            //             // $('#editar_documento').val(data.numero_documento);
-            //             // $('#editar_email').val(data.email);
-            //             //$('#contraseña').val('');
-            //             // var estado = $('.editar_estado');
-            //             // estado.filter('[value='+data.estado+']').iCheck('check');
-            //             console.log(data);
+                idUpdate = $(this).attr('href'); 
+               // alert(idUpdate);
+            
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    url:'reporteExamen/'+idUpdate+'',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                       var valeur;
+                        
+                        //console.log(data.porcentaje.num)
+                        if(data.porcentaje != null){
+                            valeur = (data.porcentaje.num * 3.3)
+                           
+                        }else{
+                            valeur = 0;
+                        }
+
+                     
+                        $('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);  
+                        dt1 = jQuery("#students-table1").DataTable({
+                            pageLength: 15,
+                            lengthMenu: [15, 25, 50, 75, 100 ],
+                            processing: true,
+                            "bDestroy": true,
+                            ajax: 'tablaExamen/'+data.tabla.id_user_supervisado+'',
+                            
+                            language: {
+                                url: "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                            },
+                            columns: [
+                                {data: 'id'},
+                                {data: 'id_pregunta'},
+                                {data: 'respuesta'},
+                                {data: 'Opciones'},
+                                {data: 'aciertos'},
+                                {data: 'calificacion'},
+                            
+                            ],
+                            rowCallback:function(row, data,index){
+
+                                if(data.respuesta == 0)
+                                $('td:eq(2)',row).html('no')
+                                if(data.respuesta == 1)
+                                $('td:eq(2)',row).html('si')
+
+                                if(data.respuesta == 0)
+                                $('td:eq(4)',row).html('--')
+                                if(data.respuesta == 1)
+                                $('td:eq(4)',row).html('X')
+
+                                if(data.calificacion == null)
+                                $('td:eq(5)',row).html('0.00')
+                                else
+                                $('td:eq(5)',row).html(data.calificacion)
+                            }
+                        
+                        });
+
+                        console.log(data);
                         
 
-            //             $('#modal-editar-usuario').modal('show');
-            //         },
-            //         error: function(error) {
-            //             console.log(error);
-            //             toastr.error(error, '¡Error!', {timeOut: 5000})
-            //         }
-            //     });
-            // });
+                        $('#modal-editar-usuario').modal('show');
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        toastr.error(error, '¡Error!', {timeOut: 5000})
+                    }
+                });
+            });
             $('#form-editar-usuario').submit(function(e){
                 e.preventDefault();
                // spinner.show();
