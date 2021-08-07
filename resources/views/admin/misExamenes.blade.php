@@ -240,8 +240,9 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(data) {
-                       var valeur;
-                        
+                       var valeur
+                       var aciertosSI =[]
+                       var aciertosNO =[]
                         //console.log(data.porcentaje.num)
                         if(data.porcentaje != null){
                             valeur = (data.porcentaje.num * 3.3)
@@ -249,7 +250,19 @@
                         }else{
                             valeur = 0;
                         }
-
+                        if(data.aciertos != null){
+                           // valeur = (data.porcentaje.num * 3.3)
+                           console.log(data.aciertos)
+                           for(var i=0;i<2;i++){
+                               if(data.aciertos[i].aciertos == 0)
+                                aciertosSI.push(data.aciertos[i].val)
+                                if(data.aciertos[i].aciertos == 1)
+                                aciertosNO.push(data.aciertos[i].val)
+                           }
+                           $('#aciertos').html('aciertos : '+aciertosSI+' errados: '+aciertosNO)
+                        }else{
+                            //valeur = 0;
+                        }
                      
                         $('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);  
                         dt1 = jQuery("#students-table1").DataTable({
