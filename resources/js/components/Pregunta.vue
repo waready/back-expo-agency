@@ -41,8 +41,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
+           
+            <div class="col-md-6" >
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" :id="`${unique}_p`" v-model="mostrar">
+                    <label class="custom-control-label" :for="`${unique}_p`">Opción de Evidencia </label>
+                </div>
+                <div class="form-group" v-show="!mostrar">
                     <label for="exampleFormControlTextarea1"
                         >Evidencia Observacion</label
                     >
@@ -54,6 +59,18 @@
                         @change="changeHandler"
                         v-model="observacion"
                     ></textarea>
+                </div>
+                <div class="form-group" v-show="mostrar">
+                    <label 
+                        >Evidencia Url</label
+                    >
+                    <input
+                        class="form-control"
+                        
+                        name="url1"
+                        @change="changeHandler"
+                        v-model="url"
+                    />
                 </div>
             </div>
         </div>
@@ -82,6 +99,9 @@ export default {
         unique: null,
         picked: null,
         observacion: null,
+        url: null,
+        mostrar:false,
+        
     }),
 
     computed: {

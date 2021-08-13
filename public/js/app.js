@@ -2106,6 +2106,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {//
   },
@@ -2124,7 +2141,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       unique: null,
       picked: null,
-      observacion: null
+      observacion: null,
+      url: null,
+      mostrar: false
     };
   },
   computed: {//
@@ -77241,38 +77260,143 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-            _vm._v("Evidencia Observacion")
-          ]),
-          _vm._v(" "),
-          _c("textarea", {
+        _c("div", { staticClass: "custom-control custom-switch" }, [
+          _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.observacion,
-                expression: "observacion"
+                value: _vm.mostrar,
+                expression: "mostrar"
               }
             ],
-            staticClass: "form-control",
-            attrs: {
-              id: "exampleFormControlTextarea1",
-              rows: "2",
-              name: "obs1"
+            staticClass: "custom-control-input",
+            attrs: { type: "checkbox", id: _vm.unique + "_p" },
+            domProps: {
+              checked: Array.isArray(_vm.mostrar)
+                ? _vm._i(_vm.mostrar, null) > -1
+                : _vm.mostrar
             },
-            domProps: { value: _vm.observacion },
             on: {
-              change: _vm.changeHandler,
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              change: function($event) {
+                var $$a = _vm.mostrar,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = null,
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 && (_vm.mostrar = $$a.concat([$$v]))
+                  } else {
+                    $$i > -1 &&
+                      (_vm.mostrar = $$a
+                        .slice(0, $$i)
+                        .concat($$a.slice($$i + 1)))
+                  }
+                } else {
+                  _vm.mostrar = $$c
                 }
-                _vm.observacion = $event.target.value
               }
             }
-          })
-        ])
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "custom-control-label",
+              attrs: { for: _vm.unique + "_p" }
+            },
+            [_vm._v("Opción de Evidencia ")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.mostrar,
+                expression: "!mostrar"
+              }
+            ],
+            staticClass: "form-group"
+          },
+          [
+            _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+              _vm._v("Evidencia Observacion")
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.observacion,
+                  expression: "observacion"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "exampleFormControlTextarea1",
+                rows: "2",
+                name: "obs1"
+              },
+              domProps: { value: _vm.observacion },
+              on: {
+                change: _vm.changeHandler,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.observacion = $event.target.value
+                }
+              }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.mostrar,
+                expression: "mostrar"
+              }
+            ],
+            staticClass: "form-group"
+          },
+          [
+            _c("label", [_vm._v("Evidencia Url")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.url,
+                  expression: "url"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "url1" },
+              domProps: { value: _vm.url },
+              on: {
+                change: _vm.changeHandler,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.url = $event.target.value
+                }
+              }
+            })
+          ]
+        )
       ])
     ])
   ])
