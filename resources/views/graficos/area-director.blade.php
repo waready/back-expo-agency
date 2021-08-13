@@ -5,7 +5,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Vue - Charts</h1>
+    
     {{-- <div>
         <canvas id="myChart"></canvas>
     </div> --}}

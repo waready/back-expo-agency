@@ -1,6 +1,6 @@
 <template>
   <div class="small">
-    <h2>Reportes del Gestion - Especialistas</h2>
+    <h2>Reportes del Nivel - Director</h2>
     <!-- <h3> LINEAS</h3>
     <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> -->
 

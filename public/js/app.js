@@ -77629,7 +77629,7 @@ var render = function() {
     "div",
     { staticClass: "small" },
     [
-      _c("h2", [_vm._v("Reportes del Gestion - Especialistas")]),
+      _c("h2", [_vm._v("Reportes del Nivel - Director")]),
       _vm._v(" "),
       _c("h3", [_vm._v(" BARRAS")]),
       _vm._v(" "),
