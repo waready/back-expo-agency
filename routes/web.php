@@ -1,5 +1,6 @@
 <?php
 
+use App\respuesta;
 use App\ExamenEjecutado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -115,13 +116,27 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
       ->select('rp.aciertos',DB::raw('COUNT(rp.aciertos) as val'))
 
       //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      //->where('id_examen_ejecutado',$evaluado["tabla"]->id)
+      ->where('id_examen_ejecutado',$evaluado["tabla"]->id)
       ->GROUPBY('rp.aciertos')
       ->get();
 
 
       return $evaluado;
     });  
+    Route::delete('eliminarExamen/{id}',function($id){
+        
+        $dato = ExamenEjecutado::find($id);
+        
+        //$valor=$dato->delete();
+        $respuestas = respuesta::where('id_examen_ejecutado',$dato->id)->get();
+        foreach( $respuestas as $respuestas ){
+          $message = respuesta::find($respuestas->id);
+          //$message->estado = "0"; 
+          $message->delete();;
+        }
+        $valor=$dato->delete();
+        return $valor;  
+    });
     Route::get('/especialistaGrafico', 'EspecialistaUgel@graficos');
     Route::get('/variacion', function () {
       return view('graficos.variacion');
@@ -150,6 +165,9 @@ Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
   Route::get('preguntas-lista', 'RemoteController@preguntasLista');
   Route::get('categorias-lista', 'RemoteController@categoriasLista');
   Route::post('responder', 'RemoteController@responderHandler');
+  
+  /**Perfil**/
+  
 });
 
 
@@ -163,3 +181,6 @@ Route::get('pre-ejecucion-examen/{examType}/{supervisorId}/{supervisedId}', func
 
 Route::resource('examenes', 'ExamenesEjecutadosController');
 Route::get('/getMisExamenes', 'ExamenesEjecutadosController@getMisExamenes')->name('getMisExamenes');
+
+
+Route::get('/profile', 'ProfileController@index')->name('profile');

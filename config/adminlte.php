@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Preguntas</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Dre-Puno</b>',
+    'logo_img' => 'http://std.drepuno.gob.pe/images/login_Puno.gif',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -127,7 +127,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-primary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -263,6 +263,11 @@ return [
         // ],
         ['header' => 'account_settings'],
         [
+            'text' => 'Mi Cuenta',
+            'url'  => '/profile',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'Tipo Examen',
             'url'  => '/tipo',
             'icon' => 'fas fa-fw fa-book',
@@ -304,11 +309,7 @@ return [
             'icon' => 'fas fa-fw fa-users',
             'can' => 'admin.director.index'
         ],
-        [
-            'text' => 'Docentes',
-            'url'  => '/permisos',
-            'icon' => 'fas fa-fw fa-question',
-        ],
+      
         // [
         //     'text'    => 'multilevel',
         //     'icon'    => 'fas fa-fw fa-share',
@@ -366,10 +367,7 @@ return [
                             'text' => 'Ugels',
                             'url'  => '/variacion',
                         ],
-                        [
-                            'text' => 'level_three',
-                            'url'  => '#',
-                        ],
+                       
                     ],
                 ],
                 [

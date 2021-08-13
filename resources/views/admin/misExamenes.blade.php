@@ -13,15 +13,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mt-2">
-                
-
+                <div class="card-header">Mis Examenes Ejecutados:
+                </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-                        
+                       
                     <div class="card-body">
                         <table width="100%"
                             class="table table-responsive table-bordered nowrap"
@@ -53,7 +53,10 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-secondary text-white">
-                <h5 class="modal-title">Avance de Examen</h5>
+                <h5 class="modal-title">Avance de Examen  </h5>
+
+                <button onclick="ExportToExcel('xlsx')" > Export table to excel</button>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -69,24 +72,26 @@
                     <div id="aciertos"></div>
                     <hr>
                     <h4>Respuestas</h4>
-                    <table width="100%"
-                        class="table table-responsive table-bordered nowrap"
-                        cellspacing="0"
-                        id="students-table1"
-                    >
-                        <thead>
-                            <tr>
-                                <th>{{ __("ID") }}</th>
-                                {{-- <th>{{ __("Codigo") }}</th> --}}
-                                <th>{{ __("N° Pregunta") }}</th>
-                                <th>{{ __("Respuesta") }}</th>
-                                <th>{{ __("Observacion") }}</th>
-                                <th>{{ __("Aciertos") }}</th>
-                                <th>{{ __("Calificacion") }}</th>
-                                {{-- <th>{{ __("Opciones") }}</th> --}}
-                            </tr>
-                        </thead>
-                    </table>
+                    <div id="dvData">
+                        <table width="100%"
+                            class="table table-responsive table-bordered nowrap"
+                            cellspacing="0"
+                            id="students-table1"
+                        >
+                            <thead>
+                                <tr>
+                                    <th>{{ __("ID") }}</th>
+                                    {{-- <th>{{ __("Codigo") }}</th> --}}
+                                    <th>{{ __("N° Pregunta") }}</th>
+                                    <th>{{ __("Respuesta") }}</th>
+                                    <th>{{ __("Observacion") }}</th>
+                                    <th>{{ __("Aciertos") }}</th>
+                                    <th>{{ __("Calificacion") }}</th>
+                                    {{-- <th>{{ __("Opciones") }}</th> --}}
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
             {{-- <form id="form-editar-usuario" class="form-horizontal form-label-left" >
@@ -178,6 +183,7 @@
 {{-- <br><script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script> --}}
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
     
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script> --}}
     <script>
@@ -218,12 +224,43 @@
                     {data: 'Opciones'}
                 ],
                 rowCallback:function(row, data,index){
-                    $('td:eq(5)',row).html('<a class="tabla-usuario" href="'+data.id+'"> <i class="fas fa-file-alt big-icon text-info" aria-hidden="true"></i></a>')
-                    $('td:eq(6)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(5)',row).html('<a class="tabla-usuario" href="'+data.id+'"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>')
+                    $('td:eq(6)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="'+data.id+'" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
                 }
                 
             });
-
+            $(document).on('click', '.eliminar-usuario', function(e) {
+                // $('.file-firma').val(null);
+                // $('.file1').html('Seleccione su archivo...');
+                e.preventDefault();
+                
+                idUpdate = $(this).attr('href');
+                //alert(idUpdate);
+                var txt;
+                var r = confirm("Seguro que quiere eliminar evaluacion?!");
+                if (r == true) {
+                    $.ajax({
+                    type: "DELETE",
+                    dataType: "json",
+                    url:'eliminarExamen/'+idUpdate,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        dt.ajax.reload();
+                        console.log(data);
+                        toastr.success(data.message, '¡Operación Exitosa!', {timeOut: 5000});
+                    },
+                    error: function(error) {
+                        console.log(error);
+                        toastr.error(error, '¡Error!', {timeOut: 5000})
+                    }
+                });
+                } else {
+                  aler('cagada')
+                }
+               
+            });
             $(document).on('click', '.tabla-usuario', function(e) {
                 // $('.file-firma').val(null);
                 // $('.file1').html('Seleccione su archivo...');
@@ -259,14 +296,14 @@
                                 if(data.aciertos[i].aciertos == 1)
                                 aciertosNO.push(data.aciertos[i].val)
                            }
-                           $('#aciertos').html('aciertos : '+aciertosSI+' errados: '+aciertosNO)
+                           $('#aciertos').html('aciertos : '+aciertosNO+' -  errados: '+aciertosSI)
                         }else{
                             //valeur = 0;
                         }
                      
                         $('.progress-bar').css('width', valeur+'%').attr('aria-valuenow', valeur);  
                         dt1 = jQuery("#students-table1").DataTable({
-                            pageLength: 15,
+                            pageLength: 30,
                             lengthMenu: [15, 25, 50, 75, 100 ],
                             processing: true,
                             "bDestroy": true,
@@ -410,7 +447,21 @@
                 $('#tipo').val(null).trigger('change');
                 $('#tipo').val('');
             })
+            $("#btnExport").click(function (e) {
+                window.open('data:application/vnd.ms-excel,' + $('#dvData').html());
+                e.preventDefault();
+            });
+
+
         })
+
+        function ExportToExcel(type, fn, dl) {
+            var elt = document.getElementById('students-table1');
+            var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+            return dl ?
+                XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
+                XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+    }
     </script>
 @stop
 {{-- @endpush --}}
