@@ -5,6 +5,7 @@
     <div class="form-group">
         <label> {{ pregunta.numero }}.- {{ pregunta.enunciado }}</label>
         <div class="row">
+        
             <div class="col-md-6">
                 <div class="col-sm-10">
                     <div class="custom-control custom-radio">
@@ -47,6 +48,7 @@
                     <input type="checkbox" class="custom-control-input" :id="`${unique}_p`" v-model="mostrar">
                     <label class="custom-control-label" :for="`${unique}_p`">Opción de Evidencia </label>
                 </div>
+
                 <div class="form-group" v-show="!mostrar">
                     <label for="exampleFormControlTextarea1"
                         >Evidencia Observacion</label
@@ -72,7 +74,24 @@
                         v-model="url"
                     />
                 </div>
+                <div class="form-group" v-show="mostrar">
+                    <label 
+                        >Evidencia Url</label
+                    >
+                    <input
+                        class="form-control"
+                        type="file"
+                        name="file1"
+                        
+                        :id="`${unique}_file`"
+                     
+                        @change="onFileChange"
+                    />
+                </div>
             </div>
+        <pre>
+        
+        </pre>
         </div>
     </div>
 </template>
@@ -101,6 +120,7 @@ export default {
         observacion: null,
         url: null,
         mostrar:false,
+        file:null
         
     }),
 
@@ -116,22 +136,43 @@ export default {
         if (this.pregunta) {
             this.picked = this.pregunta.respuesta;
             this.observacion = this.pregunta.observacion;
+            this.url = this.pregunta.url;
         }
     },
 
     methods: {
         changeHandler() {
+            
             if (this.picked == null) {
                 window.alert("selecciona una respuesta primero.");
                 return;
             }
-            axios.post(window.current_location + "remote/responder", {
-                id_pregunta: this.pregunta.id,
-                respuesta: this.picked,
-                observacion: this.observacion,
-                id_examen_ejecutado: this.idExamenEjecutado,
-            });
+
+        //    var data = {
+        //         id_pregunta: this.pregunta.id,
+        //         respuesta: this.picked,
+        //         observacion: this.observacion,
+        //         id_examen_ejecutado: this.idExamenEjecutado,
+                
+        //     }
+            let data = new FormData();
+            data.append('id_pregunta', this.pregunta.id);
+            data.append('respuesta', this.picked);
+            data.append('observacion', this.observacion);
+            data.append('id_examen_ejecutado', this.idExamenEjecutado);
+            data.append('url', this.url);
+            data.append('file', this.file);
+
+
+            axios.post(window.current_location + "remote/responder",data);
         },
+        onFileChange(e) {
+         
+            this.file = e.target.files[0];
+
+            this.changeHandler();
+        },
+    
     },
 };
 </script>

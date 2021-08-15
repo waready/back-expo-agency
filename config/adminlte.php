@@ -395,11 +395,11 @@ return [
             ],
             
         ],
-        [
-            'text'       => 'Configuacion',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        // [
+        //     'text'       => 'Configuacion',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '#',
+        // ],
     ],
 
     /*

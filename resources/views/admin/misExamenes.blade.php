@@ -282,19 +282,26 @@
                        var aciertosNO =[]
                         //console.log(data.porcentaje.num)
                         if(data.porcentaje != null){
-                            valeur = (data.porcentaje.num * 3.3)
-                           
+                          //  valeur = (data.porcentaje.num * 3.3)
+                            var porcentaje= (data.porcentaje.num / 30)*100;
+                            valeur = Math.round( porcentaje );
+
                         }else{
                             valeur = 0;
                         }
                         if(data.aciertos != null){
                            // valeur = (data.porcentaje.num * 3.3)
                            console.log(data.aciertos)
-                           for(var i=0;i<2;i++){
-                               if(data.aciertos[i].aciertos == 0)
-                                aciertosSI.push(data.aciertos[i].val)
+                           for(var i=0;i<data.aciertos.length;i++){
+
+                                if(data.aciertos[i].aciertos == 0)
+                                    aciertosSI.push(data.aciertos[i].val)
+                                else
+                                    aciertosSI.push(0)
                                 if(data.aciertos[i].aciertos == 1)
-                                aciertosNO.push(data.aciertos[i].val)
+                                    aciertosNO.push(data.aciertos[i].val)
+                                else
+                                    aciertosNO.push(0)
                            }
                            $('#aciertos').html('aciertos : '+aciertosNO+' -  errados: '+aciertosSI)
                         }else{
@@ -460,7 +467,7 @@
             var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
             return dl ?
                 XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }):
-                XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+                XLSX.writeFile(wb, fn || ('Respuestas.' + (type || 'xlsx')));
     }
     </script>
 @stop

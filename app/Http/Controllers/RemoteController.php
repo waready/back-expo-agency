@@ -5,11 +5,24 @@ namespace App\Http\Controllers;
 use App\pregunta;
 use App\respuesta;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RemoteController extends Controller
 {
+  private $dateTime;
+    private $dateTimePartial;
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        date_default_timezone_set("America/Lima");//Zona horaria de Peru
+        $this->dateTime = date("Y-m-d H:i:s");
+        $this->dateTimePartial = date("m-Y");
+
+    }
+
   public function preguntasLista(Request $request)
   {
     $query = DB::table('preguntas AS A')
@@ -21,6 +34,7 @@ class RemoteController extends Controller
       )
       ->addSelect('B.respuesta')
       ->addSelect('B.observacion')
+      ->addSelect('B.url')
       ->leftJoin('respuestas AS B', function ($q) use ($request) {
         $q->on('A.id', 'B.id_pregunta')
           ->where('B.id_examen_ejecutado', $request->input('id_examen_ejecutado'));
@@ -49,6 +63,11 @@ class RemoteController extends Controller
 
   public function responderHandler(Request $request)
   {
+
+    //return dd($request);
+
+    
+    //return $request;
     $this->validate($request, [
       'id_examen_ejecutado' => 'required',
       'id_pregunta' => 'required',
@@ -67,13 +86,24 @@ class RemoteController extends Controller
       $respuesta->id_user = auth()->id();
       $respuesta->id_pregunta = $request->input('id_pregunta');
     }
+   
     $valor = pregunta::find($request->input('id_pregunta'));
+    //return $valor;
     if ($valor->clave == $request->input('respuesta')) {
       $respuesta->calificacion = $valor->calificacion;
       $respuesta->aciertos = 1;
     }
     $respuesta->respuesta = $request->input('respuesta');
     $respuesta->observacion = $request->input('observacion');
+    $respuesta->url = $request->input('url');
+
+    $file = $request->file('file');
+    if($file){
+        $name = 'A-'.$file->getClientOriginalName();
+        $titulo = explode(".",$file->getClientOriginalName())[0];
+        $respuesta->documento  = $this->dateTimePartial.'/'.$name;
+        Storage::disk('adjuntos')->putFileAs($this->dateTimePartial, $file, $name);
+    }
     $respuesta->save();
 
     // dump($respuesta ? $respuesta->toArray() : "none");

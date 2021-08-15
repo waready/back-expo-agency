@@ -2123,6 +2123,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {//
   },
@@ -2143,7 +2162,8 @@ __webpack_require__.r(__webpack_exports__);
       picked: null,
       observacion: null,
       url: null,
-      mostrar: false
+      mostrar: false,
+      file: null
     };
   },
   computed: {//
@@ -2155,6 +2175,7 @@ __webpack_require__.r(__webpack_exports__);
     if (this.pregunta) {
       this.picked = this.pregunta.respuesta;
       this.observacion = this.pregunta.observacion;
+      this.url = this.pregunta.url;
     }
   },
   methods: {
@@ -2162,14 +2183,26 @@ __webpack_require__.r(__webpack_exports__);
       if (this.picked == null) {
         window.alert("selecciona una respuesta primero.");
         return;
-      }
+      } //    var data = {
+      //         id_pregunta: this.pregunta.id,
+      //         respuesta: this.picked,
+      //         observacion: this.observacion,
+      //         id_examen_ejecutado: this.idExamenEjecutado,
+      //     }
 
-      axios.post(window.current_location + "remote/responder", {
-        id_pregunta: this.pregunta.id,
-        respuesta: this.picked,
-        observacion: this.observacion,
-        id_examen_ejecutado: this.idExamenEjecutado
-      });
+
+      var data = new FormData();
+      data.append('id_pregunta', this.pregunta.id);
+      data.append('respuesta', this.picked);
+      data.append('observacion', this.observacion);
+      data.append('id_examen_ejecutado', this.idExamenEjecutado);
+      data.append('url', this.url);
+      data.append('file', this.file);
+      axios.post(window.current_location + "remote/responder", data);
+    },
+    onFileChange: function onFileChange(e) {
+      this.file = e.target.files[0];
+      this.changeHandler();
     }
   }
 });
@@ -77396,8 +77429,34 @@ var render = function() {
               }
             })
           ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.mostrar,
+                expression: "mostrar"
+              }
+            ],
+            staticClass: "form-group"
+          },
+          [
+            _c("label", [_vm._v("Evidencia Url")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "file", name: "file1", id: _vm.unique + "_file" },
+              on: { change: _vm.onFileChange }
+            })
+          ]
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _c("pre", [_vm._v("    \n    ")])
     ])
   ])
 }
@@ -77477,12 +77536,6 @@ var render = function() {
     { staticClass: "small" },
     [
       _c("h2", [_vm._v("Reportes del Ugel - Especialistas")]),
-      _vm._v(" "),
-      _c("h3", [_vm._v(" LINEAS")]),
-      _vm._v(" "),
-      _c("line-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
-      }),
       _vm._v(" "),
       _c("h3", [_vm._v(" BARRAS")]),
       _vm._v(" "),

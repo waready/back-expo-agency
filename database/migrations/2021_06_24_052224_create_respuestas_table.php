@@ -28,6 +28,9 @@ class CreateRespuestasTable extends Migration
       $table->string('observacion')->nullable()->comment('Observacion adjunta, Evidencia');
       $table->timestamp('calificado')->nullable()->comment('Fecha en la cual fue calificado, en caso la calificacion no sea automatica');
 
+      $table->string('documento')->nullable();
+      $table->string('url')->nullable();
+      
       $table->unique(['id_user', 'id_pregunta', 'id_examen_ejecutado']);
     });
   }

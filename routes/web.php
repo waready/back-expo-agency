@@ -184,3 +184,4 @@ Route::get('/getMisExamenes', 'ExamenesEjecutadosController@getMisExamenes')->na
 
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::post('/editarPerfil','ProfileController@actualizar');

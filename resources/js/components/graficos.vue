@@ -1,8 +1,8 @@
 <template>
   <div class="small">
     <h2>Reportes del Ugel - Especialistas</h2>
-    <h3> LINEAS</h3>
-    <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart>
+    <!-- <h3> LINEAS</h3>
+    <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> -->
 
     <h3> BARRAS</h3>
     <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>

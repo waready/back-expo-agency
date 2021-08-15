@@ -64,6 +64,18 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
+        'adjuntos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/adjuntos'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+        'fotos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/fotos'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
 
     ],
 

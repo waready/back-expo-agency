@@ -529,7 +529,7 @@
                     $('td:eq(9)',row).html('COAR')
 
                     $('td:eq(11)',row).html(
-                      '<a href="https://wa.me/51'+data.celular+'"> <i class="fas fa-phone big-icon text-primary" aria-hidden="true"></i></a>'
+                      '<a target="_blank" href="https://wa.me/51'+data.celular+'"> <i class="fas fa-phone big-icon text-primary" aria-hidden="true"></i></a>'
                     )
                     $('td:eq(12)',row).html(
                       '<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>' +

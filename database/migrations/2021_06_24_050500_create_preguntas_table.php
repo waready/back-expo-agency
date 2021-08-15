@@ -18,6 +18,7 @@ class CreatePreguntasTable extends Migration
             $table->integer('numero');
             $table->text('enunciado');
             $table->decimal('calificacion', 8, 2);
+            
             $table->unsignedInteger('clave');
 
             $table->unsignedBigInteger('id_categoria');

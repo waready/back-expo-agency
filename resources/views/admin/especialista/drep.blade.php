@@ -317,7 +317,7 @@
                     // $('td:eq(3)',row).html('no')
 
                     $('td:eq(8)',row).html(
-                      '<a href="https://wa.me/51'+data.celular+'" target="_blank"> <i class="fas fa-phone big-icon text-primary" aria-hidden="true"></i></a>'
+                      '<a  href="https://wa.me/51'+data.celular+'" target="_blank"> <i class="fas fa-phone big-icon text-primary" aria-hidden="true"></i></a>'
                     )
                     $('td:eq(9)',row).html(
                       '<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>' +

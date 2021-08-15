@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('dni', 11);
-            $table->string('profile_picture')->nullable();
+            $table->string('profile_picture')->default('User_Circle.png');
             $table->string('celular',20)->nullable();
 
             $table->enum('tipo', ['0', '1'])->default('0')->comment('0:user|1:trabajador');
@@ -50,6 +50,19 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('id_user')->nullable();
             $table->foreign('id_user')->references('id')->on('users');
 
+            /**nuevo word**/
+            $table->string('cod_modular_i_e')->nullable();
+            $table->string('nombre_i_e')->nullable();
+            $table->string('nivel_i_e')->nullable();
+            $table->string('caracteristica')->nullable();
+            /**gestion ----*/
+            /**gestion dependencia -- */
+            $table->string('direccion_i_e')->nullable();
+            /***directoir--- */
+            $table->string('centro_poblado_i_e')->nullable();
+            /**area -- */
+            $table->string('provincia')->nullable();
+            $table->string('distrito')->nullable();
 
             $table->timestamps();
         });
