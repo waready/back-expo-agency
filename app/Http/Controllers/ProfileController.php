@@ -38,7 +38,7 @@ class ProfileController extends Controller
         DB::beginTransaction();
         try {
 
-            $user = User::find($request->prodId);
+            $user = User::findOrFail($request->prodId);
 
             // $user->nombres = $request->editar_nombres;
             // $user->apellidos = $request->editar_apellidos;

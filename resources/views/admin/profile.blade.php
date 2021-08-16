@@ -213,7 +213,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url:'editarPerfil/',
+                url:'editarPerfil',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
