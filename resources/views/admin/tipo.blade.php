@@ -240,7 +240,7 @@
                     {data: 'Opciones'}
                 ],
                 rowCallback:function(row, data,index){
-                    $('td:eq(2)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(2)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a> <a class="tabla-usuario" href="/tablaCategorias/'+data.id+'"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
                 }
                 
             });

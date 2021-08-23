@@ -205,3 +205,32 @@ Route::get('/reportesUsuarioUgel', function () {
 Route::get('/reportesUsuarioDirector', function () {
   return view('reportes.vistareportedirector');
 });
+
+Route::get('/tablaCategorias/{id_res}', function ($id_res) {
+  $categorias = DB::table('categorias as cg')
+      ->select('cg.id', 'cg.nombre', 'tp.nombre as tipo' ,DB::raw('"" as Opciones'))
+      ->join('tipos as tp', 'tp.id', '=', 'cg.id_tipo')
+      ->where('id_tipo',$id_res)
+      ->paginate(15);
+      
+      //return \DataTables::of($categoria)->make('true');
+      return view('admin.tablacategoria',compact('categorias'));
+
+})->name('tablaCategorias');
+
+Route::get('/tablaPreguntas/{id_res}', function ($id_res) {
+  // $categorias = DB::table('categorias as cg')
+  //     ->select('cg.id', 'cg.nombre', 'tp.nombre as tipo' ,DB::raw('"" as Opciones'))
+  //     ->join('tipos as tp', 'tp.id', '=', 'cg.id_tipo')
+  //     ->where('id_tipo',$id_res)
+  //     ->paginate(15);
+      $categorias = DB::table('preguntas as pre')
+      ->select('pre.id', 'pre.numero','pre.enunciado','pre.calificacion','pre.clave', 'ct.nombre as categoria' ,DB::raw('"" as Opciones'))
+      ->join('categorias as ct', 'ct.id', '=', 'pre.id_categoria')
+      ->where('id_categoria',$id_res)
+      ->paginate(15);
+      //return $categorias;
+      //return \DataTables::of($categoria)->make('true');
+      return view('admin.tablapregunta',compact('categorias'));
+
+})->name('tablaPreguntas');
