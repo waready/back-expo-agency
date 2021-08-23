@@ -1,8 +1,12 @@
 <template>
   <div class="small">
     <h2>Reportes del Ugel - Especialistas</h2>
+    <h3> BARRAS</h3>
+    <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>
+    <h3> BARRAS PORCENTAJE</h3>
+    <bar-chart :chart-data="datacollection1" :options="chartOptions"></bar-chart>
     <!-- <h3> LINEAS</h3>
-    <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> -->
+    <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> 
 
     <h3> BARRAS</h3>
     <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>
@@ -12,7 +16,7 @@
 
     <h3> AREA</h3>
     <area-chart :chart-data="datacollection" :options="chartOptions"></area-chart>
-    <!-- <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
+    <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
   </div>
 </template>
 
@@ -46,6 +50,7 @@ export default {
   data(){
     return {
       datacollection: null,
+      datacollection1: null,
       menssages:[],
       chartOptions: {
         responsive: true,
@@ -71,6 +76,7 @@ export default {
     {
     var labels = [];
     var valores = [];
+    var porcentaje = [];
     var coloR = [];
     var dynamicColors = function() {
         var r = Math.floor(Math.random() * 255);
@@ -82,10 +88,14 @@ export default {
 
     for(var i=0; i<this.menssages.length;i++){
         labels.push(this.menssages[i].nombre) 
-        valores.push(this.menssages[i].num) 
+        valores.push(this.menssages[i].num)
+        var por = (this.menssages[i].num / (this.menssages.length + 1))*100 
+        var fin = Math.round(por)
+        porcentaje.push(fin)
+        console.log(fin);
         coloR.push(dynamicColors());
     }  
-   // console.log(labels, "labels");
+    //console.log(, "labels");
       this.datacollection = {
         labels: labels,
         datasets: [
@@ -93,6 +103,16 @@ export default {
             label: 'Ugels',
             backgroundColor: coloR,
             data: valores,
+          },
+        ]
+      }
+      this.datacollection1 = {
+        labels: labels,
+        datasets:[
+          {
+            label: 'Ugels',
+            backgroundColor: coloR,
+            data: porcentaje,
           },
         ]
       }

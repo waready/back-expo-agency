@@ -8,10 +8,10 @@
     <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>
 
     <h3> PIE</h3>
-    <pie-chart :chart-data="datacollection" :options="chartOptions"></pie-chart>
+    <pie-chart :chart-data="datacollection" :height="100"></pie-chart>
 
     <h3> AREA</h3>
-    <area-chart :chart-data="datacollection" :options="chartOptions"></area-chart>
+    <area-chart :chart-data="datacollection" :height="100"></area-chart>
     <!-- <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
   </div>
 </template>

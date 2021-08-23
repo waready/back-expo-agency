@@ -1,18 +1,20 @@
 <template>
   <div class="small">
     <h2>Reportes del Ugel - Director</h2>
-    <!-- <h3> LINEAS</h3>
-    <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> -->
-
     <h3> BARRAS</h3>
     <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>
+
+    <!-- <h3> LINEAS</h3>
+    <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> 
+
+    
 
     <h3> PIE</h3>
     <pie-chart :chart-data="datacollection" :options="chartOptions"></pie-chart>
 
     <h3> AREA</h3>
     <area-chart :chart-data="datacollection" :options="chartOptions"></area-chart>
-    <!-- <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
+   <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
   </div>
 </template>
 

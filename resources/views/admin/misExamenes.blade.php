@@ -87,7 +87,8 @@
                                     <th>{{ __("Observacion") }}</th>
                                     <th>{{ __("Aciertos") }}</th>
                                     <th>{{ __("Calificacion") }}</th>
-                                    {{-- <th>{{ __("Opciones") }}</th> --}}
+                                    <th>{{ __("url") }}</th>
+                                    <th>{{ __("documento") }}</th>
                                 </tr>
                             </thead>
                         </table>
@@ -323,10 +324,11 @@
                                 {data: 'id'},
                                 {data: 'id_pregunta'},
                                 {data: 'respuesta'},
-                                {data: 'Opciones'},
+                                {data: 'observacion'},
                                 {data: 'aciertos'},
                                 {data: 'calificacion'},
-                            
+                                {data: 'url'},
+                                {data: 'documento'},
                             ],
                             rowCallback:function(row, data,index){
 
@@ -344,6 +346,16 @@
                                 $('td:eq(5)',row).html('0.00')
                                 else
                                 $('td:eq(5)',row).html(data.calificacion)
+
+                                if(data.url == "null")
+                                $('td:eq(6)',row).html('--')
+                                else
+                                $('td:eq(6)',row).html('<a target="_blank" href="//'+data.url+'">Link</a> ')
+
+                                if(data.documento == null)
+                                $('td:eq(7)',row).html('--')
+                                else
+                                $('td:eq(7)',row).html('<a href="storage/adjuntos/'+data.documento+'"><i class="fas fa-file-alt big-icon text-info" aria-hidden="true"></i></a>')
                             }
                         
                         });

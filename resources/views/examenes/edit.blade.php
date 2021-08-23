@@ -22,7 +22,7 @@ $tipo = tipo::find($examen->id_tipo);
     <div class="col-md-5">
       <div>
         <div class="mb-3">
-          <label for="">Supervisor:</label>
+          <label for="">Monitor:</label>
           <select class="custom-select" disabled name="id_user_supervisor">
             <option selected>
               {{$supervisor->nombres}} {{$supervisor->apellidos}}
@@ -30,7 +30,7 @@ $tipo = tipo::find($examen->id_tipo);
           </select>
         </div>
         <div class="mb-3">
-          <label for="">Supervisado:</label>
+          <label for="">Monitoreado:</label>
           <select class="custom-select" disabled name="id_user_supervisado">
             <option selected>
               {{$supervisado->nombres}} {{$supervisado->apellidos}}
@@ -38,7 +38,7 @@ $tipo = tipo::find($examen->id_tipo);
           </select>
         </div>
         <div class="mb-3">
-          <label for="">Tipo Examen:</label>
+          <label for="">Tipo Monitoreo:</label>
           <select class="custom-select" disabled name="id_tipo">
             <option selected>
               {{$tipo->nombre}}

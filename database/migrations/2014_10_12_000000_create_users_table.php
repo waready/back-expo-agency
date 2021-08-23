@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nombres');
+         
             $table->string('apellidos');
             $table->string('dni', 11);
             $table->string('profile_picture')->default('User_Circle.png');
@@ -52,6 +53,8 @@ class CreateUsersTable extends Migration
 
             /**nuevo word**/
             $table->string('cod_modular_i_e')->nullable();
+
+            
             $table->string('nombre_i_e')->nullable();
             $table->string('nivel_i_e')->nullable();
             $table->string('caracteristica')->nullable();
@@ -63,6 +66,8 @@ class CreateUsersTable extends Migration
             /**area -- */
             $table->string('provincia')->nullable();
             $table->string('distrito')->nullable();
+
+            /***intervencion */
 
             $table->timestamps();
         });

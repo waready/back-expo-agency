@@ -2,6 +2,7 @@
 
 use App\respuesta;
 use App\ExamenEjecutado;
+use App\Exports\DataExport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
 Route::get('/', function () {
   return view('welcome');
 });
@@ -28,8 +30,8 @@ Route::get('/variacion', function () {
   return view('graficos.variacion');
 });
 
-Auth::routes();
-//Auth::routes(["register" => false]);
+//Auth::routes();
+Auth::routes(["register" => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ejecutar-examen/{id}', 'HomeController@ejecutarExamen');
@@ -185,3 +187,21 @@ Route::get('/getMisExamenes', 'ExamenesEjecutadosController@getMisExamenes')->na
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/editarPerfil','ProfileController@actualizar');
+
+
+Route::get('/reportes1', 'ReporteController@ReporteUgelDrep')->name('profile');
+
+Route::get('/reportesFinal', 'ReporteController@Excel')->name('reportesall');
+Route::get('/reportesFinalDrep', 'ReporteController@ExcelDrep')->name('reportesallDrep');
+Route::get('/reportesFinalUgel', 'ReporteController@ExcelUgel')->name('reportesallUgel');
+Route::get('/reportesFinalDirector', 'ReporteController@ExcelDirector')->name('reportesallDirector');
+
+Route::get('/reportesUsuarioDrep', function () {
+  return view('reportes.vistareporte');
+});
+Route::get('/reportesUsuarioUgel', function () {
+  return view('reportes.vistareporteugel');
+});
+Route::get('/reportesUsuarioDirector', function () {
+  return view('reportes.vistareportedirector');
+});

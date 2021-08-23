@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 return [
 
     /*
@@ -127,7 +129,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -187,14 +189,14 @@ return [
     |
     */
 
-    'use_route_url' => false,
+    'use_route_url' => true,
     'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
-    'profile_url' => true,
+    'profile_url' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -243,6 +245,7 @@ return [
             'icon' => 'fas fa-fw fa-sign-out',
             'topnav_right' => true,
         ],
+       
 
         // Sidebar items:
         [
@@ -268,7 +271,7 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Tipo Examen',
+            'text' => 'Ficha Monitoreo (Planificación)',
             'url'  => '/tipo',
             'icon' => 'fas fa-fw fa-book',
             'can'  => 'admin.home'
@@ -353,14 +356,31 @@ return [
         [
             'text'       => 'Reportes',
             'icon_color' => 'red',
-            'url'        => '#',
+            
+            'submenu' => [
+                [
+                    'text' => 'Especialista Drep',   
+                    // 'url'  => '/variacion',
+                    'url'        => '/reportesUsuarioDrep',        
+                ],
+                [
+                    'text' => 'Especialista Ugel',   
+                     'url'  => '/reportesUsuarioUgel',
+                    
+                ],
+                [
+                    'text' => 'Director',   
+                    'url' => 'reportesUsuarioDirector',   
+
+                ],
+            ],
         ],
         [
             'text'       => 'Charts',
             'icon_color' => 'yellow',
             'submenu' => [
                 [
-                    'text' => 'Especialista',   
+                    'text' => 'Especialista Ugel',   
                     // 'url'  => '/variacion',
                     'submenu' => [
                         [

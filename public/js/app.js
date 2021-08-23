@@ -1993,7 +1993,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       preguntas: [],
-      categorias: []
+      categorias: [],
+      vocabulario: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
     };
   },
   computed: {//
@@ -2242,6 +2243,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2352,6 +2355,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2378,6 +2385,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       datacollection: null,
+      datacollection1: null,
       menssages: [],
       chartOptions: {
         responsive: true,
@@ -2399,6 +2407,7 @@ __webpack_require__.r(__webpack_exports__);
     fillData: function fillData() {
       var labels = [];
       var valores = [];
+      var porcentaje = [];
       var coloR = [];
 
       var dynamicColors = function dynamicColors() {
@@ -2411,8 +2420,12 @@ __webpack_require__.r(__webpack_exports__);
       for (var i = 0; i < this.menssages.length; i++) {
         labels.push(this.menssages[i].nombre);
         valores.push(this.menssages[i].num);
+        var por = this.menssages[i].num / (this.menssages.length + 1) * 100;
+        var fin = Math.round(por);
+        porcentaje.push(fin);
+        console.log(fin);
         coloR.push(dynamicColors());
-      } // console.log(labels, "labels");
+      } //console.log(, "labels");
 
 
       this.datacollection = {
@@ -2421,6 +2434,14 @@ __webpack_require__.r(__webpack_exports__);
           label: 'Ugels',
           backgroundColor: coloR,
           data: valores
+        }]
+      };
+      this.datacollection1 = {
+        labels: labels,
+        datasets: [{
+          label: 'Ugels',
+          backgroundColor: coloR,
+          data: porcentaje
         }]
       };
     }
@@ -2674,6 +2695,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PolarChart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PolarChart.js */ "./resources/js/components/PolarChart.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+//
+//
 //
 //
 //
@@ -77143,10 +77166,13 @@ var render = function() {
                 },
                 on: { "on-complete": _vm.onComplete }
               },
-              _vm._l(_vm.categorias, function(categoria) {
+              _vm._l(_vm.categorias, function(categoria, index) {
                 return _c(
                   "tab-content",
-                  { key: categoria.id, attrs: { title: "A" } },
+                  {
+                    key: categoria.id,
+                    attrs: { title: _vm.vocabulario[index] }
+                  },
                   [
                     _c("div", { staticClass: "card" }, [
                       _c("div", { staticClass: "card-header" }, [
@@ -77492,18 +77518,6 @@ var render = function() {
       _vm._v(" "),
       _c("bar-chart", {
         attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
-      }),
-      _vm._v(" "),
-      _c("h3", [_vm._v(" PIE")]),
-      _vm._v(" "),
-      _c("pie-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
-      }),
-      _vm._v(" "),
-      _c("h3", [_vm._v(" AREA")]),
-      _vm._v(" "),
-      _c("area-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
       })
     ],
     1
@@ -77543,16 +77557,10 @@ var render = function() {
         attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
       }),
       _vm._v(" "),
-      _c("h3", [_vm._v(" PIE")]),
+      _c("h3", [_vm._v(" BARRAS PORCENTAJE")]),
       _vm._v(" "),
-      _c("pie-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
-      }),
-      _vm._v(" "),
-      _c("h3", [_vm._v(" AREA")]),
-      _vm._v(" "),
-      _c("area-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+      _c("bar-chart", {
+        attrs: { "chart-data": _vm.datacollection1, options: _vm.chartOptions }
       })
     ],
     1
@@ -77595,13 +77603,13 @@ var render = function() {
       _c("h3", [_vm._v(" PIE")]),
       _vm._v(" "),
       _c("pie-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+        attrs: { "chart-data": _vm.datacollection, height: 100 }
       }),
       _vm._v(" "),
       _c("h3", [_vm._v(" AREA")]),
       _vm._v(" "),
       _c("area-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+        attrs: { "chart-data": _vm.datacollection, height: 100 }
       })
     ],
     1
@@ -77644,13 +77652,13 @@ var render = function() {
       _c("h3", [_vm._v(" PIE")]),
       _vm._v(" "),
       _c("pie-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+        attrs: { "chart-data": _vm.datacollection, height: 100 }
       }),
       _vm._v(" "),
       _c("h3", [_vm._v(" AREA")]),
       _vm._v(" "),
       _c("area-chart", {
-        attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
+        attrs: { "chart-data": _vm.datacollection, height: 100 }
       })
     ],
     1
@@ -77680,7 +77688,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "small" },
+    {},
     [
       _c("h2", [_vm._v("Reportes del Nivel - Director")]),
       _vm._v(" "),
@@ -77690,13 +77698,24 @@ var render = function() {
         attrs: { "chart-data": _vm.datacollection, options: _vm.chartOptions }
       }),
       _vm._v(" "),
-      _c("h3", [_vm._v(" PIE")]),
-      _vm._v(" "),
-      _c("pie-chart", { attrs: { "chart-data": _vm.datacollection } }),
+      _c(
+        "div",
+        {},
+        [
+          _c("h3", [_vm._v(" PIE")]),
+          _vm._v(" "),
+          _c("pie-chart", {
+            attrs: { "chart-data": _vm.datacollection, height: 100 }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("h3", [_vm._v(" AREA")]),
       _vm._v(" "),
-      _c("area-chart", { attrs: { "chart-data": _vm.datacollection } })
+      _c("area-chart", {
+        attrs: { "chart-data": _vm.datacollection, height: 100 }
+      })
     ],
     1
   )

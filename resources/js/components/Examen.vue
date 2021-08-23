@@ -20,8 +20,8 @@
                         @on-complete="onComplete"
                     >
                         <tab-content
-                            title="A"
-                            v-for="categoria in categorias"
+                            :title="vocabulario[index]"
+                            v-for="(categoria, index) in categorias"
                             :key="categoria.id"
                         >
                             <div class="card">
@@ -77,6 +77,7 @@ export default {
     data: () => ({
         preguntas: [],
         categorias: [],
+        vocabulario:['A','B','C','D','E','F','G','H','I','J','K','L','M']
     }),
 
     computed: {

@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mt-2">
-                <div class="card-header">Tipo de Examen :
+                <div class="card-header">Ficha de Monitoreo :
 
                     <button type="button" id="agregar-responsable-carrera" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modal-agregar-usuario">
                         <i class="fa fa-plus"></i> Agregar

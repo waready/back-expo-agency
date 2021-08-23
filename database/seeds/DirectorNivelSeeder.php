@@ -20,6 +20,8 @@ class DirectorNivelSeeder extends Seeder
             'id_nivel' => 1,
             'nombre'  => 'NO ESCOLARIZADO'
         ]);
+        /**cuna para inicial */
+        /*** */
         DirectorNivel::create([
             'id_nivel' => 2,
             'nombre'  => 'Unidocente(EIB)'
@@ -32,6 +34,7 @@ class DirectorNivelSeeder extends Seeder
             'id_nivel' => 2,
             'nombre'  => 'Polidocente'
         ]);
+        
         DirectorNivel::create([
             'id_nivel' => 3,
             'nombre'  => 'JER'

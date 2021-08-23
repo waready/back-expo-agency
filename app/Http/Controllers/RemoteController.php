@@ -25,6 +25,8 @@ class RemoteController extends Controller
 
   public function preguntasLista(Request $request)
   {
+
+    /**estado --- revisar **/
     $query = DB::table('preguntas AS A')
       ->select(
         'A.id',
@@ -93,9 +95,21 @@ class RemoteController extends Controller
       $respuesta->calificacion = $valor->calificacion;
       $respuesta->aciertos = 1;
     }
+
+    /**arreglar**/
+
     $respuesta->respuesta = $request->input('respuesta');
-    $respuesta->observacion = $request->input('observacion');
-    $respuesta->url = $request->input('url');
+    // $respuesta->observacion = $request->input('observacion');
+    // $respuesta->url = $request->input('url');
+
+    // if(($request->respuesta))
+    // $respuesta->respuesta  = $request->respuesta;
+
+    if(($request->observacion)!="null")
+    $respuesta->observacion = $request->observacion;
+
+    if(($request->url)!="null")
+    $respuesta->url= $request->url;
 
     $file = $request->file('file');
     if($file){

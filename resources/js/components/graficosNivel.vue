@@ -1,17 +1,19 @@
 <template>
-  <div class="small">
+  <div class="">
     <h2>Reportes del Nivel - Director</h2>
     <!-- <h3> LINEAS</h3>
     <line-chart :chart-data="datacollection" :options="chartOptions"></line-chart> -->
 
     <h3> BARRAS</h3>
     <bar-chart :chart-data="datacollection" :options="chartOptions"></bar-chart>
-
-    <h3> PIE</h3>
-    <pie-chart :chart-data="datacollection" ></pie-chart>
+    <div class="">
+      <h3> PIE</h3>
+      <pie-chart :chart-data="datacollection" :height="100"></pie-chart>
+    </div>
 
     <h3> AREA</h3>
-    <area-chart :chart-data="datacollection" ></area-chart>
+    <area-chart :chart-data="datacollection"  :height="100"></area-chart>
+   
     <!-- <bar-chart :chart-data="datacollection" :height="100"></bar-chart> -->
   </div>
 </template>
