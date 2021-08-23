@@ -57,7 +57,7 @@
                                             {{$item->tipo}}
                                         </td>
                                         <td>
-                                            <a class="tabla-usuario" href="/tablaCategorias/'+data.id+'"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>
+                                            <a class="tabla-usuario" href="/tablaPreguntas/{{$item->id}}"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
