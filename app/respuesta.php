@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class respuesta extends Model
 {
+
+
+  public function course(){
+    return $this->belongsTo('App\ExamenEjecutado', 'id_examen_ejecutado');
+  }
   // protected $primaryKey = ['id_user', 'id_pregunta'];
   // public $incrementing = false;
 

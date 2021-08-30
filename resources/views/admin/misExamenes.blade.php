@@ -37,6 +37,7 @@
                                     <th>{{ __("Tipo Examen") }}</th>
                                     <th>{{ __("Fecha") }}</th>
                                     <th>{{ __("Respuestas") }}</th>
+                                    <th>{{ __("Procentaje") }}</th>
                                     <th>{{ __("Opciones") }}</th>
                                 </tr>
                             </thead>
@@ -89,6 +90,7 @@
                                     <th>{{ __("Calificacion") }}</th>
                                     <th>{{ __("url") }}</th>
                                     <th>{{ __("documento") }}</th>
+                                    
                                 </tr>
                             </thead>
                         </table>
@@ -222,11 +224,25 @@
                     {data: 'tipo'},
                     {data: 'created_at'},
                     {data: 'respuestas'},
-                    {data: 'Opciones'}
+                    {data: 'procentaje'},
+                    {data: 'Opciones'},
+
                 ],
                 rowCallback:function(row, data,index){
+                    var valeur
+                     
+                    //console.log(data.porcentaje.num)
+                    if(data.procentaje != null){
+                        //  valeur = (data.procentaje.num * 3.3)
+                        var procentaje= (data.procentaje.num / 30)*100;
+                        valeur = Math.round( procentaje );
+
+                    }else{
+                        valeur = 0;
+                    }
                     $('td:eq(5)',row).html('<a class="tabla-usuario" href="'+data.id+'"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>')
-                    $('td:eq(6)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="'+data.id+'" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(6)',row).html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+valeur+'%">'+valeur+'%</div></div>')
+                    $('td:eq(7)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="'+data.id+'" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
                 }
                 
             });

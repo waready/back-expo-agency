@@ -35,14 +35,29 @@ class ExamenesEjecutadosController extends Controller
   public function getMisExamenes()
   {
     $examenes = DB::table('examenes_ejecutados as ug')
-    ->select('ug.*',DB::raw('"" as Opciones'),DB::raw('"" as respuestas'),'tp.nombre as tipo',  DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),
+    ->select('ug.*',DB::raw('"" as Opciones'),DB::raw('"" as procentaje'),DB::raw('"" as respuestas'),'tp.nombre as tipo',  DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),
     DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'))
     ->join('users as us', 'us.id', '=' ,'ug.id_user_supervisor') 
+    // ->join('respuestas as rp','rp.id_examen_ejecutado','=','ug.id')
     ->join('users as as', 'as.id', '=' ,'ug.id_user_supervisado')
     ->join('tipos as tp','tp.id','=','ug.id_tipo' )
     
     ->where('id_user_supervisor', Auth::user()->id)
     ->get();
+
+
+    foreach ($examenes as $row) {
+      $row->procentaje = DB::table('respuestas as rp')
+      ->select(DB::raw('COUNT(rp.id_user) as num'))
+
+      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+      ->where([
+          ['id_examen_ejecutado',$row->id]
+      ])
+      ->GROUPBY('rp.id_user')
+      ->first();
+    }
+
     
     return \DataTables::of($examenes)->make('true');
   }
