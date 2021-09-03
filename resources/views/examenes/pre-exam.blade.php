@@ -68,6 +68,18 @@ $tipoExamenes = DB::table('tipos')->get();
         <button class="btn btn-primary" type="submit">Iniciar</button>
       </form>
     </div>
+    <div class="col-md-5 offset-md-2 mt-3">
+      
+      <div class="mb-3">
+        <div class="mb-3">
+          Periodo de Monitoreo 
+        </div>
+        
+      </div>
+      <div class="mb-3">
+        <a href="#" type="button"  class="btn btn-success" value="">Descargar ficha vacia</a>
+      </div>
+    </div>
   </div>
 </div>
 @endsection

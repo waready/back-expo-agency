@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card mt-2">
-                <div class="card-header">Mis Examenes Ejecutados:
+                <div class="card-header">Mis Monitoreos Ejecutados:
                 </div>
                 <div class="card-body">
                     @if (session('status'))
@@ -54,7 +54,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-secondary text-white">
-                <h5 class="modal-title">Avance de Examen  </h5>
+                <h5 class="modal-title">Avance de Monitoreo  </h5>
 
                 <button onclick="ExportToExcel('xlsx')" > Export table to excel</button>
 
@@ -295,8 +295,8 @@
                     },
                     success: function(data) {
                        var valeur
-                       var aciertosSI =[]
-                       var aciertosNO =[]
+                       var aciertosSI = 0 
+                       var aciertosNO = 0
                         //console.log(data.porcentaje.num)
                         if(data.porcentaje != null){
                           //  valeur = (data.porcentaje.num * 3.3)
@@ -306,25 +306,16 @@
                         }else{
                             valeur = 0;
                         }
-                        if(data.aciertos != null){
+                        if(data.aciertosSI != null){
                            // valeur = (data.porcentaje.num * 3.3)
-                           console.log(data.aciertos)
-                           for(var i=0;i<data.aciertos.length;i++){
-
-                                if(data.aciertos[i].aciertos == 0)
-                                    aciertosSI.push(data.aciertos[i].val)
-                                else
-                                    aciertosSI.push(0)
-                                if(data.aciertos[i].aciertos == 1)
-                                    aciertosNO.push(data.aciertos[i].val)
-                                else
-                                    aciertosNO.push(0)
-                           }
-                           console.log(aciertosNO,aciertosSI,"hi")
-                           $('#aciertos').html('aciertos : '+aciertosNO+' -  errados: '+aciertosSI)
-                        }else{
-                            //valeur = 0;
+                           aciertosSI = data.aciertosSI.val
+                    
                         }
+                        if(data.aciertosNO != null){
+                            aciertosNO = data.aciertosNO.val
+                        }
+                        $('#aciertos').html('(SI): '+aciertosSI+' -  (NO): '+aciertosNO)
+                
                      
                         $('#barra').css('width', valeur+'%').attr('aria-valuenow', valeur);  
                         dt1 = jQuery("#students-table1").DataTable({
@@ -364,7 +355,7 @@
                                 else
                                 $('td:eq(5)',row).html(data.calificacion)
 
-                                if(data.url == "null")
+                                if(data.url == null )
                                 $('td:eq(6)',row).html('--')
                                 else
                                 $('td:eq(6)',row).html('<a target="_blank" href="//'+data.url+'">Link</a> ')

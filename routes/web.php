@@ -114,13 +114,28 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
       ->GROUPBY('rp.id_user')
       ->first();
       
-      $evaluado['aciertos'] = DB::table('respuestas as rp')
-      ->select('rp.aciertos',DB::raw('COUNT(rp.aciertos) as val'))
+      $evaluado['aciertosSI'] = DB::table('respuestas as rp')
+      ->select('rp.id_examen_ejecutado',
+      DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
 
       //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      ->where('id_examen_ejecutado',$evaluado["tabla"]->id)
-      ->GROUPBY('rp.aciertos')
-      ->get();
+      ->where([
+        ['id_examen_ejecutado',$evaluado["tabla"]->id],
+        ['respuesta',1]
+        ])
+      ->GROUPBY('rp.id_examen_ejecutado')
+      ->first();
+
+      $evaluado['aciertosNO'] = DB::table('respuestas as rp')
+      ->select('rp.id_examen_ejecutado', DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
+
+      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+      ->where([
+        ['id_examen_ejecutado',$evaluado["tabla"]->id],
+        ['respuesta',0]
+        ])
+    ->GROUPBY('rp.id_examen_ejecutado')
+      ->first();
 
 
       return $evaluado;
