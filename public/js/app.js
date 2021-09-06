@@ -2394,7 +2394,7 @@ __webpack_require__.r(__webpack_exports__);
           display: false
         },
         scales: {
-          yAxes: [{
+          xAxes: [{
             ticks: {
               min: 0
             }
@@ -90041,7 +90041,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveProp;
 /* harmony default export */ __webpack_exports__["default"] = ({
-  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Bar"],
+  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["HorizontalBar"],
   mixins: [reactiveProp],
   props: ['options', 'chartData'],
   mounted: function mounted() {

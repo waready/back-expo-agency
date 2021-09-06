@@ -59,7 +59,7 @@ export default {
           display: false
         },
         scales: {
-          yAxes: [{
+          xAxes: [{
             ticks: {
               min: 0,
             
@@ -100,6 +100,7 @@ export default {
         labels: labels,
         datasets: [
           {
+            
             label: 'Ugels',
             backgroundColor: coloR,
             data: valores,

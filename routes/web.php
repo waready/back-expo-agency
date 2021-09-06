@@ -82,12 +82,13 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
     /****REPORTE*****/
     Route::get('/tablaExamen/{id_res}', function ($id_res) {
       $users = DB::table('respuestas as rp')
-      ->select('rp.*',
+      ->select('rp.*','pre.numero',
       DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
       DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
       ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
       ->join('users as us','us.id','ej.id_user_supervisado')
       ->join('users as as','as.id','ej.id_user_supervisor')
+      ->join('preguntas as pre','pre.id','rp.id_pregunta')
       ->where('ej.id_user_supervisado',$id_res)
       
       ->get();

@@ -330,7 +330,7 @@
                             },
                             columns: [
                                 {data: 'id'},
-                                {data: 'id_pregunta'},
+                                {data: 'numero'},
                                 {data: 'respuesta'},
                                 {data: 'observacion'},
                                 {data: 'aciertos'},

@@ -28,6 +28,7 @@ $tipoExamenes = DB::table('tipos')->get();
   <div class="row">
     <div class="col-md-5 mt-3">
       <h4>AJUSTE DEL MONITOREO</h4>
+
       <form method="POST" action="{{ url('/examenes/') }}">
         {{ csrf_field() }}
         <div class="mb-3">
@@ -76,9 +77,17 @@ $tipoExamenes = DB::table('tipos')->get();
         </div>
         
       </div>
+      @if ($examType == 1)
       <div class="mb-3">
-        <a href="#" type="button"  class="btn btn-success" value="">Descargar ficha vacia</a>
+        <a href="/docs/F_Especialista_Ugel_v3.docx" type="button"  class="btn btn-success" value="">Descargar ficha vacia</a>
       </div>
+      @endif
+      @if($examType == 2)
+      <div class="mb-3">
+        <a href="/docs/F_Director_v3.docx" type="button"  class="btn btn-success" value="">Descargar ficha vacia</a>
+      </div>
+      @endif
+      
     </div>
   </div>
 </div>

@@ -315,7 +315,7 @@ return [
             'can' => 'admin.director.index'
         ],
         [
-            'text' => 'Mis Examanes Ejecutados',
+            'text' => 'Mis Monitoreos Ejecutados',
             'url'  => '/examenes',
             'icon' => 'fas fa-fw fa-users',
             'can' => 'admin.director.index'
