@@ -18,16 +18,16 @@ class FakeDirectoresSeeder extends Seeder
   {
     $this->setUpFaker();
 
-    for ($i = 0; $i < 100; $i++) {
+    for ($i = 0; $i < 10; $i++) {
       User::create([
-        'nombres'  => $this->faker->name,
-        'apellidos'  => $this->faker->lastName,
+       // 'nombres'  => $this->faker->name,
+        //'apellidos'  => $this->faker->lastName,
         'dni'  => $this->faker->numerify('########'),
-        'email' => $this->faker->email,
-        'id_ugel' => $this->faker->numberBetween(1, 14),
+        'email' => $this->faker->unique()->email,
+        //'id_ugel' => $this->faker->numberBetween(1, 14),
         'id_tipo_participante' => TipoParticipante::DIRECTOR,
-        'celular' => $this->faker->numerify('9########'),
-        'cargo' => $this->faker->jobTitle,
+        //'celular' => $this->faker->numerify('9########'),
+        //'cargo' => $this->faker->jobTitle,
         'condicion' => '',
         'password' => bcrypt('01318002'),
       ])->assignRole('Director');

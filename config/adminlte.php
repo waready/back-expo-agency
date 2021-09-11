@@ -320,6 +320,12 @@ return [
             'icon' => 'fas fa-fw fa-users',
             'can' => 'admin.director.index'
         ],
+        [
+            'text' => 'Monitoreos Ejecutados por Categoria',
+            'url'  => '/examenesCategoria',
+            'icon' => 'fas fa-fw fa-users',
+            'can' => 'admin.director.index'
+        ],
       
         // [
         //     'text'    => 'multilevel',

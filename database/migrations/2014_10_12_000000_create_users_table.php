@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nombres');
+            $table->string('nombres')->nullable();
          
-            $table->string('apellidos');
-            $table->string('dni', 11);
+            $table->string('apellidos')->nullable();
+            $table->string('dni', 11)->nullable();
             $table->string('profile_picture')->default('User_Circle.png');
             $table->string('celular',20)->nullable();
 
@@ -34,7 +34,7 @@ class CreateUsersTable extends Migration
 
             $table->rememberToken();
             
-            $table->unsignedBigInteger('id_ugel');
+            $table->unsignedBigInteger('id_ugel')->nullable();
             $table->foreign('id_ugel')->references('id')->on('ugels');
 
             //director
@@ -53,14 +53,14 @@ class CreateUsersTable extends Migration
 
             /**nuevo word**/
             $table->string('cod_modular_i_e')->nullable();
-
+            $table->string('cod_local_i_e')->nullable();
             
             $table->string('nombre_i_e')->nullable();
-            $table->string('nivel_i_e')->nullable();
+            // $table->string('nivel_i_e')->nullable();
             $table->string('caracteristica')->nullable();
             /**gestion ----*/
             /**gestion dependencia -- */
-            $table->string('direccion_i_e')->nullable();
+           
             /***directoir--- */
             $table->string('centro_poblado_i_e')->nullable();
             /**area -- */
@@ -68,6 +68,16 @@ class CreateUsersTable extends Migration
             $table->string('distrito')->nullable();
 
             /***intervencion */
+            $table->string('nivel_i_e')->nullable();
+            $table->string('gestion_i_e')->nullable();
+            $table->string('dependencia_i_e')->nullable();
+
+            //$table->string('direccion_i_e')->nullable();
+            $table->string('localidad_i_e')->nullable();
+            $table->string('direccion_i_e')->nullable();
+            $table->integer('total_estudiantes')->nullable();
+            $table->integer('total_docentes')->nullable();
+            $table->integer('total_secciones')->nullable();
 
             $table->timestamps();
         });

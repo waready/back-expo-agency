@@ -115,6 +115,41 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
       ->GROUPBY('rp.id_user')
       ->first();
       
+      $evaluado['tipo'] = DB::table('respuestas as rp')
+      ->select('ct.id_tipo')
+      //DB::raw('COUNT(rp.id_user) as num'))
+
+      ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+      ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+      ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          
+      ])
+      //->GROUPBY('rp.id_user')
+      ->first();
+
+      $evaluado['categorias'] = DB::table('categorias as ct')
+      ->select('ct.*')
+      //->leftJoin('preguntas as pr','pr.id','ct.') 
+      ->where('id_tipo',$evaluado['tipo']->id_tipo)
+      ->get(); 
+      foreach ($evaluado['categorias'] as $row) {
+        $row->procentaje = DB::table('respuestas as rp')
+        ->select('ct.nombre',
+        DB::raw('COUNT(ct.nombre) as num'))
+
+        ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+        ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+        ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          ['pr.id_categoria',$row->id],
+          ['respuesta',1]
+          ])
+        ->GROUPBY('ct.nombre')
+        ->first(); 
+        } 
+        $evaluado['tabvs']= \DataTables::of($evaluado['categorias'])->make('true');
+
       $evaluado['aciertosSI'] = DB::table('respuestas as rp')
       ->select('rp.id_examen_ejecutado',
       DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
@@ -250,3 +285,57 @@ Route::get('/tablaPreguntas/{id_res}', function ($id_res) {
       return view('admin.tablapregunta',compact('categorias'));
 
 })->name('tablaPreguntas');
+
+
+Route::resource('examenesCategoria', 'ExamenesCategoriaController');
+
+Route::get('/tablaExamenCategoria/{id_res}', function ($id_res) {
+
+  $evaluado["tabla"] = ExamenEjecutado::where('id',$id_res)->first();
+  $evaluado['tipo'] = DB::table('respuestas as rp')
+      ->select('ct.id_tipo')
+      //DB::raw('COUNT(rp.id_user) as num'))
+
+      ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+      ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+      ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          
+      ])
+      //->GROUPBY('rp.id_user')
+      ->first();
+
+      $evaluado['categorias'] = DB::table('categorias as ct')
+      ->select('ct.*','tp.nombre as tipo' ,DB::raw('"" as Opciones'))
+      ->join('tipos as tp','tp.id', 'ct.id_tipo')
+      ->where('id_tipo',$evaluado['tipo']->id_tipo)
+      ->get(); 
+      foreach ($evaluado['categorias'] as $row) {
+        $row->procentaje = DB::table('respuestas as rp')
+        ->select(
+        DB::raw('COUNT(ct.nombre) as num'))
+
+        ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+        ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+
+        ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          ['pr.id_categoria',$row->id],
+          ['respuesta',1]
+          ])
+        ->GROUPBY('ct.nombre')
+        ->first(); 
+        $row->total = DB::table('preguntas as pre') 
+          ->select(DB::raw('COUNT(pre.id_categoria) as num'))
+          ->where('id_categoria',$row->id)
+          ->GROUPBY('pre.id_categoria')
+          ->first(); 
+
+        } 
+        $evaluado['tabvs']= \DataTables::of($evaluado['categorias'])->make('true');
+
+        return $evaluado['tabvs'];
+
+
+
+})->name('getRespuestasdos');
