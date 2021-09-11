@@ -57,7 +57,7 @@
                 <h5 class="modal-title">Avance de Monitoreo  </h5>
 
                 <button onclick="ExportToExcel('xlsx')" > Export table to excel</button>
-
+                <input type="button"  value="Print" id="btnPrint">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -187,7 +187,7 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
-    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.8.0/printThis.min.js" integrity="sha512-q4kY6PLCmuZdhcDXWvOIsRAFQOFfuBe88amMCC9XED+ZbJfk0vxcpzUFD4TjO5fGfKI7e8CPbSrhlxsyFBckMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script> --}}
     <script>
         let dt;
@@ -207,6 +207,15 @@
         //     } );
         // } );
          jQuery(document).ready(function() {
+
+            $("#btnPrint").on("click", function () {
+                $("#dvData").printThis({ 
+                importCSS: true,
+                importStyle: true,//thrown in for extra measure
+                loadCSS: "/app/css/printListTable.css",
+                header:'<h1>Table Report</h1>'});
+            });
+            
             dt = jQuery("#students-table").DataTable({
                 pageLength: 15,
                 lengthMenu: [15, 25, 50, 75, 100 ],

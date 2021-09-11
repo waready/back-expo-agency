@@ -57,7 +57,7 @@
                 <h5 class="modal-title">Avance de Monitoreo por Categorias</h5>
 
                 <button onclick="ExportToExcel('xlsx')" > Export table to excel</button>
-                <input type="button"  value="Print This" id="btnPrint">
+                <input type="button"  value="Print" id="btnPrint">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
