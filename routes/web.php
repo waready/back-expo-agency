@@ -110,7 +110,8 @@ Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->nam
 
       //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
       ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id]
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          ['respuesta',1]
       ])
       ->GROUPBY('rp.id_user')
       ->first();

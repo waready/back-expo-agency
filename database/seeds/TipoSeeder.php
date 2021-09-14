@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\tipo;
+use Carbon\Carbon;
 
 class TipoSeeder extends Seeder
 {
@@ -13,8 +14,12 @@ class TipoSeeder extends Seeder
     public function run()
     {
         //ugel
-        tipo::create(['nombre'  => 'FICHA DE MONITOREO A ESPECIALISTA']);
+        tipo::create(['nombre'  => 'FICHA DE MONITOREO A ESPECIALISTA',
+        'inicio' => Carbon::parse('2021-01-01'),
+        'fin' => Carbon::parse('2021-01-01') ]);
         //director
-        tipo::create(['nombre'  => 'FICHA DE MONITOREO A DIRECTORES']);
+        tipo::create(['nombre'  => 'FICHA DE MONITOREO A DIRECTORES',
+        'inicio' => Carbon::parse('2021-01-01'),
+        'fin' => Carbon::parse('2021-01-01') ]);
     }
 }

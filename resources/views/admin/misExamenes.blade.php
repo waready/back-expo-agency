@@ -81,9 +81,11 @@
                         >
                             <thead>
                                 <tr>
-                                    <th>{{ __("ID") }}</th>
+                                    {{-- <th>{{ __("ID") }}</th> --}}
                                     {{-- <th>{{ __("Codigo") }}</th> --}}
+                                    
                                     <th>{{ __("N° Pregunta") }}</th>
+                                    <th>{{ __("Supervisado") }}</th>
                                     <th>{{ __("Respuesta") }}</th>
                                     <th>{{ __("Observacion") }}</th>
                                     <th>{{ __("Aciertos") }}</th>
@@ -338,8 +340,9 @@
                                 url: "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
                             },
                             columns: [
-                                {data: 'id'},
+                               
                                 {data: 'numero'},
+                                {data: 'Supervisor'},
                                 {data: 'respuesta'},
                                 {data: 'observacion'},
                                 {data: 'aciertos'},

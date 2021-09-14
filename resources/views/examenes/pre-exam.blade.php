@@ -74,6 +74,11 @@ $tipoExamenes = DB::table('tipos')->get();
       <div class="mb-3">
         <div class="mb-3">
           Periodo de Monitoreo 
+          @foreach($tipoExamenes as $tipo)
+            @if ($tipo->id == $examType)
+              {{$tipo->inicio}} -- {{$tipo->fin}}
+            @endif
+          @endforeach
         </div>
         
       </div>

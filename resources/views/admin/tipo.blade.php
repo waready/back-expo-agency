@@ -40,6 +40,8 @@
                                     <th>{{ __("ID") }}</th>
                                     {{-- <th>{{ __("Codigo") }}</th> --}}
                                     <th>{{ __("Nombre") }}</th>
+                                    <th>{{ __("Inicio") }}</th>
+                                    <th>{{ __("Fin") }}</th>
                                     {{-- <th>{{ __("Apellido") }}</th> --}}
                                     <th>{{ __("Opciones") }}</th>
                                 </tr>
@@ -71,6 +73,18 @@
                             <label class="col-form-label col-md-4 col-sm-3 label-align">Nombres</label>
                             <div class="col-md-12 col-sm-12 ">
                                 <input type="text" class="form-control" name="editar_nombres" id="editar_nombres" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Inicio</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="date" class="form-control" name="editar_inicio" id="editar_inicio" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Fin</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="date" class="form-control" name="editar_fin" id="editar_fin" required placeholder="">
                             </div>
                         </div>
                         {{-- <div class="item form-group">
@@ -174,6 +188,19 @@
                                 <textarea type="text" class="form-control" name="descripcion" id="descripcion"  placeholder=""> </textarea>
                             </div>
                         </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Inicio</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="date" class="form-control" name="inicio" id="inicio" required placeholder="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-4 col-sm-3 label-align">Fin</label>
+                            <div class="col-md-8 col-sm-8 ">
+                                <input type="date" class="form-control" name="fin" id="fin" required placeholder="">
+                            </div>
+                        </div>
                         {{-- <div class="item form-group">
                             <label class="col-form-label col-md-4 col-sm-3 label-align">Apellido Materno</label>
                             <div class="col-md-8 col-sm-8 ">
@@ -237,10 +264,12 @@
                 columns: [
                     {data: 'id'},
                     {data: 'nombre'},
+                    {data: 'inicio'},
+                    {data: 'fin'},
                     {data: 'Opciones'}
                 ],
                 rowCallback:function(row, data,index){
-                    $('td:eq(2)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a> <a class="tabla-usuario" href="/tablaCategorias/'+data.id+'"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(4)',row).html('<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a> <a class="tabla-usuario" href="/tablaCategorias/'+data.id+'"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="#" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
                 }
                 
             });
@@ -260,8 +289,8 @@
                     },
                     success: function(data) {
                         $('#editar_nombres').val(data.nombre);
-                        // $('#editar_paterno').val(data.paterno);
-                        // $('#editar_materno').val(data.materno);
+                        $('#editar_inicio').val(data.inicio);
+                        $('#editar_fin').val(data.fin);
                         // $('#editar_abreviatura').val(data.abreviatura);
                         // $('#editar_documento').val(data.numero_documento);
                         // $('#editar_email').val(data.email);

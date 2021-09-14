@@ -21,7 +21,7 @@ class TipoController extends Controller
     public function getTipo()
     {
       $tipo = DB::table('tipos as tp')
-      ->select('tp.id', 'tp.nombre', DB::raw('"" as Opciones'))
+      ->select('tp.id', 'tp.nombre','tp.inicio','tp.fin', DB::raw('"" as Opciones'))
       ->get();
       
       return \DataTables::of($tipo)->make('true');
@@ -53,7 +53,8 @@ class TipoController extends Controller
             $tipo = new tipo;
             $tipo->nombre= $request->nombres;
             $tipo->descripcion = $request->descripcion;
-          
+            $tipo->inicio = $request->inicio;
+            $tipo->fin = $request->fin;
             $tipo->save(); 
 
         DB::commit();
@@ -115,6 +116,8 @@ class TipoController extends Controller
 
             $tipo = tipo::find($id);
             $tipo->nombre = $request->editar_nombres;
+            $tipo->inicio = $request->editar_inicio;
+            $tipo->fin = $request->editar_fin;
             $tipo->save();
 
         DB::commit();
