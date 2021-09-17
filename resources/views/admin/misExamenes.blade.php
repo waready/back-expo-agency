@@ -215,7 +215,7 @@
                 importCSS: true,
                 importStyle: true,//thrown in for extra measure
                 loadCSS: "/app/css/printListTable.css",
-                header:'<h1>Table Report</h1>'});
+                header:'<h1>Tabla Respuestas</h1>'});
             });
             
             dt = jQuery("#students-table").DataTable({
@@ -253,7 +253,7 @@
                     }
                     $('td:eq(5)',row).html('<a class="tabla-usuario" href="'+data.id+'"> <i class="fas fa-eye big-icon text-info" aria-hidden="true"></i></a>')
                     $('td:eq(6)',row).html('<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: '+valeur1+'%">'+valeur1+'%</div></div>')
-                    $('td:eq(7)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="'+data.id+'" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a><a  href="reporteFinal/'+data.id+'" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>')
+                    $('td:eq(7)',row).html('<a class="editar-usuario" href="examenes/'+data.id+'/edit"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>  <a class="eliminar-usuario" href="'+data.id+'" disable> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a><a  href="reporteFinal/'+data.id+'" disable> <i class="fas fa-print big-icon text-info" aria-hidden="true"></i></a>')
                 }
                 
             });

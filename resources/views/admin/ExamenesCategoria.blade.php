@@ -227,7 +227,7 @@
                 importCSS: true,
                 importStyle: true,//thrown in for extra measure
                 loadCSS: "/app/css/printListTable.css",
-                header:'<h1>Table Report</h1>'});
+                header:'<h1>Tabla Categoria Porcentaje</h1>'});
             });
             // $(function () { 
             // $("#btnPrint").click(function () {
