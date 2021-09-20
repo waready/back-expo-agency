@@ -285,7 +285,7 @@
                     }
                 });
                 } else {
-                  aler('cagada')
+                 // aler('cagada')
                 }
                
             });
