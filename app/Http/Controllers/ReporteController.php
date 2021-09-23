@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 
+use App\respuesta;
+use App\ExamenEjecutado;
 use App\Exports\DataExport;
 use Illuminate\Http\Request;
+use App\Mail\MessageReceived;
 use App\Exports\DataExportDrep;
 use App\Exports\DataExportUgel;
+use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use App\Exports\DataExportDirector;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReporteController extends Controller
@@ -79,5 +84,230 @@ class ReporteController extends Controller
     
 
      // return $request;
+    }
+
+    public function TablaExamen($id_res){
+        $users = DB::table('respuestas as rp')
+        ->select('rp.*','pre.numero',
+        DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
+        DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
+        ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
+        ->join('users as us','us.id','ej.id_user_supervisado')
+        ->join('users as as','as.id','ej.id_user_supervisor')
+        ->join('preguntas as pre','pre.id','rp.id_pregunta')
+        ->where('ej.id_user_supervisado',$id_res)
+        
+        ->get();
+        // $users = DB::table('examenes_ejecutados as ej')
+        // ->select('ej.*')
+        // ->join('respuestas as rp','rp.id_examen_ejecutado','ej.id')
+        // ->where('ej.id_user_supervisado',162)
+        // ->get();
+        return \DataTables::of($users)->make('true');
+    }
+    public function ReporteExamen($id){
+        $evaluado["tabla"] = ExamenEjecutado::where('id',$id)->first();
+    
+        //return $evaluado;
+  
+        $evaluado['porcentaje'] = DB::table('respuestas as rp')
+        ->select('rp.id_user',DB::raw('COUNT(rp.id_user) as num'))
+  
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+            ['id_examen_ejecutado',$evaluado["tabla"]->id],
+            ['respuesta',1]
+        ])
+        ->GROUPBY('rp.id_user')
+        ->first();
+        
+        $evaluado['tipo'] = DB::table('respuestas as rp')
+        ->select('ct.id_tipo')
+        //DB::raw('COUNT(rp.id_user) as num'))
+  
+        ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+        ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+        ->where([
+            ['id_examen_ejecutado',$evaluado["tabla"]->id],
+            
+        ])
+        //->GROUPBY('rp.id_user')
+        ->first();
+  
+        $evaluado['categorias'] = DB::table('categorias as ct')
+        ->select('ct.*')
+        //->leftJoin('preguntas as pr','pr.id','ct.') 
+        ->where('id_tipo',$evaluado['tipo']->id_tipo)
+        ->get(); 
+        foreach ($evaluado['categorias'] as $row) {
+          $row->procentaje = DB::table('respuestas as rp')
+          ->select('ct.nombre',
+          DB::raw('COUNT(ct.nombre) as num'))
+  
+          ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+          ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+          ->where([
+            ['id_examen_ejecutado',$evaluado["tabla"]->id],
+            ['pr.id_categoria',$row->id],
+            ['respuesta',1]
+            ])
+          ->GROUPBY('ct.nombre')
+          ->first(); 
+          } 
+          $evaluado['tabvs']= \DataTables::of($evaluado['categorias'])->make('true');
+  
+        $evaluado['aciertosSI'] = DB::table('respuestas as rp')
+        ->select('rp.id_examen_ejecutado',
+        DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
+  
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          ['respuesta',1]
+          ])
+        ->GROUPBY('rp.id_examen_ejecutado')
+        ->first();
+  
+        $evaluado['aciertosNO'] = DB::table('respuestas as rp')
+        ->select('rp.id_examen_ejecutado', DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
+  
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          ['respuesta',0]
+          ])
+      ->GROUPBY('rp.id_examen_ejecutado')
+        ->first();
+  
+  
+        return $evaluado;
+    }
+    public function EliminarExamen($id){
+        $dato = ExamenEjecutado::find($id);
+        //$valor=$dato->delete();
+        $respuestas = respuesta::where('id_examen_ejecutado',$dato->id)->get();
+        foreach( $respuestas as $respuestas ){
+        $message = respuesta::find($respuestas->id);
+        //$message->estado = "0"; 
+        $message->delete();;
+        }
+        $valor=$dato->delete();
+        return $valor;  
+    }
+    public function ReporteFinal($id){
+        $evaluado["tabla"] = ExamenEjecutado::where('id',$id)->first();
+    
+        //return $evaluado;
+        $evaluado["nombre"] = DB::table('examenes_ejecutados as ej')
+        ->select('us.nombres', 'us.apellidos')
+        ->join('users as us','us.id','ej.id_user_supervisado')
+        ->where('ej.id',$id)
+        //
+        ->first();
+  
+        $evaluado["monitor"] = DB::table('examenes_ejecutados as ej')
+        ->select('us.nombres', 'us.apellidos')
+        ->join('users as us','us.id','ej.id_user_supervisor')
+        ->where('ej.id',$id)
+        //
+        ->first();      
+    //return $evaluado;
+        $evaluado['porcentaje'] = DB::table('respuestas as rp')
+        ->select('rp.id_user',DB::raw('COUNT(rp.id_user) as num'))
+  
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+            ['id_examen_ejecutado',$evaluado["tabla"]->id],
+            ['respuesta',1]
+        ])
+        ->GROUPBY('rp.id_user')
+        ->first();
+        
+        $evaluado['tipo'] = DB::table('respuestas as rp')
+        ->select('ct.id_tipo')
+        //DB::raw('COUNT(rp.id_user) as num'))
+  
+        ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+        ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+        ->where([
+            ['id_examen_ejecutado',$evaluado["tabla"]->id],
+            
+        ])
+        //->GROUPBY('rp.id_user')
+        ->first();
+  
+        $categorias = DB::table('categorias as ct')
+        ->select('ct.*')
+        //->leftJoin('preguntas as pr','pr.id','ct.') 
+        ->where('id_tipo',$evaluado['tipo']->id_tipo)
+        ->get(); 
+        foreach ($categorias as $row) {
+          $row->procentaje = DB::table('respuestas as rp')
+          ->select('ct.nombre',
+          DB::raw('COUNT(ct.nombre) as num'))
+  
+          ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
+          ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
+          ->where([
+            ['id_examen_ejecutado',$evaluado["tabla"]->id],
+            ['pr.id_categoria',$row->id],
+            ['respuesta',1]
+            ])
+          ->GROUPBY('ct.nombre')
+          ->first(); 
+          $row->total = DB::table('preguntas as pre') 
+          ->select(DB::raw('COUNT(pre.id_categoria) as num'))
+          ->where('id_categoria',$row->id)
+          ->GROUPBY('pre.id_categoria')
+          ->first(); 
+        } 
+         // $evaluado['tabvs']= \DataTables::of($evaluado['categorias'])->make('true');
+  
+        $evaluado['aciertosSI'] = DB::table('respuestas as rp')
+        ->select('rp.id_examen_ejecutado',
+        DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
+  
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          ['respuesta',1]
+          ])
+        ->GROUPBY('rp.id_examen_ejecutado')
+        ->first();
+  
+        $evaluado['aciertosNO'] = DB::table('respuestas as rp')
+        ->select('rp.id_examen_ejecutado', DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
+  
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+          ['id_examen_ejecutado',$evaluado["tabla"]->id],
+          ['respuesta',0]
+          ])
+      ->GROUPBY('rp.id_examen_ejecutado')
+        ->first();
+  
+        $respuestas = DB::table('respuestas as rp')
+        ->select('rp.*','pre.*',
+        DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
+        DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
+        ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
+        ->join('users as us','us.id','ej.id_user_supervisado')
+        ->join('users as as','as.id','ej.id_user_supervisor')
+        ->join('preguntas as pre','pre.id','rp.id_pregunta')
+        ->where('ej.id_user_supervisado',$evaluado["tabla"]->id_user_supervisado)
+        
+        ->get();
+        // $users = DB::table('examenes_ejecutados as ej')
+        // ->select('ej.*')
+        // ->join('respuestas as rp','rp.id_examen_ejecutado','ej.id')
+        // ->where('ej.id_user_supervisado',162)
+        // ->get();
+       
+          // El mensaje
+        Mail::to('antonyjapura11@gmail.com')->send(new MessageReceived);
+  
+       // return $evaluado;
+        return view('reportefinal',compact('respuestas','categorias','evaluado'));
+
     }
 }

@@ -71,392 +71,86 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/director', 'Director@index')->name('director');
   Route::get('/getDirector', 'Director@getTipo')->name('getDirector');
   Route::resource('/allDirector', 'Director');
+  Route::get('/nivelDirector', 'Director@nivelDirector');
+
+  Route::get('/DirectorGrafico', 'Director@graficos');
+  Route::get('/DirectorGraficoNivel', 'Director@graficosNivel');
+  Route::get('/DirectorGraficoGestion', 'Director@graficosGestion');
+  Route::get('/DirectorGraficoArea', 'Director@graficosArea');
+
+  //Perfil
+  Route::get('/profile', 'ProfileController@index')->name('profile');
+  Route::post('/editarPerfil','ProfileController@actualizar');
+
+  /****REPORTE*****/
+  Route::get('/tablaExamen/{id_res}', 'ReporteController@TablaExamen')->name('getRespuestasUno');
+  Route::get('reporteExamen/{id}','ReporteController@ReporteExamen');  
+  Route::delete('eliminarExamen/{id}','ReporteController@EliminarExamen');
+
+  Route::get('/reportes1', 'ReporteController@ReporteUgelDrep')->name('profile');
+  Route::get('/reportesFinal', 'ReporteController@Excel')->name('reportesall');
+  Route::get('/reportesFinalDrep', 'ReporteController@ExcelDrep')->name('reportesallDrep');
+  Route::get('/reportesFinalUgel', 'ReporteController@ExcelUgel')->name('reportesallUgel');
+  Route::get('/reportesFinalDirector', 'ReporteController@ExcelDirector')->name('reportesallDirector');
+
+  Route::get('/reportesUsuarioDrep', function () {
+    return view('reportes.vistareporte');
+  });
+  Route::get('/reportesUsuarioUgel', function () {
+    return view('reportes.vistareporteugel');
+  });
+  Route::get('/reportesUsuarioDirector', function () {
+    return view('reportes.vistareportedirector');
+  });
+
+  //Graficos
+  Route::get('/especialistaGrafico', 'EspecialistaUgel@graficos');
+  Route::get('/variacion', function () {
+    return view('graficos.variacion');
+  });
+  Route::get('/variacion-director', function () {
+    return view('graficos.variacion-director');
+  });
+  Route::get('/area-director', function () {
+    return view('graficos.area-director');
+  });
+  Route::get('/gestion-director', function () {
+    return view('graficos.gestion-director');
+  });
+  Route::get('/nivel-director', function () {
+    return view('graficos.nivel-director');
+  });
+  /**Calificar**/
+  Route::post('preguntas', 'CalificarController@calificar');
+
+  Route::get('pre-ejecucion-examen/{examType}/{supervisorId}/{supervisedId}', function (
+    $examType,
+    $supervisorId,
+    $supervisedId
+  ) {
+    return view('examenes.pre-exam', compact('examType', 'supervisorId', 'supervisedId'));
+  });
+
+  Route::resource('examenes', 'ExamenesEjecutadosController');
+  Route::get('/getMisExamenes', 'ExamenesEjecutadosController@getMisExamenes')->name('getMisExamenes');
+  Route::resource('examenesCategoria', 'ExamenesCategoriaController');
+
+  //Tablas
+  Route::get('/tablaCategorias/{id_res}', 'TablasController@TablaCategoria')->name('tablaCategorias');
+  Route::get('/tablaPreguntas/{id_res}', 'TablasController@TablaPreguntas')->name('tablaPreguntas');
+  Route::get('/tablaExamenCategoria/{id_res}','TablasController@TablaExamenCategoria')->name('getRespuestasdos');
 });
 
-Route::get('/nivelDirector', 'Director@nivelDirector');
 // Route::get('products', 'ProductController@index')->name('products.index');
 Route::post('products/create-step-one', 'HomeController@postCreateStepOne')->name('products.create.step.one.post');
-
-/**Calificar**/
-
-    /****REPORTE*****/
-    Route::get('/tablaExamen/{id_res}', function ($id_res) {
-      $users = DB::table('respuestas as rp')
-      ->select('rp.*','pre.numero',
-      DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
-      DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
-      ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
-      ->join('users as us','us.id','ej.id_user_supervisado')
-      ->join('users as as','as.id','ej.id_user_supervisor')
-      ->join('preguntas as pre','pre.id','rp.id_pregunta')
-      ->where('ej.id_user_supervisado',$id_res)
-      
-      ->get();
-      // $users = DB::table('examenes_ejecutados as ej')
-      // ->select('ej.*')
-      // ->join('respuestas as rp','rp.id_examen_ejecutado','ej.id')
-      // ->where('ej.id_user_supervisado',162)
-      // ->get();
-      return \DataTables::of($users)->make('true');
-    })->name('getRespuestasUno');
-    Route::get('reporteExamen/{id}',function($id){
-    
-      $evaluado["tabla"] = ExamenEjecutado::where('id',$id)->first();
-    
-      //return $evaluado;
-
-      $evaluado['porcentaje'] = DB::table('respuestas as rp')
-      ->select('rp.id_user',DB::raw('COUNT(rp.id_user) as num'))
-
-      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          ['respuesta',1]
-      ])
-      ->GROUPBY('rp.id_user')
-      ->first();
-      
-      $evaluado['tipo'] = DB::table('respuestas as rp')
-      ->select('ct.id_tipo')
-      //DB::raw('COUNT(rp.id_user) as num'))
-
-      ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
-      ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
-      ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          
-      ])
-      //->GROUPBY('rp.id_user')
-      ->first();
-
-      $evaluado['categorias'] = DB::table('categorias as ct')
-      ->select('ct.*')
-      //->leftJoin('preguntas as pr','pr.id','ct.') 
-      ->where('id_tipo',$evaluado['tipo']->id_tipo)
-      ->get(); 
-      foreach ($evaluado['categorias'] as $row) {
-        $row->procentaje = DB::table('respuestas as rp')
-        ->select('ct.nombre',
-        DB::raw('COUNT(ct.nombre) as num'))
-
-        ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
-        ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
-        ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          ['pr.id_categoria',$row->id],
-          ['respuesta',1]
-          ])
-        ->GROUPBY('ct.nombre')
-        ->first(); 
-        } 
-        $evaluado['tabvs']= \DataTables::of($evaluado['categorias'])->make('true');
-
-      $evaluado['aciertosSI'] = DB::table('respuestas as rp')
-      ->select('rp.id_examen_ejecutado',
-      DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
-
-      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      ->where([
-        ['id_examen_ejecutado',$evaluado["tabla"]->id],
-        ['respuesta',1]
-        ])
-      ->GROUPBY('rp.id_examen_ejecutado')
-      ->first();
-
-      $evaluado['aciertosNO'] = DB::table('respuestas as rp')
-      ->select('rp.id_examen_ejecutado', DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
-
-      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      ->where([
-        ['id_examen_ejecutado',$evaluado["tabla"]->id],
-        ['respuesta',0]
-        ])
-    ->GROUPBY('rp.id_examen_ejecutado')
-      ->first();
-
-
-      return $evaluado;
-    });  
-    Route::delete('eliminarExamen/{id}',function($id){
-        
-        $dato = ExamenEjecutado::find($id);
-        
-        //$valor=$dato->delete();
-        $respuestas = respuesta::where('id_examen_ejecutado',$dato->id)->get();
-        foreach( $respuestas as $respuestas ){
-          $message = respuesta::find($respuestas->id);
-          //$message->estado = "0"; 
-          $message->delete();;
-        }
-        $valor=$dato->delete();
-        return $valor;  
-    });
-    Route::get('/especialistaGrafico', 'EspecialistaUgel@graficos');
-    Route::get('/variacion', function () {
-      return view('graficos.variacion');
-    });
-    Route::get('/DirectorGrafico', 'Director@graficos');
-    Route::get('/DirectorGraficoNivel', 'Director@graficosNivel');
-    Route::get('/DirectorGraficoGestion', 'Director@graficosGestion');
-    Route::get('/DirectorGraficoArea', 'Director@graficosArea');
-
-    Route::get('/variacion-director', function () {
-      return view('graficos.variacion-director');
-    });
-    Route::get('/area-director', function () {
-      return view('graficos.area-director');
-    });
-    Route::get('/gestion-director', function () {
-      return view('graficos.gestion-director');
-    });
-    Route::get('/nivel-director', function () {
-      return view('graficos.nivel-director');
-    });
-
-Route::post('preguntas', 'CalificarController@calificar');
 
 Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
   Route::get('preguntas-lista', 'RemoteController@preguntasLista');
   Route::get('categorias-lista', 'RemoteController@categoriasLista');
   Route::post('responder', 'RemoteController@responderHandler');
-  
   /**Perfil**/
-  
 });
 
+/**todos**/
 
-Route::get('pre-ejecucion-examen/{examType}/{supervisorId}/{supervisedId}', function (
-  $examType,
-  $supervisorId,
-  $supervisedId
-) {
-  return view('examenes.pre-exam', compact('examType', 'supervisorId', 'supervisedId'));
-});
-
-Route::resource('examenes', 'ExamenesEjecutadosController');
-Route::get('/getMisExamenes', 'ExamenesEjecutadosController@getMisExamenes')->name('getMisExamenes');
-
-
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::post('/editarPerfil','ProfileController@actualizar');
-
-
-Route::get('/reportes1', 'ReporteController@ReporteUgelDrep')->name('profile');
-
-Route::get('/reportesFinal', 'ReporteController@Excel')->name('reportesall');
-Route::get('/reportesFinalDrep', 'ReporteController@ExcelDrep')->name('reportesallDrep');
-Route::get('/reportesFinalUgel', 'ReporteController@ExcelUgel')->name('reportesallUgel');
-Route::get('/reportesFinalDirector', 'ReporteController@ExcelDirector')->name('reportesallDirector');
-
-Route::get('/reportesUsuarioDrep', function () {
-  return view('reportes.vistareporte');
-});
-Route::get('/reportesUsuarioUgel', function () {
-  return view('reportes.vistareporteugel');
-});
-Route::get('/reportesUsuarioDirector', function () {
-  return view('reportes.vistareportedirector');
-});
-
-Route::get('/tablaCategorias/{id_res}', function ($id_res) {
-  $categorias = DB::table('categorias as cg')
-      ->select('cg.id', 'cg.nombre', 'tp.nombre as tipo' ,DB::raw('"" as Opciones'))
-      ->join('tipos as tp', 'tp.id', '=', 'cg.id_tipo')
-      ->where('id_tipo',$id_res)
-      ->paginate(15);
-      
-      //return \DataTables::of($categoria)->make('true');
-      return view('admin.tablacategoria',compact('categorias'));
-
-})->name('tablaCategorias');
-
-Route::get('/tablaPreguntas/{id_res}', function ($id_res) {
-  // $categorias = DB::table('categorias as cg')
-  //     ->select('cg.id', 'cg.nombre', 'tp.nombre as tipo' ,DB::raw('"" as Opciones'))
-  //     ->join('tipos as tp', 'tp.id', '=', 'cg.id_tipo')
-  //     ->where('id_tipo',$id_res)
-  //     ->paginate(15);
-      $categorias = DB::table('preguntas as pre')
-      ->select('pre.id', 'pre.numero','pre.enunciado','pre.calificacion','pre.clave', 'ct.nombre as categoria' ,DB::raw('"" as Opciones'))
-      ->join('categorias as ct', 'ct.id', '=', 'pre.id_categoria')
-      ->where('id_categoria',$id_res)
-      ->paginate(15);
-      //return $categorias;
-      //return \DataTables::of($categoria)->make('true');
-      return view('admin.tablapregunta',compact('categorias'));
-
-})->name('tablaPreguntas');
-
-
-Route::resource('examenesCategoria', 'ExamenesCategoriaController');
-
-Route::get('/tablaExamenCategoria/{id_res}', function ($id_res) {
-
-  $evaluado["tabla"] = ExamenEjecutado::where('id',$id_res)->first();
-  $evaluado['tipo'] = DB::table('respuestas as rp')
-      ->select('ct.id_tipo')
-      //DB::raw('COUNT(rp.id_user) as num'))
-
-      ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
-      ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
-      ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          
-      ])
-      //->GROUPBY('rp.id_user')
-      ->first();
-
-      $evaluado['categorias'] = DB::table('categorias as ct')
-      ->select('ct.*','tp.nombre as tipo' ,DB::raw('"" as Opciones'))
-      ->join('tipos as tp','tp.id', 'ct.id_tipo')
-      ->where('id_tipo',$evaluado['tipo']->id_tipo)
-      ->get(); 
-      foreach ($evaluado['categorias'] as $row) {
-        $row->procentaje = DB::table('respuestas as rp')
-        ->select(
-        DB::raw('COUNT(ct.nombre) as num'))
-
-        ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
-        ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
-
-        ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          ['pr.id_categoria',$row->id],
-          ['respuesta',1]
-          ])
-        ->GROUPBY('ct.nombre')
-        ->first(); 
-        $row->total = DB::table('preguntas as pre') 
-          ->select(DB::raw('COUNT(pre.id_categoria) as num'))
-          ->where('id_categoria',$row->id)
-          ->GROUPBY('pre.id_categoria')
-          ->first(); 
-
-        } 
-        $evaluado['tabvs']= \DataTables::of($evaluado['categorias'])->make('true');
-
-        return $evaluado['tabvs'];
-
-
-
-})->name('getRespuestasdos');
-
-Route::get('/reporteFinal/{id}',function($id){
-  $evaluado["tabla"] = ExamenEjecutado::where('id',$id)->first();
-    
-      //return $evaluado;
-      $evaluado["nombre"] = DB::table('examenes_ejecutados as ej')
-      ->select('us.nombres', 'us.apellidos')
-      ->join('users as us','us.id','ej.id_user_supervisado')
-      ->where('ej.id',$id)
-      //
-      ->first();
-  //return $evaluado;
-      $evaluado['porcentaje'] = DB::table('respuestas as rp')
-      ->select('rp.id_user',DB::raw('COUNT(rp.id_user) as num'))
-
-      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          ['respuesta',1]
-      ])
-      ->GROUPBY('rp.id_user')
-      ->first();
-      
-      $evaluado['tipo'] = DB::table('respuestas as rp')
-      ->select('ct.id_tipo')
-      //DB::raw('COUNT(rp.id_user) as num'))
-
-      ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
-      ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
-      ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          
-      ])
-      //->GROUPBY('rp.id_user')
-      ->first();
-
-      $categorias = DB::table('categorias as ct')
-      ->select('ct.*')
-      //->leftJoin('preguntas as pr','pr.id','ct.') 
-      ->where('id_tipo',$evaluado['tipo']->id_tipo)
-      ->get(); 
-      foreach ($categorias as $row) {
-        $row->procentaje = DB::table('respuestas as rp')
-        ->select('ct.nombre',
-        DB::raw('COUNT(ct.nombre) as num'))
-
-        ->join('preguntas as pr', 'pr.id', '=', 'rp.id_pregunta')
-        ->join('categorias as ct', 'ct.id', '=', 'pr.id_categoria')
-        ->where([
-          ['id_examen_ejecutado',$evaluado["tabla"]->id],
-          ['pr.id_categoria',$row->id],
-          ['respuesta',1]
-          ])
-        ->GROUPBY('ct.nombre')
-        ->first(); 
-        $row->total = DB::table('preguntas as pre') 
-        ->select(DB::raw('COUNT(pre.id_categoria) as num'))
-        ->where('id_categoria',$row->id)
-        ->GROUPBY('pre.id_categoria')
-        ->first(); 
-      } 
-       // $evaluado['tabvs']= \DataTables::of($evaluado['categorias'])->make('true');
-
-      $evaluado['aciertosSI'] = DB::table('respuestas as rp')
-      ->select('rp.id_examen_ejecutado',
-      DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
-
-      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      ->where([
-        ['id_examen_ejecutado',$evaluado["tabla"]->id],
-        ['respuesta',1]
-        ])
-      ->GROUPBY('rp.id_examen_ejecutado')
-      ->first();
-
-      $evaluado['aciertosNO'] = DB::table('respuestas as rp')
-      ->select('rp.id_examen_ejecutado', DB::raw('COUNT(rp.id_examen_ejecutado) as val'))
-
-      //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
-      ->where([
-        ['id_examen_ejecutado',$evaluado["tabla"]->id],
-        ['respuesta',0]
-        ])
-    ->GROUPBY('rp.id_examen_ejecutado')
-      ->first();
-
-      $respuestas = DB::table('respuestas as rp')
-      ->select('rp.*','pre.*',
-      DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
-      DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
-      ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
-      ->join('users as us','us.id','ej.id_user_supervisado')
-      ->join('users as as','as.id','ej.id_user_supervisor')
-      ->join('preguntas as pre','pre.id','rp.id_pregunta')
-      ->where('ej.id_user_supervisado',$evaluado["tabla"]->id_user_supervisado)
-      
-      ->get();
-      // $users = DB::table('examenes_ejecutados as ej')
-      // ->select('ej.*')
-      // ->join('respuestas as rp','rp.id_examen_ejecutado','ej.id')
-      // ->where('ej.id_user_supervisado',162)
-      // ->get();
-     
-        // El mensaje
-      $mensaje = "Línea 1\r\nLínea 2\r\nLínea 3";
-
-      // Si cualquier línea es más larga de 70 caracteres, se debería usar wordwrap()
-      $mensaje = wordwrap($mensaje, 70, "\r\n");
-
-      // Enviarlo
-      //mail('antonyjapura11@gmail.com', 'Mi título', $mensaje);
-
-      return view('reportefinal',compact('respuestas','categorias','evaluado'));
-
-
-});
-
-/**REPORTE POR CATEGORIA - UGEL**/
-
-//porcentaje - nivel -- barra de color 
+Route::get('/reporteFinal/{id}','ReporteController@ReporteFinal');

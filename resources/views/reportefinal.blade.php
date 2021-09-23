@@ -12,8 +12,16 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                
-                <h4>Monitoreado: <span class="strong">{{$evaluado['nombre']->nombres}} {{$evaluado['nombre']->apellidos}} </span> </h4>  
+                <div class="row">
+                    <div class="col">
+                        <h4>Monitoreado: <span class="strong">{{$evaluado['nombre']->nombres}} {{$evaluado['nombre']->apellidos}} </span> </h4> 
+                    </div>
+                    <div class="col">
+                        <h4 class="float-right">Monitor: <span class="strong">{{$evaluado['monitor']->nombres}} {{$evaluado['monitor']->apellidos}} </span> </h4> 
+                    </div>
+                </div>
+                 
+
                 <div class="card">
                     <div class="card-header">
                        RESPUESTAS
@@ -105,20 +113,20 @@
                 </div>   
                 
             </div>
-            Rango:
-            @if($evaluado['porcentaje'] != null)  
-                @if( (($evaluado['porcentaje']->num /30) *100) >= 0 &&  (($evaluado['porcentaje']->num /30) *100) <= 50)
-                    <h2>Inicio</h2>  
-                @elseif( (($evaluado['porcentaje']->num /30) *100) >= 51 &&  (($evaluado['porcentaje']->num /30) *100) <= 80)
-                    <h2>Proceso</h2>
-                @elseif( (($evaluado['porcentaje']->num /30) *100) >= 81 &&  (($evaluado['porcentaje']->num /30) *100) <= 100)
-                    <h2>Satisfactorio</h2>
+            <div class="text-center">
+                Resultado:
+                @if($evaluado['porcentaje'] != null)  
+                    @if( (($evaluado['porcentaje']->num /30) *100) >= 0 &&  (($evaluado['porcentaje']->num /30) *100) <= 50)
+                        <h2>Inicio</h2>  
+                    @elseif( (($evaluado['porcentaje']->num /30) *100) >= 51 &&  (($evaluado['porcentaje']->num /30) *100) <= 80)
+                        <h2>Proceso</h2>
+                    @elseif( (($evaluado['porcentaje']->num /30) *100) >= 81 &&  (($evaluado['porcentaje']->num /30) *100) <= 100)
+                        <h2>Satisfactorio</h2>
+                    @endif
+                @else
+                    0
                 @endif
-            @else
-                0
-            @endif
-            
-      
+            </div>
         </div>
     </div>
 </div>
