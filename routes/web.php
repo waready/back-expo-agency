@@ -154,3 +154,4 @@ Route::group(['prefix' => 'remote', 'middleware' => 'auth'], function () {
 /**todos**/
 
 Route::get('/reporteFinal/{id}','ReporteController@ReporteFinal');
+Route::post('/email','ReporteController@ReporteEmail')->name('video.store');

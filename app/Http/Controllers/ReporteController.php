@@ -304,10 +304,16 @@ class ReporteController extends Controller
         // ->get();
        
           // El mensaje
-        Mail::to('antonyjapura11@gmail.com')->send(new MessageReceived);
+        //Mail::to('antonyjapura11@gmail.com')->send(new MessageReceived);
   
-       // return $evaluado;
+        //return $respuestas;
         return view('reportefinal',compact('respuestas','categorias','evaluado'));
 
     }
+
+    public function ReporteEmail(Request $request){
+      Mail::to($request->email)->send(new MessageReceived($request->url));
+      return back()->with('message', ['success', __("Felicidades, ya eres instructor en la plataforma")]);
+    }
+
 }

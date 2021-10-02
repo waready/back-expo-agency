@@ -1,2 +1,2 @@
 Contenido el email
-<a href="www.google.com">imprimir ficha</a>
+<a href="{{$url}}">imprimir ficha</a>

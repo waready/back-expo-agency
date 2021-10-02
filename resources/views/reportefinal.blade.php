@@ -2,9 +2,28 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+        <form action="{{route('video.store')}}"  method="POST" >
+            {{csrf_field()}}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">URL</label>
+                <input type="text" class="form-control" name="url" id="exampleInputPassword1" placeholder="url">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
     <div class="row justify-content-center">
         {{-- <input type="button"  value="Print" id="btnPrint"> --}}
-        <a href="javascript:imprSelec('imprimir')" class="btn btn-success" >Imprimir</a>
+       
+       <div class="row">
+            <a href="javascript:imprSelec('imprimir')" class="btn btn-success" >Imprimir</a>
+       </div>
+        
         <div class="col-md-12" id="imprimir">
             <div class="card-body">
                 @if (session('status'))
@@ -63,7 +82,15 @@
                                         
                                         </td>
                                         <td>
+
+                                        @if($item->aciertos == 1)
                                             {{$item->calificacion}}
+                                            @elseif($item->respuesta == 0) 
+                                                0.00
+                                            @else
+                                                error   
+                                            @endif
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -100,7 +127,7 @@
                                     
                                     <td>
                                         @if($item->procentaje != null)
-                                            {{ ($item->procentaje->num/$item->total->num)*100 . "%" }}    
+                                            {{ number_format($item->procentaje->num/$item->total->num)*100 . "%" }}    
                                         @else
                                             0%
                                         @endif
