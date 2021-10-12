@@ -94,6 +94,9 @@ class RemoteController extends Controller
     if ($valor->clave == $request->input('respuesta')) {
       $respuesta->calificacion = $valor->calificacion;
       $respuesta->aciertos = 1;
+    }else{
+      $respuesta->calificacion= 0.00;
+      $respuesta->aciertos = 0;
     }
 
     /**arreglar**/

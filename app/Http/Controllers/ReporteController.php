@@ -251,8 +251,10 @@ class ReporteController extends Controller
           ->where([
             ['id_examen_ejecutado',$evaluado["tabla"]->id],
             ['pr.id_categoria',$row->id],
-            ['respuesta',1]
+            ['respuesta',1],
+           // [$row->procentaje, '<>', '']
             ])
+          // ->whereNotNull('procentaje')
           ->GROUPBY('ct.nombre')
           ->first(); 
           $row->total = DB::table('preguntas as pre') 
@@ -286,8 +288,19 @@ class ReporteController extends Controller
       ->GROUPBY('rp.id_examen_ejecutado')
         ->first();
   
+        // $respuestas = DB::table('respuestas as rp')
+        // ->select('rp.*','pre.*',
+        // DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
+        // DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
+        // ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
+        // ->join('users as us','us.id','ej.id_user_supervisado')
+        // ->join('users as as','as.id','ej.id_user_supervisor')
+        // ->join('preguntas as pre','pre.id','rp.id_pregunta')
+        // ->where('ej.id_user_supervisado',$evaluado["tabla"]->id_user_supervisado)
+        
+        // ->get();
         $respuestas = DB::table('respuestas as rp')
-        ->select('rp.*','pre.*',
+        ->select('rp.*','pre.numero','pre.enunciado',
         DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
         DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
         ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
@@ -305,13 +318,14 @@ class ReporteController extends Controller
        
           // El mensaje
         //Mail::to('antonyjapura11@gmail.com')->send(new MessageReceived);
-  
+         $categorias = $categorias->whereNotNull('procentaje');
         //return $respuestas;
-        return view('reportefinal',compact('respuestas','categorias','evaluado'));
+        return view('reportefinal',compact('respuestas','categorias','evaluado','id'));
 
     }
 
     public function ReporteEmail(Request $request){
+      //return $request;
       Mail::to($request->email)->send(new MessageReceived($request->url));
       return back()->with('message', ['success', __("Felicidades, ya eres instructor en la plataforma")]);
     }

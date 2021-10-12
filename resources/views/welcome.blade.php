@@ -45,7 +45,8 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 70px;
+                font-weight: bold;
             }
 
             .links > a {
@@ -80,8 +81,10 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    DREP - Monitoreo
+
+                <img src="img/LogoMonitoreo.png" alt="logoMonitoreo" width="600px">
+                <div class="title m-b-md text-center">
+                    MONITOREO PEDAGÓGICA Y EVALUACIÓN DE APRENDIZAJES
                 </div>
 
                 {{-- <div class="links">

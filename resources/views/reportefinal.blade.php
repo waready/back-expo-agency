@@ -1,20 +1,17 @@
+
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <form action="{{route('video.store')}}"  method="POST" >
+        <form  class="form-inline" action="{{route('video.store')}}"  method="POST" >
             {{csrf_field()}}
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
-
+            <div class="form-group ">
+                <label for="exampleInputEmail1" class="mr-1">Email : </label>
+                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="correo electronico">
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">URL</label>
-                <input type="text" class="form-control" name="url" id="exampleInputPassword1" placeholder="url">
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <input id="url" name="url" type="hidden" value="{{$id}}">
+            <button type="submit" class="btn btn-primary ml-2">Enviar</button>
         </form>
     </div>
     <div class="row justify-content-center">
@@ -58,6 +55,7 @@
                                     <th>{{ __("Enunciado Pregunta") }}</th>
                                     <th>{{ __("Respuesta") }}</th>
                                     <th>{{ __("Calificación") }}</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,7 +69,6 @@
                                             {{$item->enunciado}}
                                         </td>
                                         <td>
-                                            
                                             @if($item->respuesta == 1)
                                                 si
                                             @elseif($item->respuesta == 0) 
@@ -84,12 +81,12 @@
                                         <td>
 
                                         @if($item->aciertos == 1)
-                                            {{$item->calificacion}}
-                                            @elseif($item->respuesta == 0) 
-                                                0.00
-                                            @else
-                                                error   
-                                            @endif
+                                            1.00
+                                        @elseif($item->aciertos == 0) 
+                                            0.00
+                                        @else 
+                                            error
+                                        @endif
                                             
                                         </td>
                                     </tr>
@@ -112,6 +109,7 @@
                                 <th>{{ __("Categoria") }}</th>
                                 {{-- <th>{{ __("Respuesta") }}</th> --}}
                                 <th>{{ __("Porcentaje") }}</th>
+                                <th>{{ __("Desempeño") }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,18 +120,32 @@
                                        {{$item->id}}
                                     </td>
                                     <td>
-                                        {{$item->nombre}}
+                                    @if($item->procentaje != null)
+                                            {{ $item->procentaje->nombre}}    
+                                       
+                                        @endif
                                     </td>
                                     
                                     <td>
                                         @if($item->procentaje != null)
-                                            {{ number_format($item->procentaje->num/$item->total->num)*100 . "%" }}    
-                                        @else
-                                            0%
+                                            {{ number_format(($item->procentaje->num/$item->total->num)*100) . "%" }}    
                                         @endif
+                                    </td>
+                                    <td>
+                                    @if($item->procentaje != null)  
+                                        @if( (number_format(($item->procentaje->num/$item->total->num)*100) ) >= 0 &&  (number_format(($item->procentaje->num/$item->total->num)*100) ) <= 50)
+                                            <p>Inicio </p>  
+                                        @elseif( (number_format(($item->procentaje->num/$item->total->num)*100) ) >= 51 &&  (number_format(($item->procentaje->num/$item->total->num)*100) ) <= 80)
+                                            <p>Proceso</p>
+                                        @elseif( (number_format(($item->procentaje->num/$item->total->num)*100) ) >= 81 &&  (number_format(($item->procentaje->num/$item->total->num)*100) ) <= 100)
+                                           <p>Satisfactorio</p>
+                                        @endif
+                                    
+                                    @endif
                                     </td>
                                 </tr>
                             @endforeach
+                            
                         </tbody>
                     </table>
                     
