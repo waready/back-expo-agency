@@ -170,9 +170,21 @@ class EspecialistaUgel extends Controller
      * @param  \App\pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pregunta $pregunta)
+    public function destroy(Request $request, $id)
     {
-        //
+        $dato = User::find($id);
+       // return $dato;
+        $valor=$dato->delete();
+        return $valor;
+        // $respuestas = respuesta::where('id_examen_ejecutado',$dato->id)->get();
+        // foreach( $respuestas as $respuestas ){
+        // $message = respuesta::find($respuestas->id);
+        // //$message->estado = "0"; 
+        // $message->delete();;
+        // }
+        // $valor=$dato->delete();
+        // return $valor;
+
     }
     public function graficos()
     {
