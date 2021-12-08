@@ -176,14 +176,7 @@ class EspecialistaUgel extends Controller
        // return $dato;
         $valor=$dato->delete();
         return $valor;
-        // $respuestas = respuesta::where('id_examen_ejecutado',$dato->id)->get();
-        // foreach( $respuestas as $respuestas ){
-        // $message = respuesta::find($respuestas->id);
-        // //$message->estado = "0"; 
-        // $message->delete();;
-        // }
-        // $valor=$dato->delete();
-        // return $valor;
+        
 
     }
     public function graficos()

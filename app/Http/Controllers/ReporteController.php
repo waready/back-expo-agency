@@ -329,5 +329,90 @@ class ReporteController extends Controller
       Mail::to($request->email)->send(new MessageReceived($request->url));
       return back()->with('message', ['success', __("Felicidades, ya eres instructor en la plataforma")]);
     }
+    public function ReportePor(){
+       // return $request;
+      $examenes = DB::table('examenes_ejecutados as ug')
+      // ->select('ug.*',DB::raw('"" as Opciones'),DB::raw('"" as procentaje'),DB::raw('"" as respuestas'),'tp.nombre as tipo',  DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),
+      // DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'))
+      ->select('ug.id')
+      ->join('users as us', 'us.id', '=' ,'ug.id_user_supervisor') 
+      // ->join('respuestas as rp','rp.id_examen_ejecutado','=','ug.id')
+      ->join('users as as', 'as.id', '=' ,'ug.id_user_supervisado')
+      ->join('tipos as tp','tp.id','=','ug.id_tipo' )
+      
+      //->where('id_user_supervisor', Auth::user()->id)
+      //  ->where('tp.id',1)
+      ->get();
+  
+  
+      foreach ($examenes as $row) {
+        $row->procentaje = DB::table('respuestas as rp')
+        ->select(
+          DB::raw('COUNT(rp.id_user) as num')
+        //  DB::raw("CASE WHEN ((rp.id_user/30)*100) >= 0 AND ((rp.id_user/30)*100) <= 50 THEN 'Inicio' ELSE '-' END")
+          )
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+            ['id_examen_ejecutado',$row->id]
+        ])
+        ->GROUPBY('rp.id_user')
+        ->first();
+      }
+
+      $final=$examenes;
+      return $final;
+    }
+    public function vistaReporteTotal(){
+      return view('reportes.reportesTotal.reporteTotal');
+    }
+    public function filtroReporteTotal(Request $request){
+     // return $request;
+      $examenes = DB::table('examenes_ejecutados as ug')
+      // ->select('ug.*',DB::raw('"" as Opciones'),DB::raw('"" as procentaje'),DB::raw('"" as respuestas'),'tp.nombre as tipo',  DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),
+      // DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'))
+      ->select('ug.id')
+      ->join('users as us', 'us.id', '=' ,'ug.id_user_supervisor') 
+      // ->join('respuestas as rp','rp.id_examen_ejecutado','=','ug.id')
+      ->join('users as as', 'as.id', '=' ,'ug.id_user_supervisado')
+      ->join('tipos as tp','tp.id','=','ug.id_tipo' );
+      
+        if($request->rol != null)
+          $examenes->where('tp.id',$request->rol);
+            
+        if($request->ugel != null)
+          $examenes->where('us.id_ugel',$request->ugel);
+            
+        if($request->nivel != null)
+          $examenes->where('us.nivel',$request->nivel);
+            
+        if($request->area != null)
+          $examenes->where('us.area',$request->area);
+          
+        if($request->nombre != null)
+          $examenes->where('us.nombre_i_e','like','%'.$request->nombre.'%');
+         
+    
+    
+      //->where('tp.id',$request->filtro)
+      $examenes = $examenes->get();
+      //return $examenes;
+  
+      foreach ($examenes as $row) {
+        $row->procentaje = DB::table('respuestas as rp')
+        ->select(
+          DB::raw('COUNT(rp.id_user) as num')
+        //  DB::raw("CASE WHEN ((rp.id_user/30)*100) >= 0 AND ((rp.id_user/30)*100) <= 50 THEN 'Inicio' ELSE '-' END")
+          )
+        //->join('director_nivels as dn', 'dn.id', '=', 'us.nivel')
+        ->where([
+            ['id_examen_ejecutado',$row->id]
+        ])
+        ->GROUPBY('rp.id_user')
+        ->first();
+      }
+
+      $final=$examenes;
+      return $final;
+    }
 
 }

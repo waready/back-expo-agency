@@ -181,6 +181,13 @@
 	  var ventimp = window.open(' ', 'popimpr');
 	  ventimp.document.write( ficha.innerHTML );
 	  ventimp.document.close();
+        //css
+        var css = ventimp.document.createElement("link");
+        css.setAttribute("href", "{{ asset('css/app.css') }}");
+        css.setAttribute("rel", "stylesheet");
+        css.setAttribute("type", "text/css");
+        ventimp.document.head.appendChild(css);
+        //css
 	  ventimp.print( );
 	  ventimp.close();
 	}

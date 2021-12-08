@@ -199,9 +199,14 @@ class Director extends Controller
      * @param  \App\pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pregunta $pregunta)
+    public function destroy(Request $request, $id)
     {
-        //
+        $dato = User::find($id);
+       // return $dato;
+        $valor=$dato->delete();
+        return $valor;
+        
+
     }
     public function graficos()
     {

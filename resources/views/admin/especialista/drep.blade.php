@@ -321,7 +321,7 @@
                     )
                     $('td:eq(9)',row).html(
                       '<a class="editar-usuario" href="'+data.id+'"> <i class="fas fa-pencil-alt big-icon text-primary" aria-hidden="true"></i></a>' +
-                      '<a class="eliminar-usuario" href="#"> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>'
+                      '<a class="eliminar-usuario" href="'+data.id+'"> <i class="fas fa-trash big-icon text-danger" aria-hidden="true"></i></a>'
                     )
                 }
                 
@@ -366,6 +366,35 @@
                         toastr.error(error, '¡Error!', {timeOut: 5000})
                     }
                 });
+            });
+            $(document).on('click', '.eliminar-usuario', function(e) {
+                
+                e.preventDefault();
+                     
+                idUpdate = $(this).attr('href');
+                var r = confirm("Seguro que quiere eliminar especialista Drep?!");
+                if (r == true) {
+             
+                    $.ajax({
+                        type: "DELETE",
+                        dataType: "json",
+                        url:'allespecialistadrep/'+idUpdate,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(data) {
+                         
+                        dt.ajax.reload();
+                        console.log(data);
+                        toastr.success(data.message, '¡Operación Exitosa!', {timeOut: 5000});
+                        
+                        },
+                        error: function(error) {
+                            console.log(error);
+                            toastr.error(error, '¡Error!', {timeOut: 5000})
+                        }
+                    });
+                }
             });
             $('#form-editar-usuario').submit(function(e){
                 e.preventDefault();

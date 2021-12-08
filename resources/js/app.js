@@ -27,6 +27,7 @@ Vue.component('graficadirector-component', require('./components/director.vue').
 Vue.component('graficaarea-component', require('./components/graficosArea.vue').default);
 Vue.component('graficagestion-component', require('./components/graficosGestion.vue').default);
 Vue.component('graficanivel-component', require('./components/graficosNivel.vue').default);
+Vue.component('graficatotal-component', require('./components/grafigoTotal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

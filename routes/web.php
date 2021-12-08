@@ -93,6 +93,11 @@ Route::group(['middleware' => ['auth']], function () {
   Route::get('/reportesFinalUgel', 'ReporteController@ExcelUgel')->name('reportesallUgel');
   Route::get('/reportesFinalDirector', 'ReporteController@ExcelDirector')->name('reportesallDirector');
 
+/**reportes */
+  Route::get('/reportePor','ReporteController@ReportePor');
+  Route::get('/reporteTotal','ReporteController@vistaReporteTotal');
+  Route::post('/reporteTotal','ReporteController@filtroReporteTotal');
+  
   Route::get('/reportesUsuarioDrep', function () {
     return view('reportes.vistareporte');
   });
