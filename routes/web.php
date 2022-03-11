@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/editarPerfil','ProfileController@actualizar');
 
   /****REPORTE*****/
-  Route::get('/tablaExamen/{id_res}', 'ReporteController@TablaExamen')->name('getRespuestasUno');
+  Route::get('/tablaExamen/{id_res}/{id_tipo}', 'ReporteController@TablaExamen')->name('getRespuestasUno');
   Route::get('reporteExamen/{id}','ReporteController@ReporteExamen');  
   Route::delete('eliminarExamen/{id}','ReporteController@EliminarExamen');
 

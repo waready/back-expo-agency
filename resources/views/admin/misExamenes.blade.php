@@ -245,8 +245,12 @@
                     //console.log(data.porcentaje.num)
                     if(data.procentaje != null){
                         //  valeur1 = (data.procentaje.num * 3.3)
-                        var procentaje= (data.procentaje.num / 30)*100;
-                        valeur1 = Math.round( procentaje );
+                          if(data.id_tipo <=2)
+                            var porcentaje= (data.procentaje.num / 30)*100;
+                          else
+                            var porcentaje= (data.procentaje.num / 20)*100;
+                                     
+                        valeur1 = Math.round( porcentaje );
 
                     }else{
                         valeur1 = 0;
@@ -311,9 +315,13 @@
                         //console.log(data.porcentaje.num)
                         if(data.porcentaje != null){
                           //  valeur = (data.porcentaje.num * 3.3)
+                          /****Arreglar de una Forma numeros****/
+                          if(data.tipo.id_tipo <=2)
                             var porcentaje= (data.porcentaje.num / 30)*100;
-                            valeur = Math.round( porcentaje );
+                          else
+                            var porcentaje= (data.porcentaje.num / 20)*100;
 
+                            valeur = Math.round( porcentaje );
                         }else{
                             valeur = 0;
                         }
@@ -334,7 +342,7 @@
                             lengthMenu: [15, 25, 50, 75, 100 ],
                             processing: true,
                             "bDestroy": true,
-                            ajax: 'tablaExamen/'+data.tabla.id_user_supervisado+'',
+                            ajax: 'tablaExamen/'+data.tabla.id_user_supervisado+'/'+data.tipo.id_tipo,
                             
                             language: {
                                 url: "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"

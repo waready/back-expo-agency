@@ -86,17 +86,20 @@ class ReporteController extends Controller
      // return $request;
     }
 
-    public function TablaExamen($id_res){
+    public function TablaExamen($id_res,$id_tipo){
         $users = DB::table('respuestas as rp')
-        ->select('rp.*','pre.numero',
+        ->select('rp.*','pre.numero','ct.id_tipo as tipo',
         DB::raw('CONCAT(us.nombres," ",us.apellidos,"") as Supervisor'),DB::raw('CONCAT(as.nombres," ",as.apellidos,"") as Supervisado'),
         DB::raw('"" as Opciones'),DB::raw('"" as porcentaje'))
         ->join('examenes_ejecutados as ej', 'ej.id', '=', 'rp.id_examen_ejecutado')
         ->join('users as us','us.id','ej.id_user_supervisado')
         ->join('users as as','as.id','ej.id_user_supervisor')
         ->join('preguntas as pre','pre.id','rp.id_pregunta')
-        ->where('ej.id_user_supervisado',$id_res)
-        
+        ->join('categorias as ct', 'ct.id', '=', 'pre.id_categoria')
+        ->where([
+                ['ej.id_user_supervisado',$id_res],
+                ['ct.id_tipo',$id_tipo]
+                ])
         ->get();
         // $users = DB::table('examenes_ejecutados as ej')
         // ->select('ej.*')
@@ -235,7 +238,6 @@ class ReporteController extends Controller
         ])
         //->GROUPBY('rp.id_user')
         ->first();
-  
         $categorias = DB::table('categorias as ct')
         ->select('ct.*')
         //->leftJoin('preguntas as pr','pr.id','ct.') 
@@ -307,8 +309,12 @@ class ReporteController extends Controller
         ->join('users as us','us.id','ej.id_user_supervisado')
         ->join('users as as','as.id','ej.id_user_supervisor')
         ->join('preguntas as pre','pre.id','rp.id_pregunta')
-        ->where('ej.id_user_supervisado',$evaluado["tabla"]->id_user_supervisado)
-        
+        ->join('categorias as ct', 'ct.id', '=', 'pre.id_categoria')
+        ->where([
+          ['ej.id_user_supervisado',$evaluado["tabla"]->id_user_supervisado],
+          ['ct.id_tipo',$evaluado['tipo']->id_tipo]
+          ])
+        //->where('ct.id_tipo',$evaluado['tipo']->id_tipo)
         ->get();
         // $users = DB::table('examenes_ejecutados as ej')
         // ->select('ej.*')

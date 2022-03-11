@@ -154,13 +154,24 @@
             </div>
             <div class="text-center">
                 Resultado:
+
                 @if($evaluado['porcentaje'] != null)  
-                    @if( (($evaluado['porcentaje']->num /30) *100) >= 0 &&  (($evaluado['porcentaje']->num /30) *100) <= 50)
-                        <h2>Inicio</h2>  
-                    @elseif( (($evaluado['porcentaje']->num /30) *100) >= 51 &&  (($evaluado['porcentaje']->num /30) *100) <= 80)
-                        <h2>Proceso</h2>
-                    @elseif( (($evaluado['porcentaje']->num /30) *100) >= 81 &&  (($evaluado['porcentaje']->num /30) *100) <= 100)
-                        <h2>Satisfactorio</h2>
+                    @if($evaluado['tipo']->id_tipo <=2 )
+                        @if( (($evaluado['porcentaje']->num /30) *100) >= 0 &&  (($evaluado['porcentaje']->num /30) *100) <= 50)
+                            <h2>Inicio</h2>  
+                        @elseif( (($evaluado['porcentaje']->num /30) *100) >= 51 &&  (($evaluado['porcentaje']->num /30) *100) <= 80)
+                            <h2>Proceso</h2>
+                        @elseif( (($evaluado['porcentaje']->num /30) *100) >= 81 &&  (($evaluado['porcentaje']->num /30) *100) <= 100)
+                            <h2>Satisfactorio</h2>
+                        @endif
+                    @else
+                        @if( (($evaluado['porcentaje']->num /20) *100) >= 0 &&  (($evaluado['porcentaje']->num /20) *100) <= 50)
+                            <h2>Inicio</h2>  
+                        @elseif( (($evaluado['porcentaje']->num /20) *100) >= 51 &&  (($evaluado['porcentaje']->num /20) *100) <= 80)
+                            <h2>Proceso</h2>
+                        @elseif( (($evaluado['porcentaje']->num /20) *100) >= 81 &&  (($evaluado['porcentaje']->num /20) *100) <= 100)
+                            <h2>Satisfactorio</h2>
+                        @endif
                     @endif
                 @else
                     0
