@@ -2898,6 +2898,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2915,6 +2918,7 @@ __webpack_require__.r(__webpack_exports__);
 
     });
   },
+  props: ['tipos'],
   components: {
     LineChart: _LineChart_js__WEBPACK_IMPORTED_MODULE_0__["default"],
     BarChart: _BarChart_js__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -78188,15 +78192,20 @@ var render = function() {
                             }
                           }
                         },
-                        [
-                          _c("option", { attrs: { value: "1" } }, [
-                            _vm._v("Ficha Especialista")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2" } }, [
-                            _vm._v("Ficha Directores")
-                          ])
-                        ]
+                        _vm._l(_vm.tipos, function(value, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: value.id } },
+                            [
+                              _vm._v(
+                                "\n                      " +
+                                  _vm._s(value.nombre) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        }),
+                        0
                       )
                     ]),
                     _vm._v(" "),

@@ -92,7 +92,11 @@ $tipoExamenes = DB::table('tipos')->get();
         <a href="/docs/F_Director_v3.docx" type="button"  class="btn btn-success" value="">Descargar ficha vacia</a>
       </div>
       @endif
-      
+      @if($examType == 4)
+      <div class="mb-3">
+        <a href="/docs/FICHA_DE_OBSERVACION_9-3-2022_Roman.docx" type="button"  class="btn btn-success" value="">Descargar ficha vacia</a>
+      </div>
+      @endif
     </div>
   </div>
 </div>

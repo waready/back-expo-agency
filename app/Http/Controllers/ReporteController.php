@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\tipo;
 use App\respuesta;
 use App\ExamenEjecutado;
 use App\Exports\DataExport;
@@ -369,7 +369,8 @@ class ReporteController extends Controller
       return $final;
     }
     public function vistaReporteTotal(){
-      return view('reportes.reportesTotal.reporteTotal');
+      $tipos = tipo::all();
+      return view('reportes.reportesTotal.reporteTotal',compact('tipos'));
     }
     public function filtroReporteTotal(Request $request){
      // return $request;

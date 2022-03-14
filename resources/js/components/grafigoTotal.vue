@@ -1,7 +1,7 @@
 <template>
   <div class="small pt-2">
      <!--h2>Reportes Total de monitoreos:</h2-->
-
+      <!-- {{ tipos }} -->
       <div class="container">
         <div class="row">
           <div class="col">
@@ -38,8 +38,11 @@
                   <div class="form-group">
                     <label for="rol">Usuario Rol</label>
                     <select class="form-control" id="rol" v-model="form.Rol">
-                      <option value="1">Ficha Especialista</option>
-                      <option value="2">Ficha Directores</option>
+                      <!-- <option value="1">Ficha Especialista</option>
+                      <option value="2">Ficha Directores</option> -->
+                      <option v-for="(value,index) in tipos" :key="index" :value="value.id">
+                        {{ value.nombre }}
+                      </option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -110,6 +113,7 @@ export default {
     });
 
   },
+  props:['tipos'],
   components: {
     LineChart,
     BarChart,

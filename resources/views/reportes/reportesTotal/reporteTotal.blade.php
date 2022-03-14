@@ -14,7 +14,7 @@
 @section('content')
     <div id="app">
         
-        <graficatotal-component></graficatotal-component>
+        <graficatotal-component :tipos="{{ $tipos }}"></graficatotal-component>
         
     </div>
 @stop
